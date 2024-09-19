@@ -6,12 +6,13 @@ Rails.application.routes.draw do
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
 
-  mount Decidim::Core::Engine => '/'
   authenticate :user, ->(u) { u.admin? } do
     mount Sidekiq::Web => "/sidekiq"
   end
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  
+  namespace :admin do
+    resources :iframe, only: [:index]
+  end
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  mount Decidim::Core::Engine => '/'
 end

@@ -1,0 +1,25 @@
+<script defer data-domain="capitalofdemocracy.barcelona" src="https://analytics.barcelonadema-participa.cat/js/script.js"></script>
+<!-- Crides al core -->
+<link type="text/css" rel="stylesheet" href="https://www.barcelona.cat/assets/core/stylesheets/core.css" media="all">
+<script type="text/plain" defer data-consent="analytics" src="https://www.barcelona.cat/assets/core/javascripts/core.js"></script>
+<!-- Funció brandInjection -->
+<script type="text/javascript">
+  // on dom initialization
+  setTimeout(function() {
+    if(!bcn) {
+      return;
+    }
+
+      bcn.brandInjection({
+         version: 'v2017',
+         urls: {
+                  'ca': 'https://www.barcelona.cat/brand/banner/ca/capitalofdemocracy.html',
+                  'es': 'https://www.barcelona.cat/brand/banner/es/capitalofdemocracy.html',
+                  'en': 'https://www.barcelona.cat/brand/banner/en/capitalofdemocracy.html'
+          },
+         callback: function() {
+         }
+          //(Optional) Other functions to call: callback:  function()
+      });
+    }, 2000);
+</script>
