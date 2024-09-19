@@ -4,23 +4,24 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-gem "decidim", "0.29.0"
-# gem "decidim-conferences", "0.29.0"
-# gem "decidim-design", "0.29.0"
-# gem "decidim-initiatives", "0.29.0"
-# gem "decidim-templates", "0.29.0"
+DECIDIM_VERSION = "~> 0.28.0"
+gem "decidim", DECIDIM_VERSION
+gem "decidim-conferences", DECIDIM_VERSION
+gem "decidim-templates", DECIDIM_VERSION
+
+gem "decidim-decidim_awesome"
+gem "decidim-term_customizer", github: "mainio/decidim-module-term_customizer", branch: "main"
 
 gem "bootsnap", "~> 1.3"
-
+gem "health_check"
 gem "puma", ">= 6.3.1"
-
 gem "wicked_pdf", "~> 2.1"
 
 group :development, :test do
   gem "byebug", "~> 11.0", platform: :mri
-
+  
   gem "brakeman", "~> 6.1"
-  gem "decidim-dev", "0.29.0"
+  gem "decidim-dev", DECIDIM_VERSION
   gem "net-imap", "~> 0.2.3"
   gem "net-pop", "~> 0.1.1"
   gem "net-smtp", "~> 0.3.1"
@@ -35,4 +36,5 @@ end
 group :production do
   gem "aws-sdk-s3", require: false
   gem "sidekiq"
+  gem "sidekiq-cron"
 end
