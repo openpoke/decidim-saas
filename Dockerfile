@@ -34,10 +34,7 @@ RUN gem install bundler:$(grep -A 1 'BUNDLED WITH' Gemfile.lock | tail -n 1 | xa
     find /usr/local/bundle/ -name "*.o" -delete && \
     find /usr/local/bundle/ -name ".git" -exec rm -rf {} + && \
     find /usr/local/bundle/ -name ".github" -exec rm -rf {} + && \
-    # whkhtmltopdf has binaries for all platforms, we don't need them once uncompressed
-    rm -rf /usr/local/bundle/gems/wkhtmltopdf-binary-*/bin/*.gz && \
     rm -f /usr/local/bundle/gems/seven_zip_ruby-1.3.0/lib/seven_zip_ruby/*.dll && \
-    # Remove additional unneded decidim files
     find /usr/local/bundle/ -name "spec" -exec rm -rf {} +
 
 RUN npm ci
@@ -84,7 +81,8 @@ RUN apt-get update && \
     apt-get install -y postgresql-client \
     imagemagick \
     curl \
-    p7zip-full \
+    p7zip \
+    wkhtmltopdf \
     supervisor && \
     apt-get clean
 
