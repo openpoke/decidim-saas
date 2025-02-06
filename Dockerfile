@@ -8,7 +8,7 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y ca-certificates c
     apt-get update && apt-get install -y nodejs yarn \
     build-essential \
     postgresql-client \
-    p7zip-full \
+    p7zip \
     libpq-dev && \
     apt-get clean
 
@@ -34,8 +34,9 @@ RUN gem install bundler:$(grep -A 1 'BUNDLED WITH' Gemfile.lock | tail -n 1 | xa
     find /usr/local/bundle/ -name "*.o" -delete && \
     find /usr/local/bundle/ -name ".git" -exec rm -rf {} + && \
     find /usr/local/bundle/ -name ".github" -exec rm -rf {} + && \
-    rm -f /usr/local/bundle/gems/seven_zip_ruby-1.3.0/lib/seven_zip_ruby/*.dll && \
-    find /usr/local/bundle/ -name "spec" -exec rm -rf {} +
+    # Remove additional unneeded decidim files
+    find /usr/local/bundle/ -name "spec" -exec rm -rf {} + && \
+    find /usr/local/bundle/ -wholename "*/decidim-dev/lib/decidim/dev/assets/*" -exec rm -rf {} +
 
 RUN npm ci
 
@@ -87,6 +88,9 @@ RUN apt-get update && \
     apt-get clean
 
 EXPOSE 3000
+
+ARG CAPROVER_GIT_COMMIT_SHA=${CAPROVER_GIT_COMMIT_SHA}
+ENV APP_REVISION=${CAPROVER_GIT_COMMIT_SHA}
 
 ENV RAILS_LOG_TO_STDOUT true
 ENV RAILS_SERVE_STATIC_FILES true
