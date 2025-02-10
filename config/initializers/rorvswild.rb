@@ -1,0 +1,2 @@
+byebug
+RorVsWild.start(api_key: ENV["RORVSWILD_API_KEY"]) if ENV["RORVSWILD_API_KEY"].present?
