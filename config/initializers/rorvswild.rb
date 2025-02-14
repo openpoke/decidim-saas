@@ -1,6 +1,6 @@
 RorVsWild.start(
   api_key: ENV["RORVSWILD_API_KEY"],
-  ignored_exceptions: [
+  ignore_exceptions: [
     "ActionController::RoutingError",
     "ActiveRecord::RecordNotFound",
     "ActionView::MissingTemplate"
