@@ -3,6 +3,8 @@ RorVsWild.start(
   ignore_exceptions: [
     "ActionController::RoutingError",
     "ActiveRecord::RecordNotFound",
-    "ActionView::MissingTemplate"
+    "ActionView::MissingTemplate",
+    "ActionController::InvalidCrossOriginRequest",
+    "ActionController::InvalidAuthenticityToken"
   ]
 ) if ENV["RORVSWILD_API_KEY"].present?
