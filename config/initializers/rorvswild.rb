@@ -6,5 +6,8 @@ RorVsWild.start(
     "ActionView::MissingTemplate",
     "ActionController::InvalidCrossOriginRequest",
     "ActionController::InvalidAuthenticityToken"
-  ]
+  ],
+  deployment: {
+    revision: ENV["APP_REVISION"]
+  }
 ) if ENV["RORVSWILD_API_KEY"].present?
