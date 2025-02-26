@@ -10,4 +10,4 @@ RorVsWild.start(
   deployment: {
     revision: ENV["APP_REVISION"]
   }
-) if ENV["RORVSWILD_API_KEY"].present?
+) if ENV["RORVSWILD_API_KEY"].present? && !Rails.env.test?
