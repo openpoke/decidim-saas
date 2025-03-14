@@ -196,6 +196,18 @@ GIT
       decidim-admin (~> 0.28.0)
       decidim-core (~> 0.28.0)
 
+GIT
+  remote: https://github.com/openpoke/decidim-module-reporting_proposals.git
+  revision: 782784cf29d8e030f16e3217c8e151417e0553fa
+  branch: main
+  specs:
+    decidim-reporting_proposals (0.6.2)
+      decidim-admin (>= 0.28.1, < 0.29)
+      decidim-core (>= 0.28.1, < 0.29)
+      decidim-participatory_processes (>= 0.28.1, < 0.29)
+      decidim-proposals (>= 0.28.1, < 0.29)
+      deface (>= 1.9)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -884,6 +896,7 @@ DEPENDENCIES
   decidim-conferences!
   decidim-decidim_awesome!
   decidim-dev!
+  decidim-reporting_proposals!
   decidim-templates!
   decidim-term_customizer!
   deface
