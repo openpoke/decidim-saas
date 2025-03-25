@@ -17,6 +17,7 @@ gem "health_check"
 gem "puma", ">= 6.3.1"
 gem "rorvswild"
 gem "active_hashcash"
+gem "rails_semantic_logger"
 gem "deface"
 
 group :development, :test do
@@ -24,9 +25,6 @@ group :development, :test do
   
   gem "brakeman", "~> 6.1"
   gem "decidim-dev", DECIDIM_VERSION
-  gem "net-imap", "~> 0.2.3"
-  gem "net-pop", "~> 0.1.1"
-  gem "net-smtp", "~> 0.3.1"
 end
 
 group :development do
