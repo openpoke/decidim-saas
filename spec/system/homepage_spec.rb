@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-describe "Conferences Homepage" do
+describe "Conferences Homepage" do # rubocop:disable RSpec/DescribeClass
   let!(:organization) { create(:organization) }
   let!(:conference_city) { create(:conference, :published, promoted: false, organization:) }
 

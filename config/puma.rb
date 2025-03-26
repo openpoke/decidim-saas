@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Puma can serve each request in a thread from an internal thread pool.
 # The `threads` method setting takes two numbers: a minimum and maximum.
 # Any libraries that use thread pools should be configured to match
@@ -19,10 +21,10 @@ port ENV.fetch("PORT", 3000)
 
 # Specifies the `environment` that Puma will run in.
 #
-environment ENV.fetch("RAILS_ENV") { "development" }
+environment ENV.fetch("RAILS_ENV", "development")
 
 # Specifies the `pidfile` that Puma will use.
-pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
+pidfile ENV.fetch("PIDFILE", "tmp/pids/server.pid")
 
 if ENV.fetch("RAILS_ENV") == "production"
   workers ENV.fetch("WEB_CONCURRENCY", 2)
@@ -35,11 +37,11 @@ if ENV.fetch("RAILS_ENV") == "production"
   preload_app!
 else
   # Development SSL
-  if ENV["DEV_SSL"] && defined?(Bundler) && (dev_gem = Bundler.load.specs.find { |spec| spec.name == "decidim-dev" })
+  if ENV.fetch("DEV_SSL", nil) && defined?(Bundler) && (dev_gem = Bundler.load.specs.find { |spec| spec.name == "decidim-dev" })
     cert_dir = ENV.fetch("DEV_SSL_DIR") { "#{dev_gem.full_gem_path}/lib/decidim/dev/assets" }
     ssl_bind(
       "0.0.0.0",
-      ENV.fetch("DEV_SSL_PORT") { 3443 },
+      ENV.fetch("DEV_SSL_PORT", 3443),
       cert_pem: File.read("#{cert_dir}/ssl-cert.pem"),
       key_pem: File.read("#{cert_dir}/ssl-key.pem")
     )
