@@ -20,6 +20,10 @@ gem "rorvswild"
 gem "active_hashcash"
 gem "rails_semantic_logger"
 gem "deface"
+gem "sentry-rails"
+gem "sentry-ruby"
+# because we override the gem, we require it here
+gem "aws-sdk-s3" #, require: false
 
 group :development, :test do
   gem "byebug", "~> 11.0", platform: :mri
@@ -29,14 +33,12 @@ group :development, :test do
 end
 
 group :development do
-  gem "aws-sdk-s3" #, require: false
   gem "letter_opener_web", "~> 2.0"
   gem "listen", "~> 3.1"
   gem "web-console", "~> 4.2"
 end
 
 group :production do
-  gem "aws-sdk-s3" #, require: false
   gem "sidekiq"
   gem "sidekiq-cron"
 end
