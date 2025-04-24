@@ -1,8 +1,8 @@
-en:
+ca:
   # NOTE: Remove when upgrading to v0.30
   decidim:
     debates:
       content_blocks:
         highlighted_debates:
-          name: Debates
-          see_all: See all debates
+          name: Debats
+          see_all: Veure tots els debats
