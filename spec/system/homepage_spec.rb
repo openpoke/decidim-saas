@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-describe "Conferences Homepage" do
+describe "Homepage" do
   let!(:organization) { create(:organization) }
   let!(:conference_city) { create(:conference, :published, promoted: false, organization:) }
 

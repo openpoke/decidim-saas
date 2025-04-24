@@ -19,9 +19,9 @@ describe "Admin" do
     end
 
     it "displays custom iframe in the admin menu" do
-      click_on "Plausible Stats")
+      click_on "Web Stats"
       within ".layout-content" do
-        expect(page).to have_content("Plausible Stats")
+        expect(page).to have_content("Web Stats")
         expect(page).to have_css("iframe[src='#{url}']")
       end
     end
@@ -30,7 +30,7 @@ describe "Admin" do
       let(:url) { nil }
 
       it "does not display custom iframe in the admin menu" do
-        expect(page).to have_no_content("Plausible Stats")")
+        expect(page).to have_no_content("Web Stats")
       end
     end
   end
