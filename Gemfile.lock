@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/decidim/decidim.git
-  revision: 1151fee5366eda1cb67f08c9356bac92c3ba40ea
+  revision: c013216a4d4f30900c2f783da80f7ad6a6c7b2d1
   branch: release/0.28-stable
   specs:
     decidim (0.28.5)
@@ -189,7 +189,7 @@ GIT
 
 GIT
   remote: https://github.com/mainio/decidim-module-term_customizer.git
-  revision: 9133eea57ebfc4164b640efd1ac6b9ca1628c793
+  revision: 32b47529c192071cfc4caca5fa203ee9e8fd2c6b
   branch: main
   specs:
     decidim-term_customizer (0.28.0)
@@ -282,8 +282,8 @@ GEM
       public_suffix (>= 2.0.2, < 7.0)
     ast (2.4.3)
     aws-eventstream (1.3.2)
-    aws-partitions (1.1079.0)
-    aws-sdk-core (3.222.1)
+    aws-partitions (1.1091.0)
+    aws-sdk-core (3.222.2)
       aws-eventstream (~> 1, >= 1.3.0)
       aws-partitions (~> 1, >= 1.992.0)
       aws-sigv4 (~> 1.9)
@@ -354,7 +354,7 @@ GEM
       logger (~> 1.5)
     commonmarker (0.23.11)
     concurrent-ruby (1.2.2)
-    connection_pool (2.5.0)
+    connection_pool (2.5.2)
     crack (1.0.0)
       bigdecimal
       rexml
@@ -364,7 +364,7 @@ GEM
       unicode (>= 0.4.4.5)
     css_parser (1.21.1)
       addressable
-    csv (3.3.3)
+    csv (3.3.4)
     date (3.4.1)
     date_validator (0.12.0)
       activemodel (>= 3)
@@ -395,7 +395,7 @@ GEM
       nokogiri (>= 1.18.2)
       rubyzip (~> 2.3.0)
     docile (1.4.1)
-    doorkeeper (5.8.1)
+    doorkeeper (5.8.2)
       railties (>= 5)
     doorkeeper-i18n (4.0.1)
     erb_lint (0.4.0)
@@ -422,13 +422,13 @@ GEM
       railties (>= 5.0.0)
     faker (3.5.1)
       i18n (>= 1.8.11, < 2)
-    faraday (2.12.2)
+    faraday (2.13.0)
       faraday-net_http (>= 2.0, < 3.5)
       json
       logger
     faraday-net_http (3.4.0)
       net-http (>= 0.5.0)
-    ffi (1.17.1-x86_64-linux-gnu)
+    ffi (1.17.2-x86_64-linux-gnu)
     file_validators (3.0.0)
       activemodel (>= 3.2)
       mime-types (>= 1.0)
@@ -487,8 +487,10 @@ GEM
       rainbow (>= 2.2.2, < 4.0)
       ruby-progressbar (~> 1.8, >= 1.8.1)
       terminal-table (>= 1.5.1)
-    icalendar (2.10.3)
+    icalendar (2.11.0)
+      base64
       ice_cube (~> 0.16)
+      logger
       ostruct
     ice_cube (0.17.0)
     image_processing (1.14.0)
@@ -498,7 +500,7 @@ GEM
       rails (>= 3.2.0)
     io-console (0.8.0)
     jmespath (1.6.2)
-    json (2.10.2)
+    json (2.11.0)
     jwt (2.10.1)
       base64
     kaminari (1.2.2)
@@ -542,7 +544,7 @@ GEM
     mime-types (3.6.2)
       logger
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2025.0402)
+    mime-types-data (3.2025.0422)
     mini_magick (4.13.2)
     mini_mime (1.1.5)
     minitest (5.25.5)
@@ -551,7 +553,7 @@ GEM
       bigdecimal (~> 3.1)
     net-http (0.6.0)
       uri
-    net-imap (0.5.6)
+    net-imap (0.5.7)
       date
       net-protocol
     net-pop (0.1.2)
@@ -561,7 +563,7 @@ GEM
     net-smtp (0.3.4)
       net-protocol
     nio4r (2.7.4)
-    nokogiri (1.18.7-x86_64-linux-gnu)
+    nokogiri (1.18.8-x86_64-linux-gnu)
       racc (~> 1.4)
     oauth (1.1.0)
       oauth-tty (~> 1.0, >= 1.0.1)
@@ -606,10 +608,10 @@ GEM
     paper_trail (12.3.0)
       activerecord (>= 5.2)
       request_store (~> 1.1)
-    parallel (1.26.3)
+    parallel (1.27.0)
     parallel_tests (4.10.1)
       parallel
-    parser (3.3.7.4)
+    parser (3.3.8.0)
       ast (~> 2.4.1)
       racc
     pg (1.4.6)
@@ -698,7 +700,7 @@ GEM
     redis-client (0.24.0)
       connection_pool
     regexp_parser (2.10.0)
-    reline (0.6.0)
+    reline (0.6.1)
       io-console (~> 0.5)
     request_store (1.5.1)
       rack (>= 1.4)
@@ -748,12 +750,10 @@ GEM
       rubocop-ast (>= 1.28.0, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 3.0)
-    rubocop-ast (1.43.0)
+    rubocop-ast (1.44.1)
       parser (>= 3.3.7.2)
       prism (~> 1.4)
     rubocop-capybara (2.21.0)
-      rubocop (~> 1.41)
-    rubocop-factory_bot (2.26.0)
       rubocop (~> 1.41)
     rubocop-faker (1.2.0)
       faker (>= 2.12.0)
@@ -763,13 +763,9 @@ GEM
       rack (>= 1.1)
       rubocop (>= 1.33.0, < 2.0)
       rubocop-ast (>= 1.31.1, < 2.0)
-    rubocop-rspec (2.31.0)
-      rubocop (~> 1.40)
+    rubocop-rspec (2.20.0)
+      rubocop (~> 1.33)
       rubocop-capybara (~> 2.17)
-      rubocop-factory_bot (~> 2.22)
-      rubocop-rspec_rails (~> 2.28)
-    rubocop-rspec_rails (2.29.0)
-      rubocop (~> 1.40)
     ruby-progressbar (1.13.0)
     ruby-vips (2.2.3)
       ffi (~> 1.12)
@@ -785,7 +781,7 @@ GEM
       rb-inotify (~> 0.9, >= 0.9.7)
     sassc (2.4.0)
       ffi (~> 1.9)
-    selenium-webdriver (4.30.1)
+    selenium-webdriver (4.31.0)
       base64 (~> 0.2)
       logger (~> 1.4)
       rexml (~> 3.2, >= 3.2.5)
@@ -833,15 +829,16 @@ GEM
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
       spring (>= 1.2, < 3.0)
-    sprockets (4.2.1)
+    sprockets (4.2.2)
       concurrent-ruby (~> 1.0)
+      logger
       rack (>= 2.2.4, < 4)
     sprockets-rails (3.5.2)
       actionpack (>= 6.1)
       activesupport (>= 6.1)
       sprockets (>= 3.0.0)
     ssrf_filter (1.2.0)
-    stringio (3.1.6)
+    stringio (3.1.7)
     temple (0.10.3)
     terminal-table (4.0.0)
       unicode-display_width (>= 1.1.1, < 4)
@@ -859,7 +856,7 @@ GEM
     valid_email2 (4.0.6)
       activemodel (>= 3.2)
       mail (~> 2.5)
-    version_gem (1.1.6)
+    version_gem (1.1.7)
     w3c_rspec_validators (0.3.0)
       rails
       rspec
@@ -919,6 +916,7 @@ DEPENDENCIES
   puma (>= 6.3.1)
   rails_semantic_logger
   rorvswild
+  rubocop-rspec (~> 2.20.0)
   sentry-rails
   sentry-ruby
   sidekiq
