@@ -18,13 +18,22 @@ describe "Homepage" do
     visit decidim_conferences.conferences_path
   end
 
-  context "when homepage footer has organization logos" do
-    it "includes the organization logo as its content" do
+  context "when footer" do
+    it "includes custom logos" do
       expect(page).to have_css(".main-footer__down")
 
-      within ".main-footer__top" do
-        expect(page).to have_css(".footer-logo")
-        expect(page).to have_css(".logos")
+      within ".mini-footer__content" do
+        expect(page).to have_css(".footer-logos")
+        expect(page).to have_link("PokeCode - Decidim Makers")
+        expect(page).to have_link("Decidim")
+      end
+    end
+  end
+
+  context "when header" do
+    it "includes additional language chooser" do
+      within ".main-bar__links-desktop" do
+        expect(page).to have_css(".main-header__language-container")
       end
     end
   end
