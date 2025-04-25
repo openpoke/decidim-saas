@@ -1,0 +1,13 @@
+<p><%= t("decidim.authorization_handlers.sommobilitat_member.explanation") %></p>
+
+<div class="form__wrapper">
+  <% unless form.send(:public_attributes).has_key?("dni") %>
+    <div class="callout warning">
+      <p><%= t("decidim.authorization_handlers.sommobilitat_member.first_try") %></p>
+    </div>
+  <% end %>
+  <%= form.hidden_field :email %>
+  <%= form.all_fields %>
+</div>
+
+<% console %>

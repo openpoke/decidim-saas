@@ -1,6 +1,18 @@
+---
 ca:
-  # NOTE: Remove when upgrading to v0.30
+  activemodel:
+    attributes:
+      authorization_handler:
+        dni: DNI
   decidim:
+    authorization_handlers:
+      sommobilitat_member:
+        email_not_found: No hem pogut trobar automàticament la teva filiació. Si us
+          plau, introdueix el teu número de DNI i torna-ho a intentar.
+        explanation: Aquest mètode et permet autoritzar si ets membre de la cooperativa
+          Som Mobilitat.
+        first_try: Simplement prem el botó de sota per comprovar la teva filiació.
+        name: Som Mobilitat
     debates:
       content_blocks:
         highlighted_debates:

@@ -24,6 +24,7 @@ gem "sentry-ruby"
 # because we override the gem, we require it here
 gem "aws-sdk-s3" # , require: false
 # NOTE: try to remove when rubocop is fixed
+gem "faraday"
 gem "rubocop-rspec", "~> 2.20.0"
 
 group :development, :test do
