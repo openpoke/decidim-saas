@@ -13,31 +13,31 @@ gem "decidim-decidim_awesome", github: "decidim-ice/decidim-module-decidim_aweso
 gem "decidim-term_customizer", github: "CodiTramuntana/decidim-module-term_customizer", branch: "upgrade/decidim_0.29"
 
 gem "active_hashcash"
-gem "bootsnap", "~> 1.7"
+gem "bootsnap", "~> 1.3"
 gem "deface"
 gem "health_check"
 gem "puma", ">= 6.3.1"
 gem "rails_semantic_logger"
 gem "rorvswild"
+gem "sentry-rails"
+gem "sentry-ruby"
+# because we override the gem, we require it here
+gem "aws-sdk-s3" # , require: false
 
 group :development, :test do
-  gem "brakeman", "~> 6.1"
   gem "byebug", "~> 11.0", platform: :mri
-  gem "faker", "~> 3.2"
-  gem "rubocop-faker"
 
+  gem "brakeman", "~> 6.1"
   gem "decidim-dev", DECIDIM_VERSION
 end
 
 group :development do
-  gem "aws-sdk-s3" # , require: false
-  gem "letter_opener_web"
-  gem "listen"
-  gem "web-console"
+  gem "letter_opener_web", "~> 2.0"
+  gem "listen", "~> 3.1"
+  gem "web-console", "~> 4.2"
 end
 
 group :production do
-  gem "aws-sdk-s3" # , require: false
   gem "sidekiq"
   gem "sidekiq-cron"
 end

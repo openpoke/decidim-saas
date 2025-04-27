@@ -1,0 +1,8 @@
+es:
+  # NOTE: Remove when upgrading to v0.30
+  decidim:
+    debates:
+      content_blocks:
+        highlighted_debates:
+          name: Debates
+          see_all: Ver todos los debates

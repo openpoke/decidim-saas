@@ -5,3 +5,9 @@ AllCops:
   Exclude:
     - 'db/**/*.rb'
     - 'vendor/**/*'
+
+Rails/FilePath:
+  Enabled: false
+
+RSpec/IndexedLet:
+  Enabled: false

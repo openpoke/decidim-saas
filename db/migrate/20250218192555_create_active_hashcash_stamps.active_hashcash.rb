@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # This migration comes from active_hashcash (originally 20240215143453)
 class CreateActiveHashcashStamps < ActiveRecord::Migration[5.2]
   def change
