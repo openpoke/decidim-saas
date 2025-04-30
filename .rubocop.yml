@@ -6,7 +6,7 @@ AllCops:
     - 'db/**/*.rb'
     - 'vendor/**/*'
 
-RSpec/FilePath:
+Rails/FilePath:
   Enabled: false
 
 RSpec/IndexedLet:

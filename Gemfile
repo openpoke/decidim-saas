@@ -4,13 +4,13 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-DECIDIM_VERSION = { github: "decidim/decidim", branch: "release/0.28-stable" }.freeze
+DECIDIM_VERSION = { github: "decidim/decidim", branch: "release/0.29-stable" }.freeze
 gem "decidim", DECIDIM_VERSION
 gem "decidim-conferences", DECIDIM_VERSION
 gem "decidim-templates", DECIDIM_VERSION
 
-gem "decidim-decidim_awesome", github: "decidim-ice/decidim-module-decidim_awesome", branch: "release/0.28-stable"
-gem "decidim-term_customizer", github: "mainio/decidim-module-term_customizer", branch: "main"
+gem "decidim-decidim_awesome", github: "decidim-ice/decidim-module-decidim_awesome", branch: "main"
+gem "decidim-term_customizer", github: "CodiTramuntana/decidim-module-term_customizer", branch: "upgrade/decidim_0.29"
 
 gem "active_hashcash"
 gem "bootsnap", "~> 1.3"
@@ -25,7 +25,6 @@ gem "sentry-ruby"
 gem "aws-sdk-s3" # , require: false
 # NOTE: try to remove when rubocop is fixed
 gem "faraday"
-gem "rubocop-rspec", "~> 2.20.0"
 
 group :development, :test do
   gem "byebug", "~> 11.0", platform: :mri

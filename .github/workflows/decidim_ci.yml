@@ -6,8 +6,9 @@ on:
   pull_request:
 
 env:
-  RUBY_VERSION: 3.1.6
+  RUBY_VERSION: 3.2.6
   NODE_VERSION: 18.17.1
+  DISABLE_SPRING: 1
 
 jobs:
   tests:
@@ -42,7 +43,7 @@ jobs:
           
       - uses: nanasess/setup-chromedriver@v2
         with:
-          chromedriver-version: 119.0.6045.105
+          chromedriver-version: 126.0.6478.182
 
       - name: List Chrome
         run: apt list --installed | grep chrome
@@ -52,7 +53,7 @@ jobs:
     
       - uses: browser-actions/setup-chrome@v1
         with:
-          chrome-version: 119.0.6045.105
+          chrome-version: 126.0.6478.182
 
       - uses: ruby/setup-ruby@v1
         with:
