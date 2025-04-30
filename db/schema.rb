@@ -557,6 +557,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_03_26_085554) do
     t.datetime "published_at"
     t.index ["decidim_conference_id"], name: "index_decidim_conference_speakers_on_decidim_conference_id"
     t.index ["decidim_user_id"], name: "index_decidim_conference_speaker_on_decidim_user_id"
+    t.index ["published_at"], name: "index_decidim_conference_speakers_on_published_at"
   end
 
   create_table "decidim_conference_user_roles", force: :cascade do |t|
@@ -1471,6 +1472,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_03_26_085554) do
     t.index "md5((title)::text)", name: "decidim_proposals_proposal_title_search"
     t.index ["created_at"], name: "index_decidim_proposals_proposals_on_created_at"
     t.index ["decidim_component_id"], name: "index_decidim_proposals_proposals_on_decidim_component_id"
+    t.index ["decidim_proposals_proposal_state_id"], name: "index_decidim_proposals_on_decidim_proposal_state_id"
     t.index ["decidim_scope_id"], name: "index_decidim_proposals_proposals_on_decidim_scope_id"
     t.index ["proposal_votes_count"], name: "index_decidim_proposals_proposals_on_proposal_votes_count"
   end
@@ -1510,6 +1512,17 @@ ActiveRecord::Schema[7.0].define(version: 2025_03_26_085554) do
     t.datetime "updated_at", null: false
     t.index ["decidim_component_id"], name: "index_decidim_reminders_on_decidim_component_id"
     t.index ["decidim_user_id"], name: "index_decidim_reminders_on_decidim_user_id"
+  end
+
+  create_table "decidim_reporting_proposals_category_valuators", force: :cascade do |t|
+    t.bigint "decidim_category_id", null: false
+    t.string "valuator_role_type", null: false
+    t.bigint "valuator_role_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["decidim_category_id", "valuator_role_id", "valuator_role_type"], name: "decidim_reporting_proposals_category_valuator_unique", unique: true
+    t.index ["decidim_category_id"], name: "decidim_reporting_proposals_category_category_id"
+    t.index ["valuator_role_type", "valuator_role_id"], name: "decidim_reporting_proposals_category_valuator_role"
   end
 
   create_table "decidim_reports", id: :serial, force: :cascade do |t|
@@ -1962,6 +1975,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_03_26_085554) do
   add_foreign_key "decidim_reminder_records", "decidim_reminders"
   add_foreign_key "decidim_reminders", "decidim_components"
   add_foreign_key "decidim_reminders", "decidim_users"
+  add_foreign_key "decidim_reporting_proposals_category_valuators", "decidim_categories"
   add_foreign_key "decidim_scope_types", "decidim_organizations"
   add_foreign_key "decidim_scopes", "decidim_organizations"
   add_foreign_key "decidim_scopes", "decidim_scope_types", column: "scope_type_id"
