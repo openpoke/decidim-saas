@@ -1,5 +1,5 @@
 {
-  "name": "decidim-development-app",
+  "name": "decidim-saas-app",
   "private": true,
   "dependencies": {
     "@decidim/browserslist-config": "file:packages/browserslist-config",
