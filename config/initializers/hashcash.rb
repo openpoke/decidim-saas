@@ -19,12 +19,15 @@ Rails.application.config.to_prepare do
     end
   end
   Decidim::Devise::SessionsController.include(ActiveHashcash)
-  Decidim::Devise::SessionsController.class_eval do
-    before_action :check_hashcash, only: :create
-  end
-
   Decidim::Devise::RegistrationsController.include(ActiveHashcash)
-  Decidim::Devise::RegistrationsController.class_eval do
-    before_action :check_hashcash, only: :create
+
+  unless Rails.env.test?
+    Decidim::Devise::SessionsController.class_eval do
+      before_action :check_hashcash, only: :create
+    end
+
+    Decidim::Devise::RegistrationsController.class_eval do
+      before_action :check_hashcash, only: :create
+    end
   end
 end
