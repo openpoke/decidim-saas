@@ -23,6 +23,8 @@ gem "sentry-rails"
 gem "sentry-ruby"
 # because we override the gem, we require it here
 gem "aws-sdk-s3" # , require: false
+# NOTE: try to remove when rubocop is fixed
+gem "faraday"
 
 group :development, :test do
   gem "byebug", "~> 11.0", platform: :mri

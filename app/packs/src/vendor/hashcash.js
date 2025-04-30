@@ -1,5 +1,5 @@
 // http://www.hashcash.org/docs/hashcash.html
-// <input type="hiden" name="hashcash" data-hashcash="{resource: 'site.example', bits: 16}"/>
+// <input type="hidden" name="hashcash" data-hashcash="{resource: 'site.example', bits: 16}"/>
 Hashcash = function(input) {
   options = JSON.parse(input.getAttribute("data-hashcash"))
   Hashcash.disableParentForm(input, options)

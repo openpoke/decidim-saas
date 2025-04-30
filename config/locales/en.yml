@@ -1,6 +1,18 @@
+---
 en:
-  # NOTE: Remove when upgrading to v0.30
+  activemodel:
+    attributes:
+      authorization_handler:
+        dni: DNI
   decidim:
+    authorization_handlers:
+      sommobilitat_member:
+        email_not_found: We couldn't automatically find your membership. Please enter
+          your VAT number to check your membership and try again.
+        explanation: This handler allows you to authorize your membership in the Som
+          Mobilitat cooperative.
+        first_try: Simply press the button below to check your membership.
+        name: Som Mobilitat
     debates:
       content_blocks:
         highlighted_debates:
