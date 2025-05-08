@@ -1,17 +1,40 @@
-# decidim_saas
+# Decidim SaaS PokeCode
 
 Free Open-Source participatory democracy, citizen participation and open government for cities and organizations
 
 This is the open-source repository for decidim_saas, based on [Decidim](https://github.com/decidim/decidim).
 
-## Setting up the application
+## About
 
-You will need to do some steps before having the app working properly once you have deployed it:
+This is a [PokeCode](https://www.pokecode.net) private installations.
 
-1. Create a System Admin user: `bin/rails decidim_system:create_admin`
-1. Visit `<your app url>/system` and log in with your system admin credentials
-1. Create a new organization. Check the locales you want to use for that organization, and select a default locale.
-1. Set the correct default host for the organization, otherwise the app will not work properly. Note that you need to include any subdomain you might be using.
-1. Fill the rest of the form and submit it.
+Features a customized Gemfile that can load/disable certain specific modules, depending on the ENV variables is set or not.
 
-You are good to go!
+### Current extra modules:
+
+1. `WITH_EXTRA_USER_FIELDS=1` Loads the [decidim-extra_user_fields](https://github.com/openpoke/decidim-module-extra_user_fields) module-
+2. `WITH_SOM_MOBILITAT=1` Loads the internal [decidim-som_mobilitat](decidim-som_mobilitat/) module.
+3. `WITH_CLEAN_CLOTHES=1` Loads the internal [decidim-clean_clothes](decidim-clean_clothes/) module (note that this module is not compatible with decidim-extra_user_fields, load one or the other, not both).
+
+### Implementation
+
+The `Gemfile` is created with `require: false` for each of those modules. Loading is done therefore in the [config/application.rb](config/application.rb) file manually.
+
+To update the Gemfile.lock is necessary to set up the variables for the modules on the operations `decidim:upgrade`, `db:migrate` etc.
+
+You can ensure all ENVs are on by running the helper [bin/upgrade](bin/upgrade):
+
+```bash
+bin/upgrade
+```
+
+#### Creating a new Saas Module:
+
+1. Create the module under `saas-new_module` directory.
+2. Add it to the [Gemfile](Gemfile) with the parameter `require: false`.
+3. Add an entry with the corresponding associated ENV var (`WITH_NEW_MODULE`) into the files:
+  - [config/application.rb](config/application.rb)
+  - [spec/saas_modules_spec.rb](spec/saas_modules_spec.rb)
+  - [.github/workflows/test.yml](.github/workflows/test.yml)
+
+PokeCode 2025

@@ -1,14 +1,10 @@
 ---
 es:
+  activemodel:
+    attributes:
+      authorization_handler:
+        dni: DNI
   decidim:
-    authorization_handlers:
-      sommobilitat_member:
-        email_not_found: No hemos podido encontrar automáticamente tu afiliación.
-          Por favor, introduce tu número de DNI y vuelve a intentarlo.
-        explanation: Este método te permite autorizar si eres miembro de la cooperativa
-          Som Mobilitat.
-        first_try: Simplemente pulsa el botón de abajo para comprobar tu afiliación.
-        name: Som Mobilitat
     debates:
       content_blocks:
         highlighted_debates:

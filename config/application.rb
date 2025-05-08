@@ -14,10 +14,15 @@ require "rails/test_unit/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+# Require the gems listed in Gemfile with require=false if env var present
+require "decidim/extra_user_fields" if ENV["WITH_EXTRA_USER_FIELDS"].present?
+require "saas/clean_clothes" if ENV["WITH_CLEAN_CLOTHES"].present? && ENV["WITH_EXTRA_USER_FIELDS"].blank?
+require "saas/som_mobilitat" if ENV["WITH_SOM_MOBILITAT"].present?
+
 module DecidimSaas
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 6.1
+    config.load_defaults 7.0
 
     # Configuration for the application, engines, and railties goes here.
     #

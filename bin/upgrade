@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+
+set -e
+
+export WITH_EXTRA_USER_FIELDS=1
+export WITH_SOM_MOBILITAT=1
+export WITH_CLEAN_CLOTHES=1
+
+bundle update
+bin/rails decidim:upgrade db:migrate
+
