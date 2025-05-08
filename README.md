@@ -36,5 +36,6 @@ bin/upgrade
   - [config/application.rb](config/application.rb)
   - [spec/saas_modules_spec.rb](spec/saas_modules_spec.rb)
   - [.github/workflows/test.yml](.github/workflows/test.yml)
+  - [Dockerfile](Dockerfile)
 
 PokeCode 2025

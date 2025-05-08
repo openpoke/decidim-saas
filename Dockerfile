@@ -22,6 +22,9 @@ COPY ./package-lock.json /app/package-lock.json
 COPY ./package.json /app/package.json
 COPY ./Gemfile /app/Gemfile
 COPY ./Gemfile.lock /app/Gemfile.lock
+# Saas custom modules
+COPY ./saas-som_mobilitat /app/saas-som_mobilitat
+COPY ./saas-clean_clothes /app/saas-clean_clothes
 
 RUN gem install bundler:$(grep -A 1 'BUNDLED WITH' Gemfile.lock | tail -n 1 | xargs) && \
     bundle config --local without 'development test' && \
