@@ -76,6 +76,11 @@ jobs:
       - name: Run Application RSpec
         run: bundle exec rspec spec/
 
+      - name: Run Application With Modules Active RSpec
+        run: bundle exec rspec spec/saas_modules_spec.rb
+        env:
+          WITH_EXTRA_USER_FIELDS: 1
+
       - name: Run Som Mobilitat RSpec
         run: bundle exec rspec saas-som_mobilitat/spec/
         env:

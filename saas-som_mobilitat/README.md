@@ -13,5 +13,5 @@ WITH_SOM_MOBILITAT=1 bin/rails s
 From the main folder (one bellow this)
 
 ```
-bundle exec rspec decidim-som_mobilitat
+WITH_SOM_MOBILITAT=1 bundle exec rspec decidim-som_mobilitat
 ```
