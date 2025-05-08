@@ -1,6 +1,15 @@
 {
   "name": "decidim-saas-app",
   "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint -c .eslintrc.json --ext .js app/packs/",
+    "lint-fix": "eslint -c .eslintrc.json --ext .js app/packs/ --fix",
+    "stylelint": "stylelint **/*.scss",
+    "stylelint-fix": "stylelint **/*.scss --fix",
+    "prettier": "prettier --check '**/*.scss'",
+    "prettify": "prettier --write '**/*.scss'"
+  },
   "dependencies": {
     "@decidim/browserslist-config": "file:packages/browserslist-config",
     "@decidim/core": "file:packages/core",

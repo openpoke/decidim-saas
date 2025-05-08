@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_03_26_085554) do
+ActiveRecord::Schema[7.0].define(version: 2025_05_08_145433) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
   enable_extension "pg_trgm"
@@ -742,56 +742,6 @@ ActiveRecord::Schema[7.0].define(version: 2025_03_26_085554) do
     t.index ["endorsements_count"], name: "idx_decidim_debates_debates_on_endorsemnts_count"
   end
 
-  create_table "decidim_dev_coauthorable_dummy_resources", force: :cascade do |t|
-    t.jsonb "translatable_text"
-    t.string "title"
-    t.string "body"
-    t.text "address"
-    t.float "latitude"
-    t.float "longitude"
-    t.datetime "published_at", precision: nil
-    t.integer "coauthorships_count", default: 0, null: false
-    t.integer "endorsements_count", default: 0, null: false
-    t.integer "comments_count", default: 0, null: false
-    t.bigint "decidim_component_id"
-    t.bigint "decidim_category_id"
-    t.bigint "decidim_scope_id"
-    t.string "reference"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "decidim_dev_dummy_resources", force: :cascade do |t|
-    t.jsonb "translatable_text"
-    t.jsonb "title"
-    t.string "body"
-    t.text "address"
-    t.float "latitude"
-    t.float "longitude"
-    t.datetime "published_at", precision: nil
-    t.integer "coauthorships_count", default: 0, null: false
-    t.integer "endorsements_count", default: 0, null: false
-    t.integer "comments_count", default: 0, null: false
-    t.integer "follows_count", default: 0, null: false
-    t.bigint "decidim_component_id"
-    t.integer "decidim_author_id"
-    t.string "decidim_author_type"
-    t.integer "decidim_user_group_id"
-    t.bigint "decidim_category_id"
-    t.bigint "decidim_scope_id"
-    t.string "reference"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "decidim_dev_nested_dummy_resources", force: :cascade do |t|
-    t.jsonb "translatable_text"
-    t.string "title"
-    t.bigint "dummy_resource_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "decidim_editor_images", force: :cascade do |t|
     t.bigint "decidim_author_id", null: false
     t.bigint "decidim_organization_id", null: false
@@ -1278,6 +1228,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_03_26_085554) do
     t.boolean "enable_participatory_space_filters", default: true
     t.jsonb "content_security_policy", default: {}
     t.jsonb "name", default: {}, null: false
+    t.jsonb "extra_user_fields", default: {"enabled"=>false}
     t.index ["host"], name: "index_decidim_organizations_on_host", unique: true
   end
 
@@ -1562,6 +1513,17 @@ ActiveRecord::Schema[7.0].define(version: 2025_03_26_085554) do
     t.datetime "updated_at", null: false
     t.index ["decidim_component_id"], name: "index_decidim_reminders_on_decidim_component_id"
     t.index ["decidim_user_id"], name: "index_decidim_reminders_on_decidim_user_id"
+  end
+
+  create_table "decidim_reporting_proposals_category_valuators", force: :cascade do |t|
+    t.bigint "decidim_category_id", null: false
+    t.string "valuator_role_type", null: false
+    t.bigint "valuator_role_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["decidim_category_id", "valuator_role_id", "valuator_role_type"], name: "decidim_reporting_proposals_category_valuator_unique", unique: true
+    t.index ["decidim_category_id"], name: "decidim_reporting_proposals_category_category_id"
+    t.index ["valuator_role_type", "valuator_role_id"], name: "decidim_reporting_proposals_category_valuator_role"
   end
 
   create_table "decidim_reports", id: :serial, force: :cascade do |t|
@@ -2014,6 +1976,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_03_26_085554) do
   add_foreign_key "decidim_reminder_records", "decidim_reminders"
   add_foreign_key "decidim_reminders", "decidim_components"
   add_foreign_key "decidim_reminders", "decidim_users"
+  add_foreign_key "decidim_reporting_proposals_category_valuators", "decidim_categories"
   add_foreign_key "decidim_scope_types", "decidim_organizations"
   add_foreign_key "decidim_scopes", "decidim_organizations"
   add_foreign_key "decidim_scopes", "decidim_scope_types", column: "scope_type_id"

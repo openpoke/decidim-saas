@@ -2,5 +2,7 @@
 // as part of that pack
 
 // Load images
-import "src/vendor/hashcash";
+import Hashcash from "src/vendor/hashcash";
 require.context("../../images", true)
+
+Hashcash.setup();

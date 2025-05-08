@@ -10,6 +10,7 @@ gem "decidim-conferences", DECIDIM_VERSION
 gem "decidim-templates", DECIDIM_VERSION
 
 gem "decidim-decidim_awesome", github: "decidim-ice/decidim-module-decidim_awesome", branch: "main"
+gem "decidim-extra_user_fields", github: "openpoke/decidim-module-extra_user_fields", branch: "main", require: false
 gem "decidim-term_customizer", github: "CodiTramuntana/decidim-module-term_customizer", branch: "upgrade/decidim_0.29"
 
 gem "active_hashcash"
@@ -23,7 +24,6 @@ gem "sentry-rails"
 gem "sentry-ruby"
 # because we override the gem, we require it here
 gem "aws-sdk-s3" # , require: false
-# NOTE: try to remove when rubocop is fixed
 gem "faraday"
 
 group :development, :test do
