@@ -15,8 +15,8 @@ require "rails/test_unit/railtie"
 Bundler.require(*Rails.groups)
 
 # Require the gems listed in Gemfile with require=false if env var present
-require "decidim/extra_user_fields" if ENV["WITH_EXTRA_USER_FIELDS"].present?
-require "saas/clean_clothes" if ENV["WITH_CLEAN_CLOTHES"].present? && ENV["WITH_EXTRA_USER_FIELDS"].blank?
+require "decidim/extra_user_fields" if ENV["WITH_EXTRA_USER_FIELDS"].present? && ENV["WITH_CLEAN_CLOTHES"].blank?
+require "saas/clean_clothes" if ENV["WITH_CLEAN_CLOTHES"].present?
 require "saas/som_mobilitat" if ENV["WITH_SOM_MOBILITAT"].present?
 
 module DecidimSaas

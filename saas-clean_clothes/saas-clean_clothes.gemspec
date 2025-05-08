@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.email = ["ivan@pokecode.net"]
   s.license = "AGPL-3.0"
   s.homepage = "https://github.com/openpoke/decidim-saas"
-  s.required_ruby_version = ">= 3.2.6"
+  s.required_ruby_version = ">= 3.2"
 
   s.name = "saas-clean_clothes"
   s.summary = "Extras for Clean Clothes Decidim instance."
