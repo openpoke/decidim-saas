@@ -1,4 +1,4 @@
-name: "[CI] Decidim"
+name: "[CI] Decidim SaaS"
 on:
   push:
     branches:
@@ -9,10 +9,15 @@ env:
   RUBY_VERSION: 3.2.6
   NODE_VERSION: 18.17.1
   DISABLE_SPRING: 1
+  DATABASE_USERNAME: postgres
+  DATABASE_PASSWORD: postgres
+  DATABASE_HOST: localhost
+  RAILS_ENV: test
+  CHROME_VERSION: 126.0.6478.182
 
 jobs:
   tests:
-    name: Tests
+    name: Tests SaaS
     runs-on: ubuntu-latest
     services:
       postgres:
@@ -28,10 +33,6 @@ jobs:
       redis:
         image: redis:3.2-alpine
         ports: ["6379:6379"]
-    env:
-      DATABASE_USERNAME: postgres
-      DATABASE_PASSWORD: postgres
-      DATABASE_HOST: localhost
 
     steps:
       - uses: actions/checkout@v4
@@ -43,7 +44,7 @@ jobs:
           
       - uses: nanasess/setup-chromedriver@v2
         with:
-          chromedriver-version: 126.0.6478.182
+          chromedriver-version: ${{ env.CHROME_VERSION }}
 
       - name: List Chrome
         run: apt list --installed | grep chrome
@@ -53,7 +54,7 @@ jobs:
     
       - uses: browser-actions/setup-chrome@v1
         with:
-          chrome-version: 126.0.6478.182
+          chrome-version: ${{ env.CHROME_VERSION }}
 
       - uses: ruby/setup-ruby@v1
         with:
@@ -66,21 +67,21 @@ jobs:
       - name: Setup & create Database
         run: |
           bundle exec rails db:create db:schema:load
-        env:
-          RAILS_ENV: test
-          DATABASE_USERNAME: postgres
-          DATABASE_PASSWORD: postgres
 
       - name: Precompile assets
         run: |
           npm ci
           bundle exec rake assets:precompile
-        env:
-          RAILS_ENV: test
 
-      - name: Run RSpec
-        run: SIMPLECOV=1 CODECOV=1 bundle exec rspec
+      - name: Run Application RSpec
+        run: bundle exec rspec spec/
+
+      - name: Run Som Mobilitat RSpec
+        run: bundle exec rspec saas-som_mobilitat/spec/
         env:
-          RAILS_ENV: test
-          DATABASE_USERNAME: postgres
-          DATABASE_PASSWORD: postgres
+          WITH_SOM_MOBILITAT: 1
+      
+      - name: Run Clean Clothes RSpec
+        run: bundle exec rspec saas-clean_clothes/spec/
+        env:
+          WITH_CLEAN_CLOTHES: 1

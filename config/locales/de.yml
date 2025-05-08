@@ -1,5 +1,9 @@
 ---
 de:
+  activemodel:
+    attributes:
+      authorization_handler:
+        dni: VAT
   decidim:
     debates:
       content_blocks:

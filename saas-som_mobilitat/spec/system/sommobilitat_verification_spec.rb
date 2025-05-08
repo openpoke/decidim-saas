@@ -42,7 +42,7 @@ describe "SomMobilitatVerification", with_authorization_workflows: ["sommobilita
     end
 
     before do
-      allow_any_instance_of(SomMobilitat::MemberAuthorizationHandler).to receive(:api_request).and_return(api_response1) # rubocop:disable RSpec/AnyInstance
+      allow_any_instance_of(Saas::SomMobilitat::MemberAuthorizationHandler).to receive(:api_request).and_return(api_response1) # rubocop:disable RSpec/AnyInstance
       visit decidim.root_path
       within "#main-bar" do
         click_on("Log in")
@@ -73,7 +73,7 @@ describe "SomMobilitatVerification", with_authorization_workflows: ["sommobilita
         click_on "Send"
         expect(page).to have_content("We couldn't automatically find your membership")
 
-        allow_any_instance_of(SomMobilitat::MemberAuthorizationHandler).to receive(:api_request).and_return(api_response2) # rubocop:disable RSpec/AnyInstance
+        allow_any_instance_of(Saas::SomMobilitat::MemberAuthorizationHandler).to receive(:api_request).and_return(api_response2) # rubocop:disable RSpec/AnyInstance
         fill_in "authorization_handler_dni", with: "123456"
         click_on "Send"
         expect(page).to have_content("You have been successfully authorized")

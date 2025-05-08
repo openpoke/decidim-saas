@@ -13,6 +13,10 @@ gem "decidim-decidim_awesome", github: "decidim-ice/decidim-module-decidim_aweso
 gem "decidim-extra_user_fields", github: "openpoke/decidim-module-extra_user_fields", branch: "main", require: false
 gem "decidim-term_customizer", github: "CodiTramuntana/decidim-module-term_customizer", branch: "upgrade/decidim_0.29"
 
+# Customizations for clients
+gem "saas-clean_clothes", path: "saas-clean_clothes", require: false
+gem "saas-som_mobilitat", path: "saas-som_mobilitat", require: false
+
 gem "active_hashcash"
 gem "bootsnap", "~> 1.3"
 gem "deface"
