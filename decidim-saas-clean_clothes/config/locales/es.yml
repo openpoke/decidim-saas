@@ -1,0 +1,6 @@
+es:
+  decidim:
+    extra_user_fields:
+      age_ranges:
+        30_or_younger: 30 o menos
+        31_or_older: 31 o más

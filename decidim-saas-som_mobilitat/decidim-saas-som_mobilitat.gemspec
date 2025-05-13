@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.homepage = "https://github.com/openpoke/decidim-saas"
   s.required_ruby_version = ">= 3.2"
 
-  s.name = "saas-som_mobilitat"
+  s.name = "decidim-saas-som_mobilitat"
   s.summary = "Extras for Som Mobilitat Decidim instance."
   s.description = "Som Mobilitat Decidim instance with some extra features."
 

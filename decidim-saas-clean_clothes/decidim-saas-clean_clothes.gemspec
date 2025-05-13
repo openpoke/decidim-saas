@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.homepage = "https://github.com/openpoke/decidim-saas"
   s.required_ruby_version = ">= 3.2"
 
-  s.name = "saas-clean_clothes"
+  s.name = "decidim-saas-clean_clothes"
   s.summary = "Extras for Clean Clothes Decidim instance."
   s.description = "Clean Clothes Decidim instance with some extra features."
 

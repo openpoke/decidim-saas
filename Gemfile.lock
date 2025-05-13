@@ -203,8 +203,8 @@ GIT
 
 GIT
   remote: https://github.com/openpoke/decidim-module-extra_user_fields.git
-  revision: 1906deb90b9da5ad419ce594147bb339d02bdadb
-  branch: main
+  revision: 5e450bc6343a7676b01cd28ef1ec103776d0a698
+  branch: select-proc
   specs:
     decidim-extra_user_fields (0.29.0)
       country_select (~> 4.0)
@@ -212,15 +212,15 @@ GIT
       deface (~> 1.5)
 
 PATH
-  remote: saas-clean_clothes
+  remote: decidim-saas-clean_clothes
   specs:
-    saas-clean_clothes (1.0)
+    decidim-saas-clean_clothes (1.0)
       decidim-extra_user_fields
 
 PATH
-  remote: saas-som_mobilitat
+  remote: decidim-saas-som_mobilitat
   specs:
-    saas-som_mobilitat (1.0)
+    decidim-saas-som_mobilitat (1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -448,7 +448,14 @@ GEM
       logger
     faraday-net_http (3.4.0)
       net-http (>= 0.5.0)
-    ffi (1.17.2)
+    ffi (1.17.2-aarch64-linux-gnu)
+    ffi (1.17.2-aarch64-linux-musl)
+    ffi (1.17.2-arm-linux-gnu)
+    ffi (1.17.2-arm-linux-musl)
+    ffi (1.17.2-arm64-darwin)
+    ffi (1.17.2-x86_64-darwin)
+    ffi (1.17.2-x86_64-linux-gnu)
+    ffi (1.17.2-x86_64-linux-musl)
     file_validators (3.0.0)
       activemodel (>= 3.2)
       mime-types (>= 1.0)
@@ -569,7 +576,6 @@ GEM
     mime-types-data (3.2025.0507)
     mini_magick (4.13.2)
     mini_mime (1.1.5)
-    mini_portile2 (2.8.8)
     minitest (5.25.5)
     msgpack (1.8.0)
     multi_xml (0.7.2)
@@ -586,8 +592,21 @@ GEM
     net-smtp (0.3.4)
       net-protocol
     nio4r (2.7.4)
-    nokogiri (1.18.8)
-      mini_portile2 (~> 2.8.2)
+    nokogiri (1.18.8-aarch64-linux-gnu)
+      racc (~> 1.4)
+    nokogiri (1.18.8-aarch64-linux-musl)
+      racc (~> 1.4)
+    nokogiri (1.18.8-arm-linux-gnu)
+      racc (~> 1.4)
+    nokogiri (1.18.8-arm-linux-musl)
+      racc (~> 1.4)
+    nokogiri (1.18.8-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.18.8-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.18.8-x86_64-linux-gnu)
+      racc (~> 1.4)
+    nokogiri (1.18.8-x86_64-linux-musl)
       racc (~> 1.4)
     oauth (1.1.0)
       oauth-tty (~> 1.0, >= 1.0.1)
@@ -918,7 +937,14 @@ GEM
     zeitwerk (2.7.2)
 
 PLATFORMS
-  ruby
+  aarch64-linux-gnu
+  aarch64-linux-musl
+  arm-linux-gnu
+  arm-linux-musl
+  arm64-darwin
+  x86_64-darwin
+  x86_64-linux-gnu
+  x86_64-linux-musl
 
 DEPENDENCIES
   active_hashcash
@@ -931,6 +957,8 @@ DEPENDENCIES
   decidim-decidim_awesome!
   decidim-dev!
   decidim-extra_user_fields!
+  decidim-saas-clean_clothes!
+  decidim-saas-som_mobilitat!
   decidim-templates!
   decidim-term_customizer!
   deface
@@ -941,8 +969,6 @@ DEPENDENCIES
   puma (>= 6.3.1)
   rails_semantic_logger
   rorvswild
-  saas-clean_clothes!
-  saas-som_mobilitat!
   sentry-rails
   sentry-ruby
   sidekiq
