@@ -82,11 +82,11 @@ jobs:
           WITH_EXTRA_USER_FIELDS: 1
 
       - name: Run Som Mobilitat RSpec
-        run: bundle exec rspec saas-som_mobilitat/spec/
+        run: bundle exec rspec decidm-saas-som_mobilitat/spec/
         env:
           WITH_SOM_MOBILITAT: 1
       
       - name: Run Clean Clothes RSpec
-        run: bundle exec rspec saas-clean_clothes/spec/
+        run: bundle exec rspec decidm-saas-clean_clothes/spec/
         env:
           WITH_CLEAN_CLOTHES: 1

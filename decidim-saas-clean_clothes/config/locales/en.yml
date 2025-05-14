@@ -1,6 +1,4 @@
 en:
-  clean_clothes:
-    text_collaborate_eu_html: This participatory platform is co-funded by the European Union. The contents of this website are the sole responsibility of the Clean Clothes Campaign and can in no way be taken to reflect the views of the European Union or the European Commission.
   activemodel:
     attributes:
       user:
