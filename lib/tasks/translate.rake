@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-namespace :colabs do
+namespace :saas do
   task :translate_all, [:from, :to] => [:environment] do |_, args|
-    abort "Please provide the origin and target locales \neg:\n  colabs:translate_all[ca,es]" unless args[:to] && args[:from]
+    abort "Please provide the origin and target locales \neg:\n  saas:translate_all[ca,es]" unless args[:to] && args[:from]
     Zeitwerk::Loader.eager_load_all
 
     ActiveRecord::Base.descendants.each do |model|
