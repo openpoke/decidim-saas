@@ -7,7 +7,6 @@
     </div>
   <% end %>
   <%= form.hidden_field :email %>
-  <% console %>
   <% 
     form.send(:public_attributes).map do |name, type| 
       next if name == "email" 
