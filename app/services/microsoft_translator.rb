@@ -44,7 +44,7 @@ class MicrosoftTranslator
 
   def api
     @api ||= Faraday.new(
-      url: Decidim::Env.new("TRANSLATOR_ENDPOINT", "https://api.cognitive.microsofttranslator.com/").to_s,
+      url: Decidim::Env.new("TRANSLATOR_ENDPOINT", "https://api.cognitive.microsofttranslator.com").to_s,
       params: {
         "api-version" => "3.0",
         "from" => @source_locale,
