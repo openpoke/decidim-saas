@@ -9,3 +9,9 @@ ca:
           Som Mobilitat.
         first_try: Simplement prem el botó de sota per comprovar la teva filiació.
         name: Som Mobilitat
+        fields:
+          id: ID
+          lang: Idioma
+          name: Nom
+          email: Email
+          address: Adreça
