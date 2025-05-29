@@ -8,7 +8,6 @@ Rails.application.routes.draw do
 
   authenticate :user, ->(u) { u.admin? } do
     mount Sidekiq::Web => "/sidekiq"
-    mount ActiveHashcash::Engine, at: "hashcash" # http://localhost:3000/hashcash
   end
 
   namespace :admin do

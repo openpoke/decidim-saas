@@ -1,0 +1,49 @@
+en:
+  activemodel:
+    attributes:
+      user:
+        country: Country (residence)
+  decidim:
+    extra_user_fields:
+      age_ranges:
+        30_or_younger: 30 or younger
+        31_or_older: 31 or older
+      registration_form:
+        signup:
+          description: |
+            We would like to ask you some monitoring questions for our founder the EU. This data will also help us improve our work. Thank you for helping us by answering these questions.
+      admin:
+        extra_user_fields:
+          text_fields:
+            organization_name:
+              label: Enable organization name
+              description: This field is used to identify the name of the organization the user represents
+          boolean_fields:
+            educational_activity:
+              description: This field is a Boolean field. User will be able to check if is an educational activity
+              label: Enable educational activity field
+          select_fields:
+            organization_type:
+              label: Enable organization type
+              description: This field is used to identify the type of organization the user represents
+      select_fields:
+        organization_type:
+          label: Which of these best describes your organization? 
+          description: Select the type of organization you represent
+        organization_country:
+          label: Country where your organization is based
+      boolean_fields:
+        educational_activity:
+          label: Does your organization carry out any formal or non-formal educational activity? 
+        ngo:
+          label: Would you describe your organization as an international NGO? 
+      text_fields:
+        organization_name:
+          label: What is the name of your organization?
+      organization_types:
+        company: Company (For example manufacturer, brand, retailer)
+        educational: Formal or non-formal educational institution (For example, school, college, university or youth centre)
+        civil_society: Trade union, NGO or other civil society organization (For example campaigning organization, NGO, youth organization)
+        public_administration: State / government body / local or regional authority
+        other: Other
+

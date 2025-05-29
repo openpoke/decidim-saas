@@ -10,6 +10,22 @@ This is a [PokeCode](https://www.pokecode.net) private installations.
 
 Features a customized Gemfile that can load/disable certain specific modules, depending on the ENV variables is set or not.
 
+### Automatic Translations
+
+The Azure AI translator API is integrated (via microsof ttranslator), ENV vars:
+
+- `TRANSLATOR_API_KEY` the API KEY needed to make it work
+- `TRANSLATOR_REGION` the region associated with your Azure subscription (defaults to `westeurope`)
+- `TRANSLATOR_ENDPOINT` the endpoint for the Azure Translator API (defaults to `https://api.cognitive.microsofttranslator.com`)
+
+Also a rake task is create to allow automatic translation of content already created:
+
+Use with source,target language:
+
+```bash
+bin/rails colabs:translate_all[ca,es]
+```
+
 ### Current extra modules:
 
 1. `WITH_EXTRA_USER_FIELDS=1` Loads the [decidim-extra_user_fields](https://github.com/openpoke/decidim-module-extra_user_fields) module-

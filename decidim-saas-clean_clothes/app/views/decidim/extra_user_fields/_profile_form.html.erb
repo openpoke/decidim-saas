@@ -1,0 +1,58 @@
+<% if current_organization.extra_user_fields_enabled? %>
+  <div id="card__extra_user_fields" class="form__wrapper form__wrapper-block clean-clothes-organization-fields">
+    <p>
+      <%= t("decidim.extra_user_fields.registration_form.signup.description") %>
+    </p>
+
+    <% if current_organization.activated_extra_field?(:select_fields) %>
+        <%= render partial: "decidim/extra_user_fields/select_fields", locals: { f: f } %>
+    <% end %>
+
+    <% if current_organization.activated_extra_field?(:text_fields) %>
+        <%= render partial: "decidim/extra_user_fields/text_fields", locals: { f: f } %>
+    <% end %>
+
+    <% if current_organization.activated_extra_field?(:boolean_fields) %>
+        <%= render partial: "decidim/extra_user_fields/boolean_fields", locals: { f: f } %>
+    <% end %>
+  </div>
+
+  <div id="card__extra_user_fields" class="form__wrapper form__wrapper-block">
+    <% if current_organization.activated_extra_field?(:date_of_birth) %>
+        <div><%= f.date_field :date_of_birth %></div>
+    <% end %>
+
+    <% if current_organization.activated_extra_field?(:age_range) %>
+        <%= f.collection_select :age_range, f.object.age_range_options_for_select, :first, :last %>
+    <% end %>
+
+    <% if current_organization.activated_extra_field?(:gender) %>
+        <%= f.collection_select :gender, f.object.gender_options_for_select, :first, :last %>
+    <% end %>
+
+    <% if current_organization.activated_extra_field?(:country) %>
+        <%= f.label :country do %>
+        <%= f.custom_country_select :country %>
+        <% end %>
+    <% end %>
+
+    <% if current_organization.activated_extra_field?(:postal_code) %>
+        <%= f.text_field :postal_code %>
+    <% end %>
+
+    <% if current_organization.activated_extra_field?(:phone_number) %>
+        <%= f.telephone_field :phone_number, placeholder: translated_attribute(f.object.phone_number_extra_user_field_placeholder), pattern: f.object.phone_number_extra_user_field_pattern %>
+    <% end %>
+
+    <% if current_organization.activated_extra_field?(:location) %>
+        <%= f.text_field :location %>
+    <% end %>
+
+    <% if current_organization.activated_extra_field?(:underage) %>
+        <%= f.hidden_field :underage, value: current_user.extended_data["underage"] || "0" %>
+        <%= f.hidden_field :statutory_representative_email, value: current_user.extended_data["statutory_representative_email"] || "" %>
+    <% end %>
+  </div>
+
+  <% append_javascript_pack_tag "decidim_saas_clean_clothes.js" %>
+<% end %>

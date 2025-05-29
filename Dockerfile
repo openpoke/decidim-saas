@@ -1,4 +1,4 @@
-FROM ruby:3.2.6 AS builder
+FROM ruby:3.2.8 AS builder
 
 RUN apt-get update && apt-get upgrade -y && apt-get install -y ca-certificates curl gnupg && \
     mkdir -p /etc/apt/keyrings && \
@@ -23,8 +23,8 @@ COPY ./package.json /app/package.json
 COPY ./Gemfile /app/Gemfile
 COPY ./Gemfile.lock /app/Gemfile.lock
 # Saas custom modules
-COPY ./saas-som_mobilitat /app/saas-som_mobilitat
-COPY ./saas-clean_clothes /app/saas-clean_clothes
+COPY ./decidim-saas-som_mobilitat /app/decidim-saas-som_mobilitat
+COPY ./decidim-saas-clean_clothes /app/decidim-saas-clean_clothes
 
 RUN gem install bundler:$(grep -A 1 'BUNDLED WITH' Gemfile.lock | tail -n 1 | xargs) && \
     bundle config --local without 'development test' && \
@@ -78,7 +78,7 @@ RUN mv config/credentials.bak config/credentials 2>/dev/null || true
 RUN rm -rf node_modules tmp/cache vendor/bundle test spec app/packs .git
 
 # This image is for production env only
-FROM ruby:3.2.6-slim AS final
+FROM ruby:3.2.8-slim AS final
 
 RUN apt-get update && \
     apt-get install -y postgresql-client \
@@ -107,7 +107,7 @@ RUN addgroup --system --gid 1000 app && \
 
 WORKDIR /app
 COPY ./entrypoint.sh /app/entrypoint.sh
-COPY ./supervisord.conf /etc/supervisord.conf 
+COPY ./supervisord.conf /etc/supervisord.conf
 COPY --from=builder --chown=app:app /usr/local/bundle/ /usr/local/bundle/
 COPY --from=builder --chown=app:app /app /app
 

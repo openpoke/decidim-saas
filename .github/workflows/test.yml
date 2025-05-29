@@ -6,13 +6,13 @@ on:
   pull_request:
 
 env:
-  RUBY_VERSION: 3.2.6
+  RUBY_VERSION: 3.2.8
   NODE_VERSION: 18.17.1
-  DISABLE_SPRING: 1
+  RAILS_ENV: test
   DATABASE_USERNAME: postgres
   DATABASE_PASSWORD: postgres
   DATABASE_HOST: localhost
-  RAILS_ENV: test
+  RUBYOPT: '-W:no-deprecated'
   CHROME_VERSION: 126.0.6478.182
 
 jobs:
@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       postgres:
-        image: postgres:11
+        image: postgres:14
         ports: ["5432:5432"]
         options: >-
           --health-cmd pg_isready
@@ -82,11 +82,11 @@ jobs:
           WITH_EXTRA_USER_FIELDS: 1
 
       - name: Run Som Mobilitat RSpec
-        run: bundle exec rspec saas-som_mobilitat/spec/
+        run: bundle exec rspec decidim-saas-som_mobilitat/spec/
         env:
           WITH_SOM_MOBILITAT: 1
       
       - name: Run Clean Clothes RSpec
-        run: bundle exec rspec saas-clean_clothes/spec/
+        run: bundle exec rspec decidim-saas-clean_clothes/spec/
         env:
           WITH_CLEAN_CLOTHES: 1

@@ -1,0 +1,32 @@
+mk:
+  locale:
+    name: "македонски"
+    name_with_error: "македонски (с грешка)"
+bn:
+  locale:
+    name: "বাংলা"
+    name_with_error: "বাংলা (ত্রুটি)"
+my:
+  locale:
+    name: "ဗမာ"
+    name_with_error: "ဗမာ (အမှား)"
+ne:
+  locale:
+    name: "नेपाली"
+    name_with_error: "नेपाली (त्रुटि)"
+kn:
+  locale:
+    name: "ಕನ್ನಡ"
+    name_with_error: "ಕನ್ನಡ (ದೋಷ)"
+si:
+  locale:
+    name: "සිංහල"
+    name_with_error: "සිංහල (දෝෂය)"
+ko:
+  locale:
+    name: "한국어"
+    name_with_error: "한국어 (오류)"
+km:
+  locale:
+    name: "ភាសាខ្មែរ"
+    name_with_error: "ភាសាខ្មែរ (កំហុស)"

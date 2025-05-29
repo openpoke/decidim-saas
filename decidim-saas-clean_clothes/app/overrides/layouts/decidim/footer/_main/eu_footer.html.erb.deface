@@ -1,0 +1,3 @@
+<!-- insert_bottom ".main-footer" -->
+
+<%= render "decidim/saas/clean_clothes/eu_footer" %>

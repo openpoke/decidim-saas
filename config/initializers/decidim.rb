@@ -314,7 +314,9 @@ Decidim.configure do |config|
   # for more information about how it works and how to set it up.
   #
   # Enable machine translations
-  config.enable_machine_translations = false
+  config.enable_machine_translations = ENV["TRANSLATOR_API_KEY"].present?
+  config.machine_translation_service = "MicrosoftTranslator"
+  config.machine_translation_delay = Decidim::Env.new("TRANSLATOR_DELAY", "1").to_i.seconds
   #
   # If you want to enable machine translation you can create your own service
   # to interact with third party service to translate the user content.
