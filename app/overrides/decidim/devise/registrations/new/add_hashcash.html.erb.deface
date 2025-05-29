@@ -1,3 +1,0 @@
-<!-- insert_top ".login__links" -->
-
-<%= hashcash_hidden_field_tag %>

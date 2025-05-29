@@ -17,7 +17,6 @@ gem "decidim-term_customizer", github: "CodiTramuntana/decidim-module-term_custo
 gem "decidim-saas-clean_clothes", path: "decidim-saas-clean_clothes", require: false
 gem "decidim-saas-som_mobilitat", path: "decidim-saas-som_mobilitat", require: false
 
-gem "active_hashcash"
 gem "bootsnap", "~> 1.3"
 gem "deface"
 gem "health_check"
