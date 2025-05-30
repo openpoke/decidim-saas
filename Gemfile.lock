@@ -9,8 +9,8 @@ GIT
 
 GIT
   remote: https://github.com/decidim-ice/decidim-module-decidim_awesome.git
-  revision: 842d99f6df2616c2b1c4ae5d816410183ee59125
-  branch: fix/foced-verification
+  revision: 39b61b15e68e86fee193fa597c76a1392a8c5f8a
+  branch: main
   specs:
     decidim-decidim_awesome (0.12.2)
       active_hashcash (~> 0.4.0)
