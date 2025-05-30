@@ -9,3 +9,9 @@ es:
           Som Mobilitat.
         first_try: Simplemente pulsa el botón de abajo para comprobar tu afiliación.
         name: Som Mobilitat
+        fields:
+          id: ID
+          lang: Idioma
+          name: Nombre
+          email: Email
+          address: Dirección

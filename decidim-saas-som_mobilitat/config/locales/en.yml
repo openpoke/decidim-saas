@@ -9,3 +9,9 @@ en:
           Mobilitat cooperative.
         first_try: Simply press the button below to check your membership.
         name: Som Mobilitat
+        fields:
+          id: ID
+          lang: Language
+          name: Name
+          email: Email
+          address: Address

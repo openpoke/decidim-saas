@@ -12,7 +12,8 @@ module Decidim
         def form_attributes
           excepted_attributes = %w(id user email)
           # only show DNI if email check failed
-          excepted_attributes << "dni" if attributes[:email].blank?
+          # byebug
+          # excepted_attributes << "dni" if attributes[:email].blank?
           attributes.except(*excepted_attributes).keys
         end
 
@@ -37,16 +38,16 @@ module Decidim
         def uid
           return if api_count.zero?
 
-          api_request["rows"].first["id"]
+          api_request.dig("rows", 0, "id")
         end
 
         def metadata
           super.merge(
             id: uid,
-            email: api_request["rows"].first["email"],
-            address: api_request["rows"].first["address"],
-            lang: api_request["rows"].first["lang"],
-            name: api_request["rows"].first["name"]
+            email: api_request.dig("rows", 0, "email"),
+            address: api_request.dig("rows", 0, "address"),
+            lang: api_request.dig("rows", 0, "lang"),
+            name: api_request.dig("rows", 0, "name")
           )
         end
 
@@ -62,6 +63,7 @@ module Decidim
         def api_request
           @api_request ||= begin
             response = Faraday.get(ENV.fetch("SOMMOBILITAT_API_URL", nil)) do |req|
+              req.options.timeout = 2
               req.headers["content_type"] = "application/json"
               req.params["member"] = "true"
               if dni.present?
