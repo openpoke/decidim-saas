@@ -7,6 +7,6 @@ class AddReferenceRegistrationTypeToConferenceRegistration < ActiveRecord::Migra
                :integer
     add_index :decidim_conferences_conference_registrations, :decidim_conference_registration_type_id, name: "idx_conference_registration_to_registration_type_id"
     add_column :decidim_conferences_conference_registrations, :confirmed_at, :datetime
-    add_index :decidim_conferences_conference_registrations, :confirmed_at
+    add_index :decidim_conferences_conference_registrations, :confirmed_at, name: "idx_conference_registration_confirmed_at"
   end
 end

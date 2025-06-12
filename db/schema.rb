@@ -78,6 +78,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_05_08_145433) do
     t.float "weight", default: 1.0
     t.string "external_id"
     t.integer "comments_count", default: 0, null: false
+    t.index ["comments_count"], name: "index_decidim_accountability_results_on_comments_count"
     t.index ["decidim_accountability_status_id"], name: "decidim_accountability_results_on_status_id"
     t.index ["decidim_component_id"], name: "index_decidim_accountability_results_on_decidim_component_id"
     t.index ["decidim_scope_id"], name: "index_decidim_accountability_results_on_decidim_scope_id"
@@ -222,6 +223,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_05_08_145433) do
     t.index ["decidim_organization_id", "slug"], name: "index_unique_assembly_slug_and_organization", unique: true
     t.index ["decidim_organization_id"], name: "index_decidim_assemblies_on_decidim_organization_id"
     t.index ["decidim_scope_id"], name: "index_decidim_assemblies_on_decidim_scope_id"
+    t.index ["follows_count"], name: "index_decidim_assemblies_on_follows_count"
     t.index ["parent_id"], name: "decidim_assemblies_assemblies_on_parent_id"
   end
 
@@ -291,6 +293,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_05_08_145433) do
     t.integer "attachment_collection_id"
     t.string "link"
     t.index ["attached_to_id", "attached_to_type"], name: "index_decidim_attachments_on_attached_to"
+    t.index ["attachment_collection_id"], name: "index_decidim_attachments_attachment_collection_id"
     t.index ["attachment_collection_id"], name: "index_decidim_attachments_on_attachment_collection_id"
   end
 
@@ -391,9 +394,12 @@ ActiveRecord::Schema[7.0].define(version: 2025_05_08_145433) do
     t.integer "comments_count", default: 0, null: false
     t.integer "follows_count", default: 0, null: false
     t.datetime "published_at", precision: nil
+    t.index ["comments_count"], name: "index_decidim_blogs_posts_on_comments_count"
     t.index ["decidim_author_id", "decidim_author_type"], name: "index_decidim_blogs_posts_on_decidim_author"
+    t.index ["decidim_author_id"], name: "index_decidim_blogs_posts_on_decidim_author_id"
     t.index ["decidim_component_id"], name: "index_decidim_blogs_posts_on_decidim_component_id"
     t.index ["decidim_user_group_id"], name: "index_decidim_blogs_posts_on_decidim_user_group_id"
+    t.index ["follows_count"], name: "index_decidim_blogs_posts_on_follows_count"
   end
 
   create_table "decidim_budgets_budgets", id: :serial, force: :cascade do |t|
@@ -442,8 +448,11 @@ ActiveRecord::Schema[7.0].define(version: 2025_05_08_145433) do
     t.text "address"
     t.float "latitude"
     t.float "longitude"
+    t.index ["comments_count"], name: "index_decidim_budgets_projects_on_comments_count"
     t.index ["decidim_budgets_budget_id"], name: "index_decidim_budgets_projects_on_decidim_budgets_budget_id"
     t.index ["decidim_scope_id"], name: "index_decidim_budgets_projects_on_decidim_scope_id"
+    t.index ["follows_count"], name: "index_decidim_budgets_projects_on_follows_count"
+    t.index ["selected_at"], name: "index_decidim_budgets_projects_on_selected_at"
   end
 
   create_table "decidim_categories", id: :serial, force: :cascade do |t|
@@ -512,6 +521,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_05_08_145433) do
     t.datetime "deleted_at", precision: nil
     t.integer "up_votes_count", default: 0, null: false
     t.integer "down_votes_count", default: 0, null: false
+    t.index ["comments_count"], name: "index_decidim_comments_comments_on_comments_count"
     t.index ["created_at"], name: "index_decidim_comments_comments_on_created_at"
     t.index ["decidim_author_id", "decidim_author_type"], name: "index_decidim_comments_comments_on_decidim_author"
     t.index ["decidim_author_id"], name: "decidim_comments_comment_author"
@@ -519,6 +529,8 @@ ActiveRecord::Schema[7.0].define(version: 2025_05_08_145433) do
     t.index ["decidim_participatory_space_id", "decidim_participatory_space_type"], name: "index_decidim_comments_on_decidim_participatory_space"
     t.index ["decidim_root_commentable_type", "decidim_root_commentable_id"], name: "decidim_comments_comment_root_commentable"
     t.index ["decidim_user_group_id"], name: "index_decidim_comments_comments_on_decidim_user_group_id"
+    t.index ["down_votes_count"], name: "index_decidim_comments_comments_on_down_votes_count"
+    t.index ["up_votes_count"], name: "index_decidim_comments_comments_on_up_votes_count"
   end
 
   create_table "decidim_components", id: :serial, force: :cascade do |t|
@@ -604,6 +616,9 @@ ActiveRecord::Schema[7.0].define(version: 2025_05_08_145433) do
     t.index ["decidim_organization_id", "slug"], name: "index_unique_conference_slug_and_organization", unique: true
     t.index ["decidim_organization_id"], name: "index_decidim_conferences_on_decidim_organization_id"
     t.index ["decidim_scope_id"], name: "index_decidim_conferences_on_decidim_scope_id"
+    t.index ["diploma_sent_at"], name: "index_decidim_conferences_on_diploma_sent_at"
+    t.index ["follows_count"], name: "index_decidim_conferences_on_follows_count"
+    t.index ["sign_date"], name: "index_decidim_conferences_on_sign_date"
   end
 
   create_table "decidim_conferences_conference_invites", force: :cascade do |t|
@@ -616,6 +631,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_05_08_145433) do
     t.datetime "updated_at", precision: nil, null: false
     t.integer "decidim_conference_registration_type_id"
     t.index ["decidim_conference_id"], name: "idx_decidim_conferences_invites_on_conference_id"
+    t.index ["decidim_conference_registration_type_id"], name: "idx_conference_invite_to_registration_type_id"
     t.index ["decidim_conference_registration_type_id"], name: "ixd_conferences_on_registration_type_id"
     t.index ["decidim_user_id"], name: "index_decidim_conferences_conference_invites_on_decidim_user_id"
   end
@@ -634,7 +650,9 @@ ActiveRecord::Schema[7.0].define(version: 2025_05_08_145433) do
     t.datetime "updated_at", precision: nil, null: false
     t.integer "decidim_conference_registration_type_id"
     t.datetime "confirmed_at", precision: nil
+    t.index ["confirmed_at"], name: "idx_conference_registration_confirmed_at"
     t.index ["decidim_conference_id"], name: "index_conferences_registrations_on_decidim_conference"
+    t.index ["decidim_conference_registration_type_id"], name: "idx_conference_registration_to_registration_type_id"
     t.index ["decidim_conference_registration_type_id"], name: "idx_conferences_registrations_on_registration_type_id"
     t.index ["decidim_user_id", "decidim_conference_id"], name: "decidim_conferences_registrations_user_conference_unique", unique: true
     t.index ["decidim_user_id"], name: "index_decidim_conferences_registrations_on_decidim_user_id"
@@ -735,11 +753,13 @@ ActiveRecord::Schema[7.0].define(version: 2025_05_08_145433) do
     t.integer "follows_count", default: 0, null: false
     t.boolean "comments_enabled", default: true
     t.index ["closed_at"], name: "index_decidim_debates_debates_on_closed_at"
+    t.index ["comments_count"], name: "index_decidim_debates_debates_on_comments_count"
     t.index ["decidim_author_id", "decidim_author_type"], name: "index_decidim_debates_debates_on_decidim_author"
     t.index ["decidim_component_id"], name: "index_decidim_debates_debates_on_decidim_component_id"
     t.index ["decidim_scope_id"], name: "index_decidim_debates_debates_on_decidim_scope_id"
     t.index ["decidim_user_group_id"], name: "index_decidim_debates_debates_on_decidim_user_group_id"
     t.index ["endorsements_count"], name: "idx_decidim_debates_debates_on_endorsemnts_count"
+    t.index ["follows_count"], name: "index_decidim_debates_debates_on_follows_count"
   end
 
   create_table "decidim_editor_images", force: :cascade do |t|
@@ -1016,10 +1036,14 @@ ActiveRecord::Schema[7.0].define(version: 2025_05_08_145433) do
     t.integer "type_of_meeting", default: 0, null: false
     t.integer "registration_type", default: 0, null: false
     t.datetime "withdrawn_at", precision: nil
+    t.index ["closed_at"], name: "index_decidim_meetings_meetings_on_closed_at"
     t.index ["decidim_author_id", "decidim_author_type"], name: "index_decidim_meetings_meetings_on_author"
     t.index ["decidim_author_id"], name: "index_decidim_meetings_meetings_on_decidim_author_id"
     t.index ["decidim_component_id"], name: "index_decidim_meetings_meetings_on_decidim_component_id"
     t.index ["decidim_scope_id"], name: "index_decidim_meetings_meetings_on_decidim_scope_id"
+    t.index ["follows_count"], name: "index_decidim_meetings_meetings_on_follows_count"
+    t.index ["published_at"], name: "index_decidim_meetings_meetings_on_published_at"
+    t.index ["state"], name: "index_decidim_meetings_meetings_on_state"
   end
 
   create_table "decidim_meetings_polls", force: :cascade do |t|
@@ -1048,6 +1072,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_05_08_145433) do
     t.integer "status", default: 0
     t.index ["decidim_questionnaire_id"], name: "index_decidim_meetings_questions_on_decidim_questionnaire_id"
     t.index ["position"], name: "index_decidim_meetings_questions_on_position"
+    t.index ["status"], name: "index_decidim_meetings_questions_on_status"
   end
 
   create_table "decidim_meetings_registrations", force: :cascade do |t|
@@ -1059,6 +1084,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_05_08_145433) do
     t.datetime "validated_at", precision: nil
     t.bigint "decidim_user_group_id"
     t.boolean "public_participation", default: false
+    t.index ["code"], name: "index_decidim_meetings_registrations_on_code"
     t.index ["decidim_meeting_id"], name: "index_decidim_meetings_registrations_on_decidim_meeting_id"
     t.index ["decidim_user_group_id"], name: "index_decidim_meetings_registrations_on_decidim_user_group_id"
     t.index ["decidim_user_id", "decidim_meeting_id"], name: "decidim_meetings_registrations_user_meeting_unique", unique: true
@@ -1230,6 +1256,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_05_08_145433) do
     t.jsonb "name", default: {}, null: false
     t.jsonb "extra_user_fields", default: {"enabled"=>false}
     t.index ["host"], name: "index_decidim_organizations_on_host", unique: true
+    t.index ["secondary_hosts"], name: "index_decidim_organizations_on_secondary_hosts"
   end
 
   create_table "decidim_pages_pages", id: :serial, force: :cascade do |t|
@@ -1257,6 +1284,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_05_08_145433) do
     t.jsonb "participatory_structure"
     t.boolean "promoted", default: false
     t.index ["decidim_organization_id"], name: "decidim_participatory_process_group_organization"
+    t.index ["promoted"], name: "index_decidim_participatory_process_groups_on_promoted"
   end
 
   create_table "decidim_participatory_process_steps", id: :serial, force: :cascade do |t|
@@ -1337,6 +1365,9 @@ ActiveRecord::Schema[7.0].define(version: 2025_05_08_145433) do
     t.index ["decidim_participatory_process_type_id"], name: "index_decidim_processes_on_decidim_process_type_id"
     t.index ["decidim_scope_id"], name: "idx_process_on_scope_id"
     t.index ["decidim_scope_type_id"], name: "index_decidim_participatory_processes_on_decidim_scope_type_id"
+    t.index ["follows_count"], name: "index_decidim_participatory_processes_on_follows_count"
+    t.index ["promoted"], name: "index_decidim_participatory_processes_on_promoted"
+    t.index ["published_at"], name: "index_decidim_participatory_processes_on_published_at"
   end
 
   create_table "decidim_participatory_space_links", id: :serial, force: :cascade do |t|
@@ -1390,8 +1421,10 @@ ActiveRecord::Schema[7.0].define(version: 2025_05_08_145433) do
     t.integer "follows_count", default: 0, null: false
     t.integer "state", default: 0, null: false
     t.index ["body"], name: "decidim_proposals_collaborative_draft_body_search"
+    t.index ["comments_count"], name: "index_decidim_proposals_collaborative_drafts_on_comments_count"
     t.index ["decidim_component_id"], name: "decidim_proposals_collaborative_drafts_on_decidim_component_id"
     t.index ["decidim_scope_id"], name: "decidim_proposals_collaborative_drafts_on_decidim_scope_id"
+    t.index ["follows_count"], name: "index_decidim_proposals_collaborative_drafts_on_follows_count"
     t.index ["title"], name: "decidim_proposals_collaborative_drafts_title_search"
     t.index ["updated_at"], name: "decidim_proposals_collaborative_drafts_on_updated_at"
   end
@@ -1471,11 +1504,15 @@ ActiveRecord::Schema[7.0].define(version: 2025_05_08_145433) do
     t.integer "decidim_proposals_proposal_state_id"
     t.index "md5((body)::text)", name: "decidim_proposals_proposal_body_search"
     t.index "md5((title)::text)", name: "decidim_proposals_proposal_title_search"
+    t.index ["answered_at"], name: "index_decidim_proposals_proposals_on_answered_at"
+    t.index ["comments_count"], name: "index_decidim_proposals_proposals_on_comments_count"
     t.index ["created_at"], name: "index_decidim_proposals_proposals_on_created_at"
     t.index ["decidim_component_id"], name: "index_decidim_proposals_proposals_on_decidim_component_id"
     t.index ["decidim_proposals_proposal_state_id"], name: "index_decidim_proposals_on_decidim_proposal_state_id"
     t.index ["decidim_scope_id"], name: "index_decidim_proposals_proposals_on_decidim_scope_id"
+    t.index ["follows_count"], name: "index_decidim_proposals_proposals_on_follows_count"
     t.index ["proposal_votes_count"], name: "index_decidim_proposals_proposals_on_proposal_votes_count"
+    t.index ["published_at"], name: "index_decidim_proposals_proposals_on_published_at"
   end
 
   create_table "decidim_proposals_valuation_assignments", force: :cascade do |t|
@@ -1513,17 +1550,6 @@ ActiveRecord::Schema[7.0].define(version: 2025_05_08_145433) do
     t.datetime "updated_at", null: false
     t.index ["decidim_component_id"], name: "index_decidim_reminders_on_decidim_component_id"
     t.index ["decidim_user_id"], name: "index_decidim_reminders_on_decidim_user_id"
-  end
-
-  create_table "decidim_reporting_proposals_category_valuators", force: :cascade do |t|
-    t.bigint "decidim_category_id", null: false
-    t.string "valuator_role_type", null: false
-    t.bigint "valuator_role_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["decidim_category_id", "valuator_role_id", "valuator_role_type"], name: "decidim_reporting_proposals_category_valuator_unique", unique: true
-    t.index ["decidim_category_id"], name: "decidim_reporting_proposals_category_category_id"
-    t.index ["valuator_role_type", "valuator_role_id"], name: "decidim_reporting_proposals_category_valuator_role"
   end
 
   create_table "decidim_reports", id: :serial, force: :cascade do |t|
@@ -1657,6 +1683,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_05_08_145433) do
     t.string "decidim_author_type", null: false
     t.integer "comments_count", default: 0, null: false
     t.index ["cancelled_by_user_id"], name: "index_decidim_sortitions_sortitions_on_cancelled_by_user_id"
+    t.index ["comments_count"], name: "index_decidim_sortitions_sortitions_on_comments_count"
     t.index ["decidim_author_id", "decidim_author_type"], name: "index_decidim_sortitions_sortitions_on_decidim_author"
     t.index ["decidim_author_id"], name: "index_decidim_sortitions_sortitions_on_decidim_author_id"
     t.index ["decidim_component_id"], name: "index_sortitions__on_feature"
@@ -1849,6 +1876,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_05_08_145433) do
     t.index ["confirmation_token"], name: "index_decidim_users_on_confirmation_token", unique: true
     t.index ["decidim_organization_id"], name: "index_decidim_users_on_decidim_organization_id"
     t.index ["email", "decidim_organization_id"], name: "index_decidim_users_on_email_and_decidim_organization_id", unique: true, where: "((deleted_at IS NULL) AND (managed = false) AND ((type)::text = 'Decidim::User'::text))"
+    t.index ["follows_count"], name: "index_decidim_users_on_follows_count"
     t.index ["id", "type"], name: "index_decidim_users_on_id_and_type"
     t.index ["invitation_token"], name: "index_decidim_users_on_invitation_token", unique: true
     t.index ["invitations_count"], name: "index_decidim_users_on_invitations_count"
@@ -1976,7 +2004,6 @@ ActiveRecord::Schema[7.0].define(version: 2025_05_08_145433) do
   add_foreign_key "decidim_reminder_records", "decidim_reminders"
   add_foreign_key "decidim_reminders", "decidim_components"
   add_foreign_key "decidim_reminders", "decidim_users"
-  add_foreign_key "decidim_reporting_proposals_category_valuators", "decidim_categories"
   add_foreign_key "decidim_scope_types", "decidim_organizations"
   add_foreign_key "decidim_scopes", "decidim_organizations"
   add_foreign_key "decidim_scopes", "decidim_scope_types", column: "scope_type_id"
