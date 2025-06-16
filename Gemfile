@@ -10,7 +10,7 @@ gem "decidim-conferences", DECIDIM_VERSION
 gem "decidim-templates", DECIDIM_VERSION
 
 gem "decidim-decidim_awesome", github: "decidim-ice/decidim-module-decidim_awesome", branch: "main"
-gem "decidim-extra_user_fields", github: "openpoke/decidim-module-extra_user_fields", branch: "select-proc", require: false
+gem "decidim-extra_user_fields", github: "openpoke/decidim-module-extra_user_fields", branch: "main", require: false
 gem "decidim-term_customizer", github: "CodiTramuntana/decidim-module-term_customizer", branch: "upgrade/decidim_0.29"
 
 # Customizations for clients
@@ -22,7 +22,6 @@ gem "deface"
 gem "health_check"
 gem "puma", ">= 6.3.1"
 gem "rails_semantic_logger"
-gem "rorvswild"
 gem "sentry-rails"
 gem "sentry-ruby"
 # because we override the gem, we require it here
