@@ -39,7 +39,7 @@ services:
     depends_on:
       - redis
   db:
-    image: postgres:13
+    image: postgres:16
     ports:
       - "54321:5432"
     environment:
