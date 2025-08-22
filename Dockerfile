@@ -20,6 +20,7 @@ WORKDIR /app
 # Copy package dependencies files only to ensure maximum cache hit
 COPY ./package-lock.json /app/package-lock.json
 COPY ./package.json /app/package.json
+COPY ./packages /app/packages
 COPY ./Gemfile /app/Gemfile
 COPY ./Gemfile.lock /app/Gemfile.lock
 # Saas custom modules
@@ -49,7 +50,6 @@ COPY ./bin /app/bin
 COPY ./config /app/config
 COPY ./db /app/db
 COPY ./lib /app/lib
-COPY ./packages /app/packages
 COPY ./public/*.* /app/public/
 COPY ./config.ru /app/config.ru
 COPY ./Rakefile /app/Rakefile
@@ -94,9 +94,9 @@ EXPOSE 3000
 ARG CAPROVER_GIT_COMMIT_SHA=${CAPROVER_GIT_COMMIT_SHA}
 ENV APP_REVISION=${CAPROVER_GIT_COMMIT_SHA}
 
-ENV RAILS_LOG_TO_STDOUT true
-ENV RAILS_SERVE_STATIC_FILES true
-ENV RAILS_ENV production
+ENV RAILS_LOG_TO_STDOUT=true
+ENV RAILS_SERVE_STATIC_FILES=true
+ENV RAILS_ENV=production
 
 ARG RUN_RAILS
 ARG RUN_SIDEKIQ
