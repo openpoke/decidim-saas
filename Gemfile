@@ -11,7 +11,7 @@ gem "decidim-templates", DECIDIM_VERSION
 
 gem "decidim-decidim_awesome", github: "decidim-ice/decidim-module-decidim_awesome", branch: "release/0.30-stable"
 gem "decidim-extra_user_fields", github: "openpoke/decidim-module-extra_user_fields", branch: "release/0.30-stable", require: false
-gem "decidim-term_customizer", github: "Platoniq/decidim-module-term_customizer", branch: "main"
+gem "decidim-term_customizer", github: "HHassig/decidim-module-term_customizer", branch: "deps/decidim-0.30"
 
 # Customizations for clients
 gem "decidim-saas-clean_clothes", path: "decidim-saas-clean_clothes", require: false
