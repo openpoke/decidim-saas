@@ -43,10 +43,8 @@ describe "SomMobilitatVerification", with_authorization_workflows: ["sommobilita
 
     before do
       allow_any_instance_of(Decidim::Saas::SomMobilitat::MemberAuthorizationHandler).to receive(:api_request).and_return(api_response1) # rubocop:disable RSpec/AnyInstance
-      visit decidim.root_path
       sign_in user, scope: :user
-      visit decidim_verifications.authorizations_path
-      click_on "Som Mobilitat"
+      visit decidim_verifications.new_authorization_path(handler: "sommobilitat_member")
     end
 
     it "redirects the user to the authorization form after the first sign in" do
