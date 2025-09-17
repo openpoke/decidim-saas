@@ -11,7 +11,7 @@ gem "decidim-templates", DECIDIM_VERSION
 
 gem "decidim-decidim_awesome", github: "decidim-ice/decidim-module-decidim_awesome", branch: "release/0.30-stable"
 gem "decidim-extra_user_fields", github: "openpoke/decidim-module-extra_user_fields", branch: "release/0.30-stable", require: false
-gem "decidim-term_customizer", github: "HHassig/decidim-module-term_customizer", branch: "deps/decidim-0.30"
+gem "decidim-term_customizer", github: "openpoke/decidim-module-term_customizer", branch: "main"
 
 # Customizations for clients
 gem "decidim-saas-clean_clothes", path: "decidim-saas-clean_clothes", require: false
@@ -31,14 +31,13 @@ gem "faraday"
 group :development, :test do
   gem "byebug", "~> 11.0", platform: :mri
 
-  gem "brakeman", "~> 6.1"
+  gem "brakeman"
   gem "decidim-dev", DECIDIM_VERSION
 end
 
 group :development do
-  gem "letter_opener_web", "~> 2.0"
-  gem "listen", "~> 3.1"
-  gem "web-console", "~> 4.2"
+  gem "letter_opener_web"
+  gem "web-console"
 end
 
 group :production do
