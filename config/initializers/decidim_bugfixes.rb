@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# NOTE: remove this when fix merged
+# NOTE: remove when updating to v0.31
 
 Rails.application.config.to_prepare do
   Decidim::ParticipatoryProcesses::ParticipatoryProcessesController.class_eval do
