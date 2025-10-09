@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# NOTE: remove this when fix merged
+# NOTE: remove when updating to v0.31
 
 Rails.application.config.to_prepare do
   Decidim::ParticipatoryProcesses::ParticipatoryProcessesController.class_eval do
@@ -13,7 +13,7 @@ Rails.application.config.to_prepare do
 
   Decidim::Debates::DebateCardMetadataCell.class_eval do
     def debate_items
-      [label, duration, comments_count_item, endorsements_count_item, category_item, coauthors_item]
+      [label, duration, comments_count_item, endorsements_count_item] + taxonomy_items + [coauthors_item]
     end
 
     def label
