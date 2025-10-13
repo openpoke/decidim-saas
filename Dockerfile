@@ -3,9 +3,7 @@ FROM ruby:3.3 AS builder
 RUN apt-get update && apt-get upgrade -y && apt-get install -y ca-certificates curl gnupg && \
     mkdir -p /etc/apt/keyrings && \
     curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
-    curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
-    echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
-    apt-get update && apt-get install -y nodejs yarn \
+    apt-get update && apt-get install -y nodejs \
     build-essential \
     postgresql-client \
     p7zip \
@@ -30,6 +28,7 @@ COPY ./decidim-saas-clean_clothes /app/decidim-saas-clean_clothes
 RUN gem install bundler:$(grep -A 1 'BUNDLED WITH' Gemfile.lock | tail -n 1 | xargs) && \
     bundle config --deployment --local without 'development test' && \
     bundle install -j4 --retry 3 && \
+    npm install yarn -g && \
     # Remove unneeded gems
     bundle clean --force && \
     # Remove unneeded files from installed gems (cache, *.o, *.c)
