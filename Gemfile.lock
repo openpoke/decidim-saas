@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/decidim-ice/decidim-module-decidim_awesome.git
-  revision: b284f280e6cf0d3fbdf2214b5d539fc75c8df7a4
+  revision: 6da98f181b961ecd96347e39263bf63710cec185
   branch: main
   specs:
     decidim-decidim_awesome (0.13.1)
@@ -31,7 +31,7 @@ GIT
 
 GIT
   remote: https://github.com/openpoke/decidim.git
-  revision: ea0855ac0e88e1de7fac9a9bf834d23713639bfc
+  revision: bedf06bac17983b06241dea2a4a1cdf7caf19285
   branch: release/0.30-stable
   specs:
     decidim (0.30.2)
@@ -308,7 +308,7 @@ GEM
       public_suffix (>= 2.0.2, < 7.0)
     ast (2.4.3)
     aws-eventstream (1.4.0)
-    aws-partitions (1.1170.0)
+    aws-partitions (1.1172.0)
     aws-sdk-core (3.233.0)
       aws-eventstream (~> 1, >= 1.3.0)
       aws-partitions (~> 1, >= 1.992.0)
@@ -336,7 +336,7 @@ GEM
       erubi (~> 1.4)
       parser (>= 2.4)
       smart_properties
-    bigdecimal (3.3.0)
+    bigdecimal (3.3.1)
     bindex (0.8.1)
     bootsnap (1.18.6)
       msgpack (~> 1.2)
@@ -478,7 +478,7 @@ GEM
       fog-core (>= 1.27, < 3.0)
     formatador (1.2.1)
       reline
-    fugit (1.12.0)
+    fugit (1.12.1)
       et-orbi (~> 1.4)
       raabro (~> 1.4)
     gemoji (3.0.1)
@@ -717,8 +717,8 @@ GEM
       nio4r (~> 2.0)
     raabro (1.4.0)
     racc (1.8.1)
-    rack (2.2.19)
-    rack-attack (6.7.0)
+    rack (2.2.20)
+    rack-attack (6.8.0)
       rack (>= 1.0, < 4)
     rack-cors (1.1.1)
       rack (>= 2.0.0)
@@ -786,9 +786,9 @@ GEM
       io-console (~> 0.5)
     request_store (1.7.0)
       rack (>= 1.4)
-    responders (3.1.1)
-      actionpack (>= 5.2)
-      railties (>= 5.2)
+    responders (3.2.0)
+      actionpack (>= 7.0)
+      railties (>= 7.0)
     rexml (3.4.4)
     rspec (3.13.1)
       rspec-core (~> 3.13.0)
