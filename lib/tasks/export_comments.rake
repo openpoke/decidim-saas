@@ -15,7 +15,6 @@ namespace :saas do
 
   def export_comments_for_organization(export_dir, organization)
     path = export_dir.join("#{organization.id}_comments.csv")
-    locale = organization.default_locale
 
     CSV.open(path, "wb") do |csv|
       csv << %w(participatory_space_id participatory_space_name component_id component_title body comment_id created_at updated_at)
@@ -34,7 +33,7 @@ namespace :saas do
   end
 
   def export_comments_by_space(space_comments, organization, csv)
-    space_comments.sort.to_h.each do |space_id, comments|
+    space_comments.sort.to_h.each do |_, comments|
       component_comments = {}
 
       comments.each do |comment|
@@ -49,7 +48,7 @@ namespace :saas do
   end
 
   def export_comments_by_component(component_comments, organization, csv)
-    component_comments.sort.to_h.each do |component_id, comments|
+    component_comments.sort.to_h.each do |_, comments|
       comments.each do |comment|
         export_comment_and_children(comment, organization, csv)
       end
