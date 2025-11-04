@@ -16,14 +16,19 @@ namespace :saas do
   def export_comments_for_organization(export_dir, organization)
     path = export_dir.join("#{organization.id}_comments.csv")
 
+    locale = organization.default_locale
+    puts "Exporting comments for organization #{organization.id}-#{organization.name[locale]}"
+
     CSV.open(path, "wb") do |csv|
-      csv << %w(participatory_space_id participatory_space_name component_id component_title body comment_id created_at updated_at)
+      csv << %w(participatory_space_id participatory_space_name component_id component_title body comment_id parent_comment created_at updated_at)
 
       comments = Decidim::Comments::Comment.includes(commentable: :participatory_space).where(depth: 0).order(:decidim_participatory_space_id, :decidim_commentable_id, :created_at)
       comments_by_participatory_space = {}
 
       comments.each do |comment|
         space = comment.commentable&.participatory_space
+        next if space.decidim_organization_id != organization.id
+
         comments_by_participatory_space[space.id] ||= []
         comments_by_participatory_space[space.id] << comment
       end
@@ -60,17 +65,21 @@ namespace :saas do
     space = comment.commentable&.participatory_space
 
     component = comment.commentable
+
     if component.respond_to?(:name)
-      name = component.name[locale]
+      component_name = component.name[locale]
     elsif component.respond_to?(:title)
-      name = if component.title.instance_of?(String)
-               component.title
-             else
-               component.title[locale]
-             end
+      component_name = if component.title.instance_of?(String)
+                         component.title
+                       else
+                         component.title[locale]
+                       end
     end
 
-    csv << [space.id, space.title[locale], component.id, name, comment.body[locale], comment.id, comment.created_at, comment.updated_at]
+    parent_comment = nil
+    parent_comment = comment.decidim_commentable_id if comment.decidim_commentable_type == Decidim::Comments::Comment.name
+
+    csv << [space.id, space.title[locale], component.id, component_name, comment.body[locale], comment.id, parent_comment, comment.created_at, comment.updated_at]
 
     children = Decidim::Comments::Comment.where(decidim_commentable_id: comment.id, decidim_commentable_type: Decidim::Comments::Comment.name).order(:created_at)
     children.each do |child|
