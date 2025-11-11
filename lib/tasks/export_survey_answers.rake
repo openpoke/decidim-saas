@@ -13,14 +13,18 @@ namespace :saas do
   end
 
   def export_surveys_for_organization(organization, export_dir)
-    path = export_dir.join("#{organization.id}_answers.csv")
     locale = organization.default_locale
     puts "Exporting answers to surveys for organization #{organization.id} - #{organization.name[locale]}"
 
-    CSV.open(path, "w") do |csv|
-      csv << %w(id user_id questionnaire_id question_id ip_hash body)
-      surveys = Decidim::Surveys::Survey.all
-      surveys.each do |survey|
+    surveys = Decidim::Surveys::Survey.all
+    surveys.each do |survey|
+      next unless survey.organization.id = organization.id
+
+      puts "Exporting survey #{survey.id}"
+
+      path = export_dir.join("org_#{organization.id}_survey_#{survey.id}_answers.csv")
+      CSV.open(path, "w") do |csv|
+        csv << %w(id user_id questionnaire_id question_id ip_hash body)
         questionnaire = survey.questionnaire
 
         answers = questionnaire.answers
@@ -30,6 +34,7 @@ namespace :saas do
           translator = MicrosoftTranslator.new(answer, "body", answer.body, "en", nil)
           puts "Translating content for answer #{answer.id}"
           new_body = translator.translate_content
+          sleep 0.5 # Avoid rate limiting
 
           puts "From #{answer.body} to #{new_body}"
 
