@@ -20,14 +20,16 @@ namespace :saas do
     puts "Exporting comments for organization #{organization.id}-#{organization.name[locale]}"
 
     CSV.open(path, "wb") do |csv|
-      csv << %w(participatory_space_id participatory_space_name component_id component_title body comment_id parent_comment created_at updated_at)
+      csv << %w(participatory_space_id participatory_space_name component_id component_title commentable_id commentable_type commentable_name
+                comment_locale comment comment_translated author_id author_name comment_url comment_id
+                parent_comment_id created_at updated_at)
 
       comments = Decidim::Comments::Comment.includes(commentable: :participatory_space).where(depth: 0).order(:decidim_participatory_space_id, :decidim_commentable_id, :created_at)
       comments_by_participatory_space = {}
 
       comments.each do |comment|
         space = comment.commentable&.participatory_space
-        next if space.decidim_organization_id != organization.id
+        next if space.nil? || space.decidim_organization_id != organization.id
 
         comments_by_participatory_space[space.id] ||= []
         comments_by_participatory_space[space.id] << comment
@@ -42,10 +44,10 @@ namespace :saas do
       component_comments = {}
 
       comments.each do |comment|
-        component = comment.commentable
+        next if comment.commentable.nil? || comment.commentable.component.nil?
 
-        component_comments[component.id] ||= []
-        component_comments[component.id] << comment
+        component_comments[comment.commentable.component.id] ||= []
+        component_comments[comment.commentable.component.id] << comment
       end
 
       export_comments_by_component(component_comments, organization, csv)
@@ -62,24 +64,35 @@ namespace :saas do
 
   def export_comment_and_children(comment, organization, csv)
     locale = organization.default_locale
-    space = comment.commentable&.participatory_space
+    space = comment.commentable.participatory_space
+    component = comment.commentable.component
 
-    component = comment.commentable
+    commentable = comment.commentable
 
-    if component.respond_to?(:name)
-      component_name = component.name[locale]
-    elsif component.respond_to?(:title)
-      component_name = if component.title.instance_of?(String)
-                         component.title
-                       else
-                         component.title[locale]
+    if commentable.respond_to?(:name)
+      commentable_name = commentable.name[locale]
+    elsif commentable.respond_to?(:title)
+      commentable_name = if commentable.title.instance_of?(String)
+                           commentable.title
+                         else
+                           commentable.title[locale]
                        end
     end
 
     parent_comment = nil
     parent_comment = comment.decidim_commentable_id if comment.decidim_commentable_type == Decidim::Comments::Comment.name
 
-    csv << [space.id, space.title[locale], component.id, component_name, comment.body[locale], comment.id, parent_comment, comment.created_at, comment.updated_at]
+    comment_locale = comment.body.first.first
+    body_original = comment.body.first.second
+    body_translated = comment.body["machine_translations"]&.[](locale) || body_original
+    begin
+      url = Decidim::ResourceLocatorPresenter.new(comment.root_commentable).url + "#comment_#{comment.id}"
+    rescue StandardError => e
+      puts "URL_ERROR: #{e.message} for commentable #{commentable.class.name}##{commentable.id}"
+      url = ""
+    end
+    csv << [space&.id, space&.title&.[](locale), component&.id, component&.name&.[](locale), commentable.id, commentable.class, commentable_name,
+            comment_locale, body_original, body_translated, comment.author.id, comment.author.name, url, comment.id, parent_comment, comment.created_at, comment.updated_at]
 
     children = Decidim::Comments::Comment.where(decidim_commentable_id: comment.id, decidim_commentable_type: Decidim::Comments::Comment.name).order(:created_at)
     children.each do |child|

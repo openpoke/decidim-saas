@@ -23,25 +23,7 @@ namespace :saas do
     puts "Exporting answers to surveys #{survey_id}"
 
     path = export_dir.join("survey_#{survey.id}_answers.csv")
-    CSV.open(path, "w") do |csv|
-      csv << %w(id user_id questionnaire_id question_id ip_hash body)
-      questionnaire = survey.questionnaire
-
-      answers = questionnaire.answers
-      answers.each do |answer|
-        next if answer.body.nil?
-        next unless %w(short_answer long_answer).include? answer.question.question_type
-
-        translator = MicrosoftTranslator.new(answer, "body", answer.body, "en", nil)
-        puts "Translating content for answer #{answer.id}"
-        new_body = translator.translate_content
-        sleep 0.5 # Avoid rate limiting
-
-        puts "From #{answer.body} to #{new_body}"
-
-        csv << [answer.id, answer.decidim_user_id, answer.decidim_questionnaire_id, answer.decidim_question_id, answer.ip_hash, new_body]
-      end
-    end
+    write_csv(survey, path)
   end
 
   def export_surveys_for_organization(organization, export_dir)
@@ -55,25 +37,42 @@ namespace :saas do
       puts "Exporting survey #{survey.id}"
 
       path = export_dir.join("org_#{organization.id}_survey_#{survey.id}_answers.csv")
-      CSV.open(path, "w") do |csv|
-        csv << %w(id user_id questionnaire_id question_id ip_hash body)
-        questionnaire = survey.questionnaire
+      write_csv(survey, path)
+    end
+  end
 
-        answers = questionnaire.answers
-        answers.each do |answer|
-          next if answer.body.nil?
-          next unless %w(short_answer long_answer).include? answer.question.question_type
+  def write_csv(survey, path)
+    locale = survey.organization.default_locale
+    CSV.open(path, "w") do |csv|
+      csv << %w(ip_hash user_id user_name survey_id survey_title questionnaire_id
+                question_id question_title answer_id
+                choice_ids choice_bodies body body_translated)
+      questionnaire = survey.questionnaire
 
-          translator = MicrosoftTranslator.new(answer, "body", answer.body, "en", nil)
-          puts "Translating content for answer #{answer.id}"
-          new_body = translator.translate_content
-          sleep 0.5 # Avoid rate limiting
+      answers = questionnaire.answers
+      answers.each do |answer|
+        new_body = %w(short_answer long_answer).include?(answer.question.question_type) ? translate_text(answer.body, nil, "en") : ""
 
-          puts "From #{answer.body} to #{new_body}"
-
-          csv << [answer.id, answer.decidim_user_id, answer.decidim_questionnaire_id, answer.decidim_question_id, answer.ip_hash, new_body]
-        end
+        csv << [answer.ip_hash, answer.user&.id, answer.user&.name, survey.id, survey.title[locale], answer.decidim_questionnaire_id,
+                answer.question.id, answer.question.body[locale], answer.id,
+                answer.choice_ids.join("\n"), answer.choices.map { |c| c.answer_option.body.is_a?(Hash) ? c.answer_option.body[locale] : c.answer_option.body }.join("\n"),
+                answer.body, new_body]
       end
     end
+  end
+
+  def translate_text(text, from_locale, to_locale)
+    return "" if text.blank?
+
+    translator = MicrosoftTranslator.new(nil, nil, text, to_locale, from_locale)
+    begin
+      new_text = translator.translate_content
+      puts "From #{text} to #{new_text}"
+    rescue StandardError => e
+      puts "TRANSLATION_ERROR: #{e.message} waiting 10 seconds before retrying"
+      sleep 10
+      retry
+    end
+    new_text
   end
 end
