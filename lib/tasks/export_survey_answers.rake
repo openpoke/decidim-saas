@@ -18,7 +18,7 @@ namespace :saas do
 
     surveys = Decidim::Surveys::Survey.all
     surveys.each do |survey|
-      next unless survey.organization.id == organization.id
+      next unless survey&.organization&.id == organization.id
 
       puts "Exporting survey #{survey.id}"
 
