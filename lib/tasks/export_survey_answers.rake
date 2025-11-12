@@ -30,6 +30,7 @@ namespace :saas do
       answers = questionnaire.answers
       answers.each do |answer|
         next if answer.body.nil?
+        next unless %w(short_answer long_answer).include? answer.question.question_type
 
         translator = MicrosoftTranslator.new(answer, "body", answer.body, "en", nil)
         puts "Translating content for answer #{answer.id}"
@@ -61,6 +62,7 @@ namespace :saas do
         answers = questionnaire.answers
         answers.each do |answer|
           next if answer.body.nil?
+          next unless %w(short_answer long_answer).include? answer.question.question_type
 
           translator = MicrosoftTranslator.new(answer, "body", answer.body, "en", nil)
           puts "Translating content for answer #{answer.id}"
