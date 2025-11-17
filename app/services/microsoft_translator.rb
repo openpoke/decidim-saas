@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class MicrosoftTranslator
-  attr_reader :text, :source_locale, :target_locale, :resource, :field_name
+  attr_reader :text, :source_locale, :target_locale, :resource, :field_name, :body
 
   def initialize(resource, field_name, text, target_locale, source_locale)
     @resource = resource
@@ -9,6 +9,7 @@ class MicrosoftTranslator
     @text = text
     @target_locale = target_locale
     @source_locale = source_locale
+    @body = nil
   end
 
   def translate
@@ -32,10 +33,10 @@ class MicrosoftTranslator
   def translate_content
     @translate_content ||= begin
       result = api.post("translate", [{ "Text" => @text }].to_json)
-      body = JSON.parse(result.body).first
-      if body.first == "error"
-        Rails.logger.error("Microsoft Translator API error: #{body.second}")
-        raise StandardError, body
+      @body = JSON.parse(result.body).first
+      if @body.first == "error"
+        Rails.logger.error("Microsoft Translator API error: #{@body.second}")
+        raise StandardError, @body
       else
         body["translations"].first["text"]
       end
