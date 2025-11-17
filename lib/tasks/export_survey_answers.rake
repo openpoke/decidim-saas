@@ -2,7 +2,7 @@
 
 namespace :saas do
   desc "Export and translate answers to surveys"
-  task :export_answers, [:survey] => :environment do |t, args|
+  task :export_answers, [:survey] => :environment do |_t, args|
     export_dir = Rails.root.join("tmp/survey_answers_export")
     FileUtils.mkdir_p export_dir
 

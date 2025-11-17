@@ -62,6 +62,8 @@ namespace :saas do
     end
   end
 
+  # rubocop:disable Metrics/CyclomaticComplexity
+  # rubocop:disable Metrics/PerceivedComplexity
   def export_comment_and_children(comment, organization, csv)
     locale = organization.default_locale
     space = comment.commentable.participatory_space
@@ -76,7 +78,7 @@ namespace :saas do
                            commentable.title
                          else
                            commentable.title[locale]
-                       end
+                         end
     end
 
     parent_comment = nil
@@ -99,4 +101,6 @@ namespace :saas do
       export_comment_and_children(child, organization, csv)
     end
   end
+  # rubocop:enable Metrics/CyclomaticComplexity
+  # rubocop:enable Metrics/PerceivedComplexity
 end
