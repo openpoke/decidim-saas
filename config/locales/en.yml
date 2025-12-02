@@ -5,8 +5,19 @@ en:
       authorization_handler:
         dni: VAT
   decidim:
-    debates:
-      content_blocks:
-        highlighted_debates:
-          name: Debates
-          see_all: See all debates
+    elections:
+      censuses:
+        token_csv_flexible:
+          example: |
+            id;token
+            user123;ABC123
+            member456;XYZ789
+          info_html: |
+            Must be a file in CSV format with two columns, one with any ID and another with the value of a token that the user will have to introduce in order to vote.
+            It must be separated with a semicolon (;)
+          label: Unregistered participants with flexible ID (fixed)
+        token_csv_flexible_form:
+          id: ID
+          id_placeholder: Enter the voter's ID
+          invalid: The ID or token is not valid. Please check the details and try
+            again.
