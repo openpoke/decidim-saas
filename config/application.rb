@@ -22,7 +22,7 @@ require "decidim/saas/som_mobilitat" if ENV["WITH_SOM_MOBILITAT"].present?
 module DecidimSaas
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 7.0
+    config.load_defaults 7.2
 
     # Configuration for the application, engines, and railties goes here.
     #
