@@ -30,3 +30,7 @@ km:
   locale:
     name: "ភាសាខ្មែរ"
     name_with_error: "ភាសាខ្មែរ (កំហុស)"
+rs:
+  locale:
+    name: "српски"
+    name_with_error: "српски (са грешком)"
