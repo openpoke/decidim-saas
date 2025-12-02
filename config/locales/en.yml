@@ -4,6 +4,9 @@ en:
     attributes:
       authorization_handler:
         dni: VAT
+      token_csv_flexible:
+        file: File
+        remove_all: Remove all current census data
   decidim:
     elections:
       censuses:
