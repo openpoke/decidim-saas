@@ -90,7 +90,8 @@ describe "Admin manages flexible census" do # rubocop:disable RSpec/DescribeClas
         click_on "Save and continue"
 
         visit election_census_path
-        expect(page).to have_content("There are currently 0 people")
+        expect(page).to have_content("Upload a CSV file")
+        expect(page).to have_no_content("There are currently")
       end
     end
   end
