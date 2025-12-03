@@ -5,8 +5,7 @@ require "csv"
 module Decidim
   module Elections
     module FlexibleCsvCensus
-      # A data processor for parsing CSV census data with flexible ID (not just email).
-      # Inherits structure from CsvCensus::Data but removes email validation.
+      # Parses CSV census data with id and token columns.
       #
       # CSV format expected:
       #   id;token
@@ -41,7 +40,6 @@ module Decidim
           values << [id, token]
         end
 
-        # Only checks that both fields are present, no email format validation
         def invalid?(id, token)
           id.blank? || token.blank?
         end

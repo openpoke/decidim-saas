@@ -4,7 +4,6 @@ module Decidim
   module Elections
     module Censuses
       # Voter authentication form for flexible CSV census.
-      # User enters id + token to access voting.
       class TokenCsvFlexibleForm < Decidim::Form
         attribute :id, String
         attribute :token, String

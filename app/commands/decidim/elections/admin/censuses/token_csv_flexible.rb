@@ -4,7 +4,14 @@ module Decidim
   module Elections
     module Admin
       module Censuses
+        # A command with the business logic to create census data for an
+        # election using flexible ID instead of email.
         class TokenCsvFlexible < TokenCsv
+          # Executes the command. Broadcast these events:
+          # - :ok when everything is valid
+          # - :invalid when the form was not valid and could not proceed
+          #
+          # Returns nothing.
           def call
             return broadcast(:invalid) if @form.invalid?
             return broadcast(:invalid) if @form.remove_all && @election.census.blank?
@@ -19,7 +26,6 @@ module Decidim
             rows = @form.data
             return broadcast(:invalid) if rows.blank?
 
-            # Store as id + token (not email)
             Voter.bulk_insert(@election, rows.map { |row| { id: row.first, token: row.second } })
             broadcast(:ok)
           end

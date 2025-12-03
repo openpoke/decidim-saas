@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 # Register the flexible CSV census type for Elections.
-# This census type accepts any identifier (not just email) + token pairs.
-
 Rails.application.config.after_initialize do
   Decidim::Elections.census_registry.register(:token_csv_flexible) do |manifest|
     manifest.admin_form = "Decidim::Elections::Admin::Censuses::TokenCsvFlexibleForm"
