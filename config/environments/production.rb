@@ -22,6 +22,8 @@ Rails.application.configure do
   # key such as config/credentials/production.key. This key is used to decrypt credentials (and other encrypted files).
   # config.require_master_key = true
 
+  config.public_file_server.enabled = ENV["RAILS_SERVE_STATIC_FILES"].present?
+
   # Disable serving static files from `public/`, relying on NGINX/Apache to do so instead.
   # config.public_file_server.enabled = false
 
@@ -50,16 +52,22 @@ Rails.application.configure do
   # config.assume_ssl = true
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  config.force_ssl = true
+  # config.force_ssl = true
 
   # Skip http-to-https redirect for the default health check endpoint.
   # config.ssl_options = { redirect: { exclude: ->(request) { request.path == "/up" } } }
   config.ssl_options = { redirect: { exclude: ->(request) { request.path =~ /health_check/ } } }
 
   if ENV["RAILS_LOG_TO_STDOUT"].present?
-    config.logger = ActiveSupport::Logger.new($stdout)
-                                         .tap { |logger| logger.formatter = Logger::Formatter.new }
-                                         .then { |logger| ActiveSupport::TaggedLogging.new(logger) }
+    if ENV["DISABLE_SEMANTIC_LOGGER"].present? || !defined?(SemanticLogger)
+      logger = ActiveSupport::Logger.new($stdout)
+      logger.formatter = config.log_formatter
+      config.logger = ActiveSupport::TaggedLogging.new(logger)
+    else
+      $stdout.sync = true
+      config.rails_semantic_logger.add_file_appender = false
+      config.semantic_logger.add_appender(io: $stdout, formatter: config.rails_semantic_logger.format)
+    end
   end
 
   # Prepend all log lines with the following tags.
@@ -85,7 +93,7 @@ Rails.application.configure do
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
   config.active_job.queue_adapter = ENV["QUEUE_ADAPTER"] if ENV["QUEUE_ADAPTER"].present?
-  # config.active_job.queue_name_prefix = "decidim_development_app_production"
+  # config.active_job.queue_name_prefix = "decidim_saas_production"
 
   # Disable caching for Action Mailer templates even if Action Controller
   # caching is enabled.
@@ -115,4 +123,6 @@ Rails.application.configure do
   # ]
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
+
+  config.deface.enabled = ENV["DB_ADAPTER"].blank? || ENV.fetch("DB_ADAPTER", nil) == "postgresql" if config.respond_to?(:deface)
 end
