@@ -225,9 +225,9 @@ PATH
       decidim-extra_user_fields
 
 PATH
-  remote: decidim-saas-ehuagora
+  remote: decidim-saas-ehu_agora
   specs:
-    decidim-saas-ehuagora (1.0)
+    decidim-saas-ehu_agora (1.0)
 
 PATH
   remote: decidim-saas-som_mobilitat
@@ -1034,7 +1034,7 @@ DEPENDENCIES
   decidim-dev!
   decidim-extra_user_fields!
   decidim-saas-clean_clothes!
-  decidim-saas-ehuagora!
+  decidim-saas-ehu_agora!
   decidim-saas-som_mobilitat!
   decidim-templates!
   decidim-term_customizer!

@@ -24,7 +24,7 @@ COPY ./Gemfile.lock /app/Gemfile.lock
 # Saas custom modules
 COPY ./decidim-saas-som_mobilitat /app/decidim-saas-som_mobilitat
 COPY ./decidim-saas-clean_clothes /app/decidim-saas-clean_clothes
-COPY ./decidim-saas-ehuagora /app/decidim-saas-ehuagora
+COPY ./decidim-saas-ehu_agora /app/decidim-saas-ehu_agora
 
 RUN gem install bundler:$(grep -A 1 'BUNDLED WITH' Gemfile.lock | tail -n 1 | xargs) && \
     bundle config --deployment --local without 'development test' && \

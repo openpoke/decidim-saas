@@ -15,7 +15,7 @@ gem "decidim-term_customizer", github: "openpoke/decidim-module-term_customizer"
 
 # Customizations for clients
 gem "decidim-saas-clean_clothes", path: "decidim-saas-clean_clothes", require: false
-gem "decidim-saas-ehuagora", path: "decidim-saas-ehuagora", require: false
+gem "decidim-saas-ehu_agora", path: "decidim-saas-ehu_agora", require: false
 gem "decidim-saas-som_mobilitat", path: "decidim-saas-som_mobilitat", require: false
 
 gem "bootsnap", "~> 1.3"

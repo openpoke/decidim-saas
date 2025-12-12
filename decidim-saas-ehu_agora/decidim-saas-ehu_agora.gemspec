@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.homepage = "https://github.com/openpoke/decidim-saas"
   s.required_ruby_version = ">= 3.3"
 
-  s.name = "decidim-saas-ehuagora"
+  s.name = "decidim-saas-ehu_agora"
   s.summary = "Extras for EHU Agora Decidim instance."
   s.description = "EHU Agora Decidim instance with some extra features."
 
