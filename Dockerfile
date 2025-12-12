@@ -50,7 +50,7 @@ COPY ./config /app/config
 COPY ./db /app/db
 COPY ./lib /app/lib
 COPY ./public/*.* /app/public/
-COPY ./public/ehufonts /app/public/ehufonts
+COPY ./public/fonts /app/public/fonts
 COPY ./config.ru /app/config.ru
 COPY ./Rakefile /app/Rakefile
 COPY ./postcss.config.js /app/postcss.config.js
