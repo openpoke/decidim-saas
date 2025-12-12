@@ -207,7 +207,7 @@ GIT
 
 GIT
   remote: https://github.com/openpoke/decidim-module-extra_user_fields.git
-  revision: 781067decea13a75e297254a6a540b4144f266d6
+  revision: 413a67f7c2bd4d34cdef813572fb5ef2824f85f0
   branch: release/0.31-stable
   specs:
     decidim-extra_user_fields (0.31.0)
