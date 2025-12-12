@@ -32,7 +32,7 @@ module Decidim
 
         def unique_id
           Digest::MD5.hexdigest(
-            "#{uid}-#{Rails.application.secrets.secret_key_base}"
+            "#{uid}-#{Rails.application.secret_key_base}"
           )
         end
 
