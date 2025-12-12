@@ -572,7 +572,6 @@ ActiveRecord::Schema[7.0].define(version: 2025_11_17_104901) do
     t.datetime "published_at"
     t.index ["decidim_conference_id"], name: "index_decidim_conference_speakers_on_decidim_conference_id"
     t.index ["decidim_user_id"], name: "index_decidim_conference_speaker_on_decidim_user_id"
-    t.index ["published_at"], name: "index_decidim_conference_speakers_on_published_at"
   end
 
   create_table "decidim_conference_user_roles", force: :cascade do |t|
@@ -1528,7 +1527,6 @@ ActiveRecord::Schema[7.0].define(version: 2025_11_17_104901) do
     t.index "md5((title)::text)", name: "decidim_proposals_proposal_title_search"
     t.index ["created_at"], name: "index_decidim_proposals_proposals_on_created_at"
     t.index ["decidim_component_id"], name: "index_decidim_proposals_proposals_on_decidim_component_id"
-    t.index ["decidim_proposals_proposal_state_id"], name: "index_decidim_proposals_on_decidim_proposal_state_id"
     t.index ["decidim_scope_id"], name: "index_decidim_proposals_proposals_on_decidim_scope_id"
     t.index ["deleted_at"], name: "index_decidim_proposals_proposals_on_deleted_at"
     t.index ["proposal_votes_count"], name: "index_decidim_proposals_proposals_on_proposal_votes_count"

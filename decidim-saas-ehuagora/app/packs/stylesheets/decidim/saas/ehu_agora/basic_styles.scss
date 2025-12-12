@@ -1,0 +1,53 @@
+/* EHU Serif letra-tipoa definitzen du - Letra-tipo arrunta */
+@font-face {
+  font-family: 'ehuSans';
+  src: url('fonts/EHUSerif-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* EHU Serif letra-tipoa definitzen du - Letra-tipo arina */
+@font-face {
+  font-family: 'ehuSans';
+  src: url('fonts/EHUSerif-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+/* EHU Serif letra-tipoa definitzen du - Letra-tipo lodia */
+@font-face {
+  font-family: 'ehuSans';
+  src: url('fonts/EHUSerif-Bold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* EHU Serif letra-tipoa definitzen du - Letra-tipo lodia eta etzana */
+@font-face {
+  font-family: 'ehuSans';
+  src: url('fonts/EHUSerif-BoldItalic.otf') format('opentype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* EHU Serif letra-tipoa definitzen du - Letra-tipo etzana */
+@font-face {
+  font-family: 'ehuSans';
+  src: url('fonts/EHUSerif-Italic.otf') format('opentype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+/* EHU Serif letra-tipoa definitzen du - Letra-tipo beltza (pisu handikoa) */
+@font-face {
+  font-family: 'ehuSans';
+  src: url('fonts/EHUSerif-Black.otf') format('opentype');
+  font-weight: 900; /* gehienezko pisua */
+  font-style: normal;
+}
+
+/* Gorputz eta orriaren letra-tipoa aldatzen du - Ez erabili * selektorea */
+body, html {
+  font-family: 'ehuSans', sans-serif;
+}
+

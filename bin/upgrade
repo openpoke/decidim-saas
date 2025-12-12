@@ -5,7 +5,8 @@ set -e
 export WITH_EXTRA_USER_FIELDS=1
 export WITH_SOM_MOBILITAT=1
 export WITH_CLEAN_CLOTHES=1
+export WITH_EHU_AGORA=1
 
 bundle update
-bin/rails decidim:upgrade db:migrate
+bin/rails decidim:upgrade db:migrate assets:precompile
 
