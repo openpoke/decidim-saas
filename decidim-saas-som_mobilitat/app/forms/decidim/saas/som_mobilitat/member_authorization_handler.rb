@@ -11,6 +11,7 @@ module Decidim
 
         def form_attributes
           excepted_attributes = %w(id user email)
+          excepted_attributes << "tos_agreement" unless ephemeral_tos_pending?
           # only show DNI if email check failed
           # byebug
           # excepted_attributes << "dni" if attributes[:email].blank?
