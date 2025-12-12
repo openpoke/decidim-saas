@@ -92,6 +92,6 @@ jobs:
           WITH_CLEAN_CLOTHES: 1
 
       - name: Run EHU Agora RSpec
-        run: bundle exec rspec decidim-saas-ehuagora/spec/
+        run: bundle exec rspec decidim-saas-ehu_agora/spec/
         env:
           WITH_EHU_AGORA: 1
