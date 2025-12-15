@@ -13,7 +13,15 @@ ca:
           name: Debats
           see_all: Veure tots els debats
     elections:
+      elections:
+        show:
+          edit_vote_button: Edita el teu vot
+      per_question_votes:
+        waiting:
+          edit_vote: Edita el teu vot
       votes:
+        confirm:
+          edit_vote: Edita el teu vot
         receipt:
           edit_vote: Edita el teu vot
       censuses:
