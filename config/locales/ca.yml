@@ -13,6 +13,9 @@ ca:
           name: Debats
           see_all: Veure tots els debats
     elections:
+      votes:
+        receipt:
+          edit_vote: Edita el teu vot
       censuses:
         token_csv_flexible:
           example: |
