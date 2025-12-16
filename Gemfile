@@ -11,7 +11,7 @@ gem "decidim-elections", DECIDIM_VERSION
 gem "decidim-templates", DECIDIM_VERSION
 
 gem "decidim-decidim_awesome", github: "decidim-ice/decidim-module-decidim_awesome", branch: "release/0.31-stable"
-gem "decidim-extra_user_fields", github: "openpoke/decidim-module-extra_user_fields", branch: "release/0.31-stable", require: false
+gem "decidim-extra_user_fields", github: "openpoke/decidim-module-extra_user_fields", require: false
 gem "decidim-term_customizer", github: "openpoke/decidim-module-term_customizer", branch: "release/0.31-stable"
 
 # Customizations for clients
