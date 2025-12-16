@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "rails_helper"
+require "decidim/extra_user_fields" if ENV["WITH_EXTRA_USER_FIELDS"].present?
 
 describe "SaaSModules" do
   it "does not define the CleanClothes module" do
