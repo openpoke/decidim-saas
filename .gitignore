@@ -45,6 +45,7 @@ mise.toml
 /public/decidim-packs
 /public/packs-test
 /public/sw.js*
+/app/views/static/api
 
 
 # Ignore node modules
