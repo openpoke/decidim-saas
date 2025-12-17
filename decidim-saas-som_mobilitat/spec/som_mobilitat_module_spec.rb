@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "rails_helper"
+require_relative "rails_helper"
 
 describe "SomMobilitatModule" do
   it "defines the SomMobilitat module" do

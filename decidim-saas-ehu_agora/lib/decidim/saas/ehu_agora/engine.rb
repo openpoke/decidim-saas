@@ -28,8 +28,8 @@ module Decidim
                         private_key: "-----BEGIN PRIVATE KEY-----\n#{ENV.fetch("SAML_SP_PRIVATE_KEY", nil)}\n-----END PRIVATE KEY-----"
                        )
             end
-            # Force Decidim to look at this provider if not defined in secrets.yml
-            Rails.application.secrets[:omniauth][:saml] = {
+                    # Register the provider with Decidim's omniauth_providers
+            Decidim.omniauth_providers[:saml] = {
               enabled: true,
               icon_path: "media/images/saml_icon.png"
             }
