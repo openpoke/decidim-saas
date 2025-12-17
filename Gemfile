@@ -20,8 +20,8 @@ gem "decidim-saas-clean_clothes", path: "decidim-saas-clean_clothes", require: f
 gem "decidim-saas-som_mobilitat", path: "decidim-saas-som_mobilitat", require: false
 
 gem "bootsnap", "~> 1.3"
-gem "puma", ">= 6.3.1"
 gem "faraday"
+gem "puma", ">= 6.3.1"
 
 group :development, :test do
   gem "byebug", "~> 11.0", platform: :mri
