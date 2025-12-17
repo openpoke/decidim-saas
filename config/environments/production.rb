@@ -56,18 +56,11 @@ Rails.application.configure do
 
   # Skip http-to-https redirect for the default health check endpoint.
   # config.ssl_options = { redirect: { exclude: ->(request) { request.path == "/up" } } }
-  config.ssl_options = { redirect: { exclude: ->(request) { request.path =~ /health_check/ } } }
 
   if ENV["RAILS_LOG_TO_STDOUT"].present?
-    if ENV["DISABLE_SEMANTIC_LOGGER"].present? || !defined?(SemanticLogger)
-      logger = ActiveSupport::Logger.new($stdout)
-      logger.formatter = config.log_formatter
-      config.logger = ActiveSupport::TaggedLogging.new(logger)
-    else
-      $stdout.sync = true
-      config.rails_semantic_logger.add_file_appender = false
-      config.semantic_logger.add_appender(io: $stdout, formatter: config.rails_semantic_logger.format)
-    end
+    logger = ActiveSupport::Logger.new($stdout)
+    logger.formatter = config.log_formatter
+    config.logger = ActiveSupport::TaggedLogging.new(logger)
   end
 
   # Prepend all log lines with the following tags.
@@ -123,6 +116,4 @@ Rails.application.configure do
   # ]
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
-
-  config.deface.enabled = ENV["DB_ADAPTER"].blank? || ENV.fetch("DB_ADAPTER", nil) == "postgresql" if config.respond_to?(:deface)
 end
