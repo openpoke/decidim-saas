@@ -26,7 +26,8 @@ module Decidim
                          sp_entity_id: ENV.fetch("SAML_SP_ENTITY_ID", nil),
                          name_identifier_format: "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress",
                          certificate: "-----BEGIN CERTIFICATE-----\n#{ENV.fetch("SAML_SP_CERTIFICATE", nil)}\n-----END CERTIFICATE-----",
-                         private_key: "-----BEGIN PRIVATE KEY-----\n#{ENV.fetch("SAML_SP_PRIVATE_KEY", nil)}\n-----END PRIVATE KEY-----"
+                         private_key: "-----BEGIN PRIVATE KEY-----\n#{ENV.fetch("SAML_SP_PRIVATE_KEY", nil)}\n-----END PRIVATE KEY-----",
+                         assertion_consumer_service_binding: "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" # or :post, :redirect
                        )
             end
             # Register the provider with Decidim's omniauth_providers
