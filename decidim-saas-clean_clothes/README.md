@@ -10,8 +10,8 @@ WITH_CLEAN_CLOTHES=1 bin/rails s
 
 # Running specs:
 
-From the main folder (one bellow this)
+From the main folder (one below this)
 
 ```
-WITH_CLEAN_CLOTHES=1 bundle exec rspec decidim-clean_clothes
+WITH_CLEAN_CLOTHES=1 bundle exec rspec decidim-saas-clean_clothes
 ```

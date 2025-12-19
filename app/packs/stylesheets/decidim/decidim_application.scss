@@ -7,3 +7,14 @@
 //
 // By default this is empty.
 
+.login__omniauth-button {
+  @apply inline-flex items-center;
+
+  span {
+    @apply block;
+  }
+
+  img.icon.external-icon {
+    @apply h-9 w-auto p-0.5 inline-block !important;
+  }
+}

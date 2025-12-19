@@ -1,4 +1,4 @@
-FROM ruby:3.3 AS builder
+FROM ruby:3.3.10 AS builder
 
 RUN apt-get update && apt-get upgrade -y && apt-get install -y ca-certificates curl gnupg && \
     mkdir -p /etc/apt/keyrings && \
@@ -24,6 +24,7 @@ COPY ./Gemfile.lock /app/Gemfile.lock
 # Saas custom modules
 COPY ./decidim-saas-som_mobilitat /app/decidim-saas-som_mobilitat
 COPY ./decidim-saas-clean_clothes /app/decidim-saas-clean_clothes
+COPY ./decidim-saas-ehu_agora /app/decidim-saas-ehu_agora
 
 RUN gem install bundler:$(grep -A 1 'BUNDLED WITH' Gemfile.lock | tail -n 1 | xargs) && \
     bundle config set --deployment true && \
@@ -51,7 +52,6 @@ COPY ./config /app/config
 COPY ./db /app/db
 COPY ./lib /app/lib
 COPY ./public/*.* /app/public/
-COPY ./public/fonts /app/public/fonts
 COPY ./config.ru /app/config.ru
 COPY ./Rakefile /app/Rakefile
 COPY ./postcss.config.js /app/postcss.config.js
@@ -84,7 +84,7 @@ RUN mv config/credentials.bak config/credentials 2>/dev/null || true
 RUN rm -rf node_modules packages/*/node_modules tmp/* vendor/bundle test spec app/packs .git
 
 # This image is for production env only
-FROM ruby:3.3-slim AS final
+FROM ruby:3.3.10-slim AS final
 
 RUN apt-get update && \
     apt-get install -y postgresql-client \
