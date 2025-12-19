@@ -11,6 +11,12 @@ module Decidim
         paths["db/migrate"] = nil
         paths["lib/tasks"] = nil
 
+        config.to_prepare do
+          Decidim::Devise::OmniauthRegistrationsController.class_eval do
+            skip_before_action :verify_authenticity_token, only: [:saml, :failure]
+          end
+        end
+
         initializer "saas.ehu_agora.saml_sso" do
           if ENV["SAML_IDP_METADATA_URL"].present?
             require "onelogin/ruby-saml/idp_metadata_parser"
@@ -28,6 +34,10 @@ module Decidim
                          certificate: "-----BEGIN CERTIFICATE-----\n#{ENV.fetch("SAML_SP_CERTIFICATE", nil)}\n-----END CERTIFICATE-----",
                          private_key: "-----BEGIN PRIVATE KEY-----\n#{ENV.fetch("SAML_SP_PRIVATE_KEY", nil)}\n-----END PRIVATE KEY-----",
                          assertion_consumer_service_binding: "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" # or :post, :redirect
+                         #  request_attributes: [
+                         #    { name: "email", name_format: "urn:oasis:names:tc:SAML:2.0:attrname-format:basic", friendly_name: "Email", is_required: true },
+                         #    { name: "name", name_format: "urn:oasis:names:tc:SAML:2.0:attrname-format:basic", friendly_name: "Full Name", is_required: true }
+                         #  ]
                        )
             end
             # Register the provider with Decidim's omniauth_providers
