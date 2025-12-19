@@ -11,6 +11,6 @@ describe "EhuAgoraFonts" do
   end
 
   it "loads the custom fonts stylesheet" do
-    expect(page.execute_script("return window.getComputedStyle(document.getElementsByTagName('body')[0]).fontFamily")).to eq("ehuSans, sans-serif")
+    expect(page.execute_script("return window.getComputedStyle(document.getElementsByTagName('body')[0]).fontFamily")).to eq("ehuSerif, sans-serif")
   end
 end
