@@ -10,8 +10,8 @@ WITH_EHU_AGORA=1 bin/rails s
 
 # Running specs:
 
-From the main folder (one bellow this)
+From the main folder (one below this)
 
 ```
-WITH_EHU_AGORA=1 bundle exec rspec decidim-ehuagora
+WITH_EHU_AGORA=1 bundle exec rspec decidim-saas-ehuagora
 ```
