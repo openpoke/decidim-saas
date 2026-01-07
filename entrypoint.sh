@@ -1,13 +1,8 @@
 #!/bin/bash
 
-# Run rails by default if sidekiq is specified
-if [ -z "$RUN_RAILS" ] && [ -z "$RUN_SIDEKIQ" ]; then
+# Run rails by default unless disabled
+if [ -z "$RUN_RAILS" ]; then
 	RUN_RAILS=true
-fi
-
-if [ "$DISABLE_SIDEKIQ" == "true" ] || [ "$DISABLE_SIDEKIQ" == "1" ]; then
-	RUN_SIDEKIQ=false
-	echo "⚠️ Sidekiq is disabled because DISABLE_SIDEKIQ is set"
 fi
 
 # ensure booleans
@@ -19,11 +14,21 @@ else
 	echo "⚠️ Not running Rails"
 fi
 
+# Run sidekiq by default unless disabled
+if [ -z "$RUN_SIDEKIQ" ]; then
+	RUN_SIDEKIQ=true
+fi
+if [ "$DISABLE_SIDEKIQ" == "true" ] || [ "$DISABLE_SIDEKIQ" == "1" ]; then
+	echo "⚠️ Sidekiq is disabled because DISABLE_SIDEKIQ is set"
+	RUN_SIDEKIQ=false
+fi
+
 if [ "$RUN_SIDEKIQ" == "true" ] || [ "$RUN_SIDEKIQ" == "1" ]; then
 	RUN_SIDEKIQ=true
 	echo "✅ Running Sidekiq"
 else
 	RUN_SIDEKIQ=false
+	echo "⚠️ Not running Sidekiq"
 fi
 
 export RUN_RAILS
