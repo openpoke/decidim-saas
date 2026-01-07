@@ -3,32 +3,27 @@
 # Run rails by default if sidekiq is specified
 if [ -z "$RUN_RAILS" ] && [ -z "$RUN_SIDEKIQ" ]; then
 	RUN_RAILS=true
-	echo "⚠️ RUN_RAILS and RUN_SIDEKIQ are not set, defaulting to RUN_RAILS=true"
 fi
 
-if [ "$QUEUE_ADAPTER" != "sidekiq" ]; then
+if [ "$DISABLE_SIDEKIQ" == "true" ] || [ "$DISABLE_SIDEKIQ" == "1" ]; then
 	RUN_SIDEKIQ=false
-	echo "⚠️ Sidekiq is disabled because QUEUE_ADAPTER is not set to sidekiq"
+	echo "⚠️ Sidekiq is disabled because DISABLE_SIDEKIQ is set"
 fi
 
 # ensure booleans
 if [ "$RUN_RAILS" == "true" ] || [ "$RUN_RAILS" == "1" ]; then
 	RUN_RAILS=true
+	echo "✅ Running Rails"
 else
 	RUN_RAILS=false
+	echo "⚠️ Not running Rails"
 fi
+
 if [ "$RUN_SIDEKIQ" == "true" ] || [ "$RUN_SIDEKIQ" == "1" ]; then
 	RUN_SIDEKIQ=true
+	echo "✅ Running Sidekiq"
 else
 	RUN_SIDEKIQ=false
-fi
-
-if [ "$RUN_RAILS" == "true" ]; then
-	echo "✅ Running Rails"
-fi
-
-if [ "$RUN_SIDEKIQ" == "true" ]; then
-	echo "✅ Running Sidekiq"
 fi
 
 export RUN_RAILS
@@ -46,11 +41,10 @@ fi
 # Check no migrations are pending migrations
 if [ -z "$SKIP_MIGRATIONS" ]; then
 	bundle exec rails db:migrate
+	echo "✅ Migrations are all up"
 else
 	echo "⚠️ Skipping migrations"
 fi
-
-echo "✅ Migrations are all up"
 
 echo "🚀 $@"
 exec "$@"
