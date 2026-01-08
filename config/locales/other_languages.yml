@@ -34,3 +34,7 @@ rs:
   locale:
     name: "српски"
     name_with_error: "српски (са грешком)"
+sq:
+  locale:
+    name: "shqip"
+    name_with_error: "shqip (me gabim)"
