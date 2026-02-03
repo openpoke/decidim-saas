@@ -209,6 +209,17 @@ GIT
       decidim-core (= 0.31.0)
 
 GIT
+  remote: https://github.com/openpoke/decidim-module-extra_censuses.git
+  revision: ccfab5ce6e45a31a5d390e28e9b3c20ab66a406c
+  branch: main
+  specs:
+    decidim-extra_censuses (0.1.0)
+      decidim-admin (>= 0.31.0, < 0.32)
+      decidim-core (>= 0.31.0, < 0.32)
+      decidim-elections (>= 0.31.0, < 0.32)
+      decidim-surveys (>= 0.31.0, < 0.32)
+
+GIT
   remote: https://github.com/openpoke/decidim-module-extra_user_fields.git
   revision: e932dcd3893bf9efbf63f23bfd64b40db2e11662
   specs:
@@ -1124,6 +1135,7 @@ DEPENDENCIES
   decidim-decidim_awesome!
   decidim-dev!
   decidim-elections!
+  decidim-extra_censuses!
   decidim-extra_user_fields!
   decidim-pokecode!
   decidim-saas-clean_clothes!
@@ -1210,6 +1222,7 @@ CHECKSUMS
   decidim-decidim_awesome (0.14.0)
   decidim-dev (0.31.0)
   decidim-elections (0.31.0)
+  decidim-extra_censuses (0.1.0)
   decidim-extra_user_fields (0.31.0)
   decidim-forms (0.31.0)
   decidim-generators (0.31.0)
