@@ -23,7 +23,7 @@ Also a rake task is create to allow automatic translation of content already cre
 Use with source,target language:
 
 ```bash
-bin/rails colabs:translate_all[ca,es]
+bin/rails saas:translate_all[ca,es]
 ```
 
 ### Current extra modules:
