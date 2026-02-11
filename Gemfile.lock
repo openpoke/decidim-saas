@@ -32,8 +32,8 @@ GIT
 
 GIT
   remote: https://github.com/openpoke/decidim-module-pokecode.git
-  revision: f122304458dae6e2629072e3ec530fb1111a40bf
-  branch: main
+  revision: f716e19fe7d70dc2c56852a9d0c38ed38ab60efd
+  branch: fix/logger_appenders
   specs:
     decidim-pokecode (0.2.0)
       aws-sdk-s3
