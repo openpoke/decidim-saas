@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/decidim-ice/decidim-module-decidim_awesome.git
-  revision: 9ce4acae26a1161799cd0fc9ac767dcbaa11eadf
-  branch: main
+  revision: 4e8ea76cfbb3295a8988500f855337e99209bec0
+  branch: feature/awesome-processes-content-block
   specs:
     decidim-decidim_awesome (0.14.0)
       active_hashcash (~> 0.4.0)

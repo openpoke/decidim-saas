@@ -11,7 +11,7 @@ gem "decidim-conferences", DECIDIM_VERSION
 gem "decidim-elections", DECIDIM_VERSION
 gem "decidim-templates", DECIDIM_VERSION
 
-gem "decidim-decidim_awesome", github: "decidim-ice/decidim-module-decidim_awesome", branch: "main"
+gem "decidim-decidim_awesome", github: "decidim-ice/decidim-module-decidim_awesome", branch: "feature/awesome-processes-content-block"
 gem "decidim-extra_censuses", github: "openpoke/decidim-module-extra_censuses", branch: "main"
 gem "decidim-extra_user_fields", github: "openpoke/decidim-module-extra_user_fields", require: false
 gem "decidim-pokecode", github: "openpoke/decidim-module-pokecode", branch: "fix/logger_appenders"
