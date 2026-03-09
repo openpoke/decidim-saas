@@ -1,0 +1,5 @@
+eu:
+  devise:
+    login:
+      admin_login: Administrazio-sarbidea
+      sign_in_saml: EHUren nortasunaz saioa hasi
