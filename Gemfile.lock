@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/decidim-ice/decidim-module-decidim_awesome.git
-  revision: 41396a6b8e36d03b46924da01bf2ae6b7ff3a1a5
-  branch: fix/image-upload
+  revision: 014e61de3b24a8644e5daf60ced368eaf7bdbf3b
+  branch: main
   specs:
     decidim-decidim_awesome (0.14.1)
       active_hashcash (~> 0.4.0)
