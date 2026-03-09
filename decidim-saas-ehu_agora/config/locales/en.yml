@@ -1,0 +1,5 @@
+en:
+  devise:
+    login:
+      admin_login: Administration access
+      sign_in_saml: Log with EHU identity

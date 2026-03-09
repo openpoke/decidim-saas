@@ -86,4 +86,5 @@ Rails.application.configure do
   end
 
   config.hosts << "lvh.me"
+  config.hosts << "agora.ehu.eus"
 end
