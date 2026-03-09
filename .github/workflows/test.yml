@@ -97,3 +97,8 @@ jobs:
         run: bundle exec rspec decidim-saas-ehu_agora/spec/
         env:
           WITH_EHU_AGORA: 1
+
+      - name: Run Ateneu Bcn RSpec
+        run: bundle exec rspec decidim-saas-ateneu_bcn/spec/
+        env:
+          WITH_ATENEU_BCN: 1

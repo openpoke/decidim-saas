@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "decidim/saas/ehu_agora/engine"
+require "decidim/saas/ateneu_bcn/engine"
 
 module Decidim
   module Saas
