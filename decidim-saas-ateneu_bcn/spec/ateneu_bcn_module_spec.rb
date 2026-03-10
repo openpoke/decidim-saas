@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "rails_helper"
+require "decidim/saas/ateneu_bcn"
 
 describe "AteneuBcnModule" do
   it "defines the AteneuBcn module" do

@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "omniauth"
-require "omniauth-saml"
 module Decidim
   module Saas
     module AteneuBcn
