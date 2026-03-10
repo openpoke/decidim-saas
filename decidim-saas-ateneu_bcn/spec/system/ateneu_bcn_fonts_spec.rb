@@ -11,6 +11,6 @@ describe "AteneuBcnFonts" do
   end
 
   it "loads the custom fonts stylesheet" do
-    expect(page.execute_script("return window.getComputedStyle(document.getElementsByTagName('body')[0]).fontFamily")).to eq("ppEiko, Roboto, sans-serif")
+    expect(page.execute_script("return window.getComputedStyle(document.getElementsByTagName('body')[0]).fontFamily")).to eq("ppEiko, theFutureBlack, Roboto, sans-serif")
   end
 end
