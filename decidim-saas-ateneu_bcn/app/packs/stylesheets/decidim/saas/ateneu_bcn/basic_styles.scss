@@ -135,5 +135,17 @@
 }
 
 body, html {
-  font-family: 'ppEiko', 'Roboto', sans-serif;
+  font-family: 'ppEiko', 'theFutureBlack', 'Roboto', sans-serif;
+}
+
+h1 {
+  font-family: 'theFutureBlack', 'ppEiko', 'Roboto', sans-serif !important;
+}
+
+h2, h3 {
+  font-family: 'ppEiko', sans-serif !important;
+}
+
+h4, h5, h6 {
+  font-family: 'Roboto', sans-serif;
 }
