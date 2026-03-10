@@ -262,6 +262,11 @@ GIT
       decidim-core (= 0.31.2)
 
 PATH
+  remote: decidim-saas-ateneu_bcn
+  specs:
+    decidim-saas-ateneu_bcn (1.0)
+
+PATH
   remote: decidim-saas-clean_clothes
   specs:
     decidim-saas-clean_clothes (1.0)
@@ -1151,6 +1156,7 @@ DEPENDENCIES
   decidim-extra_censuses!
   decidim-extra_user_fields!
   decidim-pokecode!
+  decidim-saas-ateneu_bcn!
   decidim-saas-clean_clothes!
   decidim-saas-ehu_agora!
   decidim-saas-som_mobilitat!
@@ -1244,6 +1250,7 @@ CHECKSUMS
   decidim-pages (0.31.2)
   decidim-participatory_processes (0.31.2)
   decidim-pokecode (0.2.0)
+  decidim-saas-ateneu_bcn (1.0)
   decidim-proposals (0.31.2)
   decidim-saas-clean_clothes (1.0)
   decidim-saas-ehu_agora (1.0)

@@ -19,6 +19,7 @@ gem "decidim-pokecode", github: "openpoke/decidim-module-pokecode", branch: "fix
 gem "decidim-term_customizer", github: "openpoke/decidim-module-term_customizer", branch: "main"
 
 # Customizations for clients
+gem "decidim-saas-ateneu_bcn", path: "decidim-saas-ateneu_bcn", require: false
 gem "decidim-saas-clean_clothes", path: "decidim-saas-clean_clothes", require: false
 gem "decidim-saas-ehu_agora", path: "decidim-saas-ehu_agora", require: false
 gem "decidim-saas-som_mobilitat", path: "decidim-saas-som_mobilitat", require: false
