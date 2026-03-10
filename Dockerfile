@@ -53,6 +53,7 @@ COPY ./config /app/config
 COPY ./db /app/db
 COPY ./lib /app/lib
 COPY ./public/*.* /app/public/
+COPY ./public/resources /app/public/resources
 COPY ./config.ru /app/config.ru
 COPY ./Rakefile /app/Rakefile
 COPY ./postcss.config.js /app/postcss.config.js

@@ -1,0 +1,5 @@
+es:
+  devise:
+    login:
+      admin_login: Acceso administración
+      sign_in_saml: Iniciar sesión con identidad de la EHU
