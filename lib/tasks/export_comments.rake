@@ -21,6 +21,9 @@ namespace :saas do
     component = Decidim::Component.find(component_id)
     organization = component.organization
 
+    locale = organization.default_locale
+    puts "Exporting comments for organization #{organization.id}-#{organization.name[locale]}"
+
     export_dir = Rails.root.join("tmp/comments_export_by_component")
     FileUtils.mkdir_p export_dir
     path = export_dir.join("#{organization.id}_component_#{component_id}_comments.csv")
@@ -38,6 +41,8 @@ namespace :saas do
 
       export_comments_by_component(comments_to_export, organization, csv)
     end
+
+    puts "Exported comments for component #{component_id} to #{path}"
   rescue ActiveRecord::RecordNotFound => e
     puts "Component with id #{component_id} not found."
   end
