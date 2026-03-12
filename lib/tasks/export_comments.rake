@@ -15,8 +15,8 @@ namespace :saas do
 
   task :export_comments_by_component_and_dates, [:component, :from, :to] => :environment do |_, args|
     component_id = args[:component].to_i
-    from_date = args[:from] ? Time.parse(args[:from]) : nil
-    to_date = args[:to] ? Time.parse(args[:to]) : nil
+    from_date = args[:from] ? Time.zone.parse(args[:from]) : nil
+    to_date = args[:to] ? Time.zone.parse(args[:to]) : nil
 
     component = Decidim::Component.find(component_id)
     organization = component.organization
@@ -43,7 +43,7 @@ namespace :saas do
     end
 
     puts "Exported comments for component #{component_id} to #{path}"
-  rescue ActiveRecord::RecordNotFound => e
+  rescue ActiveRecord::RecordNotFound
     puts "Component with id #{component_id} not found."
   end
 
