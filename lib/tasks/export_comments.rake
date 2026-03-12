@@ -13,6 +13,35 @@ namespace :saas do
     end
   end
 
+  task :export_comments_by_component_and_dates, [:component, :from, :to] => :environment do |_, args|
+    component_id = args[:component].to_i
+    from_date = args[:from] ? Time.parse(args[:from]) : nil
+    to_date = args[:to] ? Time.parse(args[:to]) : nil
+
+    component = Decidim::Component.find(component_id)
+    organization = component.organization
+
+    export_dir = Rails.root.join("tmp/comments_export_by_component")
+    FileUtils.mkdir_p export_dir
+    path = export_dir.join("#{organization.id}_component_#{component_id}_comments.csv")
+
+    CSV.open(path, "wb") do |csv|
+      comments = Decidim::Comments::Comment.includes(commentable: :participatory_space).where(depth: 0, created_at: from_date..to_date).order(:created_at)
+      comments_to_export = {}
+      comments_to_export[component_id] = []
+
+      comments.each do |comment|
+        next if comment.commentable.component.nil? || comment.commentable.component.id != component_id
+
+        comments_to_export[component_id] << comment
+      end
+
+      export_comments_by_component(comments_to_export, organization, csv)
+    end
+  rescue ActiveRecord::RecordNotFound => e
+    puts "Component with id #{component_id} not found."
+  end
+
   def export_comments_for_organization(export_dir, organization)
     path = export_dir.join("#{organization.id}_comments.csv")
 
