@@ -11,11 +11,11 @@ gem "decidim-conferences", DECIDIM_VERSION
 gem "decidim-elections", DECIDIM_VERSION
 gem "decidim-templates", DECIDIM_VERSION
 
-gem "decidim-chatbot", github: "openpoke/decidim-module-chatbot", require: false
+gem "decidim-chatbot", github: "openpoke/decidim-module-chatbot", branch: "main", require: false
 gem "decidim-decidim_awesome", github: "decidim-ice/decidim-module-decidim_awesome", branch: "main"
 gem "decidim-extra_censuses", github: "openpoke/decidim-module-extra_censuses", branch: "main"
-gem "decidim-extra_user_fields", github: "openpoke/decidim-module-extra_user_fields", require: false
-gem "decidim-pokecode", github: "openpoke/decidim-module-pokecode", branch: "fix/logger_appenders"
+gem "decidim-extra_user_fields", github: "openpoke/decidim-module-extra_user_fields", branch: "main", require: false
+gem "decidim-pokecode", github: "openpoke/decidim-module-pokecode", branch: "main"
 gem "decidim-term_customizer", github: "openpoke/decidim-module-term_customizer", branch: "main"
 
 # Customizations for clients
