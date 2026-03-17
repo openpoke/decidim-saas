@@ -29,6 +29,10 @@ namespace :saas do
     path = export_dir.join("#{organization.id}_component_#{component_id}_comments.csv")
 
     CSV.open(path, "wb") do |csv|
+      csv << %w(participatory_space_id participatory_space_name component_id component_title commentable_id commentable_type commentable_name
+                comment_locale comment comment_translated author_id author_name comment_url comment_id
+                parent_comment_id created_at updated_at)
+
       comments = Decidim::Comments::Comment.includes(commentable: :participatory_space).where(depth: 0, created_at: from_date..to_date).order(:created_at)
       comments_to_export = {}
       comments_to_export[component_id] = []
