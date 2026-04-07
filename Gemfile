@@ -23,6 +23,7 @@ gem "decidim-saas-ateneu_bcn", path: "decidim-saas-ateneu_bcn", require: false
 gem "decidim-saas-clean_clothes", path: "decidim-saas-clean_clothes", require: false
 gem "decidim-saas-ehu_agora", path: "decidim-saas-ehu_agora", require: false
 gem "decidim-saas-som_mobilitat", path: "decidim-saas-som_mobilitat", require: false
+gem "decidim-saas-vivaio_delle_idee", path: "decidim-saas-vivaio_delle_idee", require: false
 
 gem "bootsnap", "~> 1.3"
 gem "faraday"
