@@ -3,3 +3,24 @@ es:
     login:
       admin_login: Acceso administración
       sign_in_saml: Iniciar sesión con identidad de la EHU
+  decidim:
+    authorization_handlers:
+      admin:
+        agora_member:
+          help: 
+            - Autorización concedida por ser miembro de Ágora EHU
+            - Inicio de sesión obligatorio a través del SSO de Ágora EHU
+      agora_member:
+        explanation: Autorización concedida por ser miembro de Ágora EHU (inicio
+          de sesión obligatorio a través del SSO de Ágora EHU)
+        name: Miembro de Ágora EHU
+  ehu_agora:
+    verifications:
+      not_agora_member: No eres miembro de Ágora EHU.
+      agora_members_only: Esta verificación se concede a las personas miembros de Ágora
+        EHU. Se otorga automáticamente al iniciar sesión con el botón "Iniciar sesión
+        con Ágora EHU".
+      login_with_agora: Si por algún motivo no la tienes activada, puedes intentar
+        verificarte pulsando el botón de abajo. Si este método no funciona, simplemente
+        cierra sesión y vuelve a iniciarla usando el botón "Iniciar sesión con Ágora
+        EHU".
