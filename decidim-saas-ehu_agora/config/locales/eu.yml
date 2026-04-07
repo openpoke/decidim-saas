@@ -17,4 +17,4 @@ eu:
     verifications:
       not_agora_member: Ez zara EHU Agorako.
       agora_members_only: Egiaztapen hori EHU Agorako kideei ematen zaie. Automatikoki ematen da "Hasi saioa EHU Agorarekin" botoiarekin saioa hastean.
-      login_with_agora: Arrazoiren batengatik aktibatuta ez badaukazu, saiatu zaitez egiaztatzen beheko botoia sakatuz. Metodo honek funtzionatzen ez badu, saioa itxi eta berriro hasi besterik ez duzu egin behar "Hasi saioa EHU Agora erabiliz.
+      login_with_agora: Arrazoiren batengatik aktibatuta ez badaukazu, saiatu zaitez egiaztatzen beheko botoia sakatuz. Metodo honek funtzionatzen ez badu, saioa itxi eta berriro hasi besterik ez duzu egin behar "Hasi saioa EHU Agora erabiliz."
