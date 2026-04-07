@@ -10,9 +10,6 @@ en:
           help: 
             - Authorization granted for being a member of EHU Agora
             - Login required through EHU Agora's SSO
-        cas_member:
-          help:
-              required through EHU Agora's SSO)
       agora_member:
         explanation: Authorization granted for being a member of EHU Agora (login
           required through EHU Agora's SSO)

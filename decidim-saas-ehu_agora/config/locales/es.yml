@@ -10,9 +10,6 @@ es:
           help: 
             - Autorización concedida por ser miembro de Ágora EHU
             - Inicio de sesión obligatorio a través del SSO de Ágora EHU
-        cas_member:
-          help:
-            - Inicio de sesión obligatorio a través del SSO de Ágora EHU
       agora_member:
         explanation: Autorización concedida por ser miembro de Ágora EHU (inicio
           de sesión obligatorio a través del SSO de Ágora EHU)

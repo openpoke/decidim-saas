@@ -10,9 +10,6 @@ eu:
           help: 
             - Ágora EHUko kide izateagatik emandako baimena
             - Derrigorrezko saio-hasiera Agora EHUko SSOaren bidez
-        cas_member:
-          help:
-            - Derrigorrezko saio-hasiera Agora EHUko SSOaren bidez
       agora_member:
         explanation: EHU Agorako kide izateagatik emandako baimena (hasiera nahitaezko saioa, EHUko Agora SSOren bidez)
         name: EHU Agorako kidea
