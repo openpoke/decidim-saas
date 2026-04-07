@@ -3,3 +3,25 @@ en:
     login:
       admin_login: Administration access
       sign_in_saml: Log with EHU identity
+  decidim:
+    authorization_handlers:
+      admin:
+        agora_member:
+          help: 
+            - Authorization granted for being a member of EHU Agora
+            - Login required through EHU Agora's SSO
+        cas_member:
+          help:
+              required through EHU Agora's SSO)
+      agora_member:
+        explanation: Authorization granted for being a member of EHU Agora (login
+          required through EHU Agora's SSO)
+        name: EHU Agora member
+  ehu_agora:
+    verifications:
+      not_agora_member: You are not an EHU Agora member.
+      agora_members_only: This verification is given to EHU Agora members. It is granted
+        automatically when logging in with the "Sign in with EHU Agora" button.
+      login_with_agora: If for some reason you do not have it activated, you can try
+        to verify yourself by pressing the button below. If this method does not work,
+        simply log out and log in again using the "Sign in with EHU Agora" button.

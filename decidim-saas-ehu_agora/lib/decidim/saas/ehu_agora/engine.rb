@@ -17,6 +17,14 @@ module Decidim
           end
         end
 
+        initializer "saas.ehu_agora.authorizations" do
+          Decidim::Verifications.register_workflow(:agora_member) do |auth|
+            auth.form = "Decidim::Saas::EhuAgora::AgoraAuthorizationHandler"
+            auth.renewable = true
+            auth.time_between_renewals = 1.hour
+          end
+        end
+
         initializer "saas.ehu_agora.saml_sso" do
           if ENV["SAML_IDP_METADATA_URL"].present?
             require "onelogin/ruby-saml/idp_metadata_parser"
