@@ -1,0 +1,4 @@
+<!-- insert_after "erb[loud]:contains('decidim_overrides')" -->
+
+<%= append_javascript_pack_tag "decidim_saas_vivaio_delle_idee.js" %>
+<%= append_stylesheet_pack_tag "decidim_saas_vivaio_delle_idee.css" %>

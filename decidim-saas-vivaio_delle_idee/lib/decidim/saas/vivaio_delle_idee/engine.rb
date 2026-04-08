@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+require "decidim/extra_user_fields"
+require "deface"
+
 module Decidim
   module Saas
     module VivaioDelleIdee
@@ -9,7 +12,7 @@ module Decidim
         paths["db/migrate"] = nil
         paths["lib/tasks"] = nil
 
-        initializer "saas.vivaio_delle_idee.municipality_region_province" do
+        initializer "saas.vivaio_delle_idee.extra_user_fields" do
           Decidim::ExtraUserFields.configure do |config|
             config.select_fields = {
               municipality_region_province: {
