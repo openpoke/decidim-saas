@@ -4,3 +4,6 @@ it:
       municipality_region_province:
         milan_lombardy: Milano, Lombardia
         rome_lazio: Roma, Lazio
+      select_fields:
+        municipality_region_province:
+          label: "Comune / Regione / Provincia"
