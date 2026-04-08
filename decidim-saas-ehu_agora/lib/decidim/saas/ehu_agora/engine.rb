@@ -17,6 +17,14 @@ module Decidim
           end
         end
 
+        initializer "saas.ehu_agora.authorizations" do
+          Decidim::Verifications.register_workflow(:agora_member) do |auth|
+            auth.form = "Decidim::Saas::EhuAgora::AgoraAuthorizationHandler"
+            auth.renewable = true
+            auth.time_between_renewals = 1.hour
+          end
+        end
+
         initializer "saas.ehu_agora.saml_sso" do
           if ENV["SAML_IDP_METADATA_URL"].present?
             require "onelogin/ruby-saml/idp_metadata_parser"
@@ -58,6 +66,25 @@ module Decidim
           end
         end
 
+        initializer "saas.ehu_agora.saml_sso_update_authorization" do
+          # Update user's extended_data when login
+          ActiveSupport::Notifications.subscribe(/decidim\.user\.omniauth_(registration|login)/) do |_name, data|
+            user = Decidim::User.find_by(id: data[:user_id])
+            # Verify if the user is a EHU Agora member
+            handler = Decidim::AuthorizationHandler.handler_for("agora_member", user:)
+            if handler
+              Decidim::Verifications::AuthorizeUser.call(handler, user.organization) do
+                on(:ok) do
+                  Rails.logger.info "User #{user.id} verified as EHU Agora member as #{handler.unique_id}"
+                end
+
+                on(:invalid) do
+                  Rails.logger.error "User #{user.id} not verified as EHU Agora member"
+                end
+              end
+            end
+          end
+        end
         initializer "saas.ehu_agora.saml_sso_update_user_data" do
           # Update user's extended_data when login
           ActiveSupport::Notifications.subscribe(/decidim\.user\.omniauth_login/) do |_name, data|
