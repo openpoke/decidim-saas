@@ -1,0 +1,6 @@
+it:
+  decidim:
+    extra_user_fields:
+      municipality_region_province:
+        milan_lombardy: Milano, Lombardia
+        rome_lazio: Roma, Lazio
