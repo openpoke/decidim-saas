@@ -1,9 +1,31 @@
 it:
   decidim:
     extra_user_fields:
-      municipality_region_province:
-        milan_lombardy: Milano, Lombardia
-        rome_lazio: Roma, Lazio
+      facilitator_or_editor:
+        editor: Redattore
+        facilitator: Facilitatore
+      relationship_with_avs:
+        registered: "Iscritta/o"
+        administrator: "Amministratore AVS"
+        citizen: "Cittadina/o"
+        expert: "Esperta/o"
+        sympathizer: "Simpatizzante"
+        elected_avs: "Eletto AVS"
       select_fields:
         municipality_region_province:
           label: "Comune / Regione / Provincia"
+        relationship_with_avs:
+          label: Relazione con AVS
+        facilitator_or_editor:
+          label: Disponibilità (Facilitatore / Redattore)
+        territorial_availability:
+          label: Disponibilità territoriale
+      territorial_availability:
+        affirmative_yes: "Si"
+        negative_no: "No"
+        not_specified: "Dipende"
+      text_fields:
+        available_skills:
+          label: "Competenze da mettere a disposizione"
+        organization_or_group:
+          label: "Organizzazione / Gruppo"

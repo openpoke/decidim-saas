@@ -9,7 +9,7 @@ document.addEventListener("turbo:load", () => {
     allowEmptyOption: true,
     maxItems: 1,
     create: false,
-    placeholder: "Select municipality / region / province"
+    placeholder: "Select your municipality"
   });
 
   if (!el.value) ts.clear(true);

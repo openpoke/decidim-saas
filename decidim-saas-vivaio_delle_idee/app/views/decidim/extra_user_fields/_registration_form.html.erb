@@ -1,0 +1,17 @@
+<% if current_organization.extra_user_fields_enabled? && current_organization.activated_extra_field?(:select_fields) %>
+  <div id="card__extra_user_fields" class="form__wrapper form__wrapper-block">
+    <% field = :municipality_region_province %>
+    <% options = f.object.custom_select_fields_options[field] %>
+    <% if options %>
+      <% required = f.object.custom_select_field_required?(field) %>
+      <div class="fieldset">
+        <%= f.select :"select_fields_#{field}",
+                      options,
+                      { label: t("decidim.extra_user_fields.select_fields.#{field}.label", default: field.to_s.humanize),
+                        required:,
+                        include_blank: "" },
+                      { name: "user[select_fields][#{field}]" } %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
