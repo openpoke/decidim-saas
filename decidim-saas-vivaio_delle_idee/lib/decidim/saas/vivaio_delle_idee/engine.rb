@@ -2,6 +2,7 @@
 
 require "decidim/extra_user_fields"
 require "deface"
+require "json"
 
 module Decidim
   module Saas
@@ -15,7 +16,9 @@ module Decidim
         initializer "saas.vivaio_delle_idee.extra_user_fields" do
           Decidim::ExtraUserFields.configure do |config|
             config.select_fields = {
-              municipality_region_province: {},
+              municipality_region_province: lambda { |_view|
+                [] # options loaded client-side via AJAX from /comuni_regioni_province.json
+              },
               relationship_with_avs: {
                 "registered" => "decidim.extra_user_fields.relationship_with_avs.registered",
                 "elected_avs" => "decidim.extra_user_fields.relationship_with_avs.elected_avs",
@@ -41,8 +44,26 @@ module Decidim
               }
             }
 
-            config.text_fields = %w(available_skills organization_or_group)
+            config.text_fields = %w(first_name last_name available_skills organization_or_group)
           end
+        end
+
+        config.to_prepare do
+          Decidim::RegistrationForm.class_eval do
+            private
+
+            def required_collection_fields
+              # Fields are completed later when the user fills in their profile
+            end
+          end
+
+          Decidim::ApplicationController.class_eval do
+            include Decidim::Saas::VivaioDelleIdee::NeedsSurveyCompleted
+          end
+        end
+
+        initializer "saas.vivaio_delle_idee.static_files" do |app|
+          app.middleware.use ActionDispatch::Static, "#{root}/public"
         end
       end
     end

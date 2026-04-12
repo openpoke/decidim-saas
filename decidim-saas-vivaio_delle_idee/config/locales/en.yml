@@ -1,5 +1,9 @@
 en:
   decidim:
+    saas:
+      vivaio_delle_idee:
+        needs_survey_completed:
+          redirect_message: "Please complete the onboarding survey before continuing."
     extra_user_fields:
       facilitator_or_editor:
         editor: Editor
@@ -29,5 +33,9 @@ en:
       text_fields:
         available_skills:
           label: "Available skills"
+        first_name:
+          label: "First name"
+        last_name:
+          label: "Last name"
         organization_or_group:
           label: "Organization / Group"

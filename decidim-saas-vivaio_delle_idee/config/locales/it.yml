@@ -1,5 +1,9 @@
 it:
   decidim:
+    saas:
+      vivaio_delle_idee:
+        needs_survey_completed:
+          redirect_message: "Completa il sondaggio di benvenuto prima di continuare."
     extra_user_fields:
       facilitator_or_editor:
         editor: Redattore
@@ -27,5 +31,9 @@ it:
       text_fields:
         available_skills:
           label: "Competenze da mettere a disposizione"
+        first_name:
+          label: "Nome"
+        last_name:
+          label: "Cognome"
         organization_or_group:
           label: "Organizzazione / Gruppo"
