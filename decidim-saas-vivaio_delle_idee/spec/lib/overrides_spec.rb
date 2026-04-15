@@ -12,7 +12,9 @@ checksums = [
       # layouts
       "/app/views/layouts/decidim/_head.html.erb" => "0faa190f7a4b3db401ffcdfc3d063802",
       "/app/views/decidim/devise/omniauth_registrations/new.html.erb" => "b972ec211ff96702d449cf6c8846a613",
-      "/app/views/decidim/devise/registrations/new.html.erb" => "861b8821bbdc05e7b337fcdb921415ba"
+      "/app/views/decidim/devise/registrations/new.html.erb" => "861b8821bbdc05e7b337fcdb921415ba",
+      "/app/cells/decidim/content_blocks/hero/show.erb" => "85d3a88758fb689681e3210d01f39ea1",
+      "/app/cells/decidim/content_blocks/hero/cta_button.erb" => "60210020a582198f0048d9c3890f552c"
     }
   },
   {

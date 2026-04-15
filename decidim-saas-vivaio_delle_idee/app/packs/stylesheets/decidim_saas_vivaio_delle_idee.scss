@@ -1,1 +1,23 @@
 @use "tom-select/dist/scss/tom-select";
+
+@font-face {
+  font-family: 'Tipotype-Trasandina';
+  src: url('fonts/TipoType-TrasandinaBlack-Italic.otf') format('opentype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Tipotype-Trasandina';
+  src: url('fonts/TipoType-TrasandinaUltra-Italic.otf') format('opentype');
+  font-weight: 900;
+  font-style: italic;
+}
+
+body, html {
+  font-family: 'Tipotype-Trasandina', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Tipotype-Trasandina', sans-serif;
+}
