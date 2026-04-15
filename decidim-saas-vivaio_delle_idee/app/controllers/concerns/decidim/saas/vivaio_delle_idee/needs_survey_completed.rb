@@ -6,8 +6,6 @@ module Decidim
       module NeedsSurveyCompleted
         extend ActiveSupport::Concern
 
-        ONBOARDING_SURVEY_ID = 26
-
         included do
           before_action :onboarding_survey_completed_by_user
         end
@@ -44,8 +42,11 @@ module Decidim
           @onboarding_survey ||= Decidim::Surveys::Survey
                                  .joins(:component)
                                  .joins(assembly_join)
+                                 .where.not(decidim_components: { published_at: nil })
+                                 .where.not(decidim_assemblies: { published_at: nil })
                                  .where(decidim_assemblies: { decidim_organization_id: current_organization.id })
-                                 .find_by(id: ONBOARDING_SURVEY_ID)
+                                 .order("decidim_components.weight ASC, decidim_surveys_surveys.id ASC")
+                                 .first
         end
 
         def onboarding_survey_path
