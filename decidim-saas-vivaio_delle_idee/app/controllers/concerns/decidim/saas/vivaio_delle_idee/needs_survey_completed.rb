@@ -6,7 +6,7 @@ module Decidim
       module NeedsSurveyCompleted
         extend ActiveSupport::Concern
 
-        ONBOARDING_SURVEY_ID = 3
+        ONBOARDING_SURVEY_ID = 26
 
         included do
           before_action :onboarding_survey_completed_by_user

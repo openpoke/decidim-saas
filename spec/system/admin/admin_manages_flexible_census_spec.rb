@@ -3,7 +3,7 @@
 require "rails_helper"
 require "decidim/elections/test/factories"
 
-describe "Admin manages flexible census" do # rubocop:disable RSpec/DescribeClass
+describe "Admin manages flexible census" do
   let(:manifest_name) { "elections" }
   let(:participatory_process) { create(:participatory_process, organization:) }
   let(:current_component) { create(:component, participatory_space: participatory_process, manifest_name: "elections") }

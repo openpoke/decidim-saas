@@ -65,6 +65,10 @@ module Decidim
         initializer "saas.vivaio_delle_idee.static_files" do |app|
           app.middleware.use ActionDispatch::Static, "#{root}/public"
         end
+
+        initializer "saas.vivaio_delle_idee.cell_views" do
+          Cell::ViewModel.view_paths.unshift File.expand_path("#{root}/app/cells")
+        end
       end
     end
   end

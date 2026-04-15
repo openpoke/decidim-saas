@@ -1,5 +1,10 @@
 it:
   decidim:
+    pages:
+      home:
+        hero:
+          welcome_up_text: "<u>CONFERENZA</u> PROGRAMMATICA <strong>NOVEMBRE '26</strong>"
+          welcome_down_text: "<strong>DOVE:</strong> Roma"
     saas:
       vivaio_delle_idee:
         needs_survey_completed:
