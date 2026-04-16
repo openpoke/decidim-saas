@@ -18,6 +18,8 @@ it:
       facilitator_or_editor:
         editor: Redattore
         facilitator: Facilitatore
+      force_extra_user_fields:
+        redirect_message: "Completa le informazioni del tuo profilo prima di continuare."
       relationship_with_avs:
         registered: "Iscritta/o"
         administrator: "Amministratore AVS"
