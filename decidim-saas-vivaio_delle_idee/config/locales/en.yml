@@ -1,10 +1,15 @@
 en:
   decidim:
+    content_blocks:
+      hero_settings_form:
+        welcome_up_text: "Hero text"
+        welcome_down_text: "Name of the city"
     pages:
       home:
         hero:
           welcome_up_text: "PROGRAMMATIC <u>CONFERENCE</u> <strong>NOVEMBER '26</strong>"
-          welcome_down_text: "<strong>WHERE:</strong> Rome"
+          welcome_down_text_help: "<strong>WHERE:</strong>"
+          welcome_down_text: Rome
     saas:
       vivaio_delle_idee:
         needs_survey_completed:

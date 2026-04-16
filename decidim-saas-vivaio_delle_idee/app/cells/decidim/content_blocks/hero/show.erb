@@ -5,9 +5,9 @@
         <%= t("decidim.pages.home.hero.welcome", organization: current_organization_name) %>
       <% else %>
         <div class="flex flex-col items-start">
-          <span class="text-sm md:text-2xl"><%= t("decidim.pages.home.hero.welcome_up_text") %></span>
+          <span class="text-sm md:text-2xl"><%= decidim_sanitize_admin(translated_welcome_up_text.presence || t("decidim.pages.home.hero.welcome_up_text")) %></span>
           <%= decidim_sanitize_admin translated_welcome_text %>
-          <p class="text-sm md:text-lg flex flex-row"><span class="pr-2"><%= icon "map-pin-line", class: "fill-current" %></span><span><%= t("decidim.pages.home.hero.welcome_down_text") %></span></p>
+          <p class="text-sm md:text-lg flex flex-row"><span class="pl-2"><%= icon "map-pin-line", class: "fill-current" %></span><span><%= t("decidim.pages.home.hero.welcome_down_text_help") %></span><span class="pl-2"><%= decidim_sanitize_admin(translated_welcome_down_text.presence || t("decidim.pages.home.hero.welcome_down_text")) %></span></p>
         </div>
       <% end %>
     </h1>

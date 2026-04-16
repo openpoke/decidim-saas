@@ -28,7 +28,7 @@ const initMunicipalitySelect = () => {
         allowEmptyOption: true,
         maxItems: 1,
         create: false,
-        placeholder: "Select your municipality"
+        placeholder: "Seleziona il tuo comune"
       });
 
       if (currentValue) {

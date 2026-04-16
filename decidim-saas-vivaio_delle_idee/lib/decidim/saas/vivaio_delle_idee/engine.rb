@@ -60,6 +60,16 @@ module Decidim
           Decidim::ApplicationController.class_eval do
             include Decidim::Saas::VivaioDelleIdee::NeedsSurveyCompleted
           end
+
+          Decidim::ContentBlocks::HeroCell.class_eval do
+            def translated_welcome_up_text
+              translated_attribute(model.settings.welcome_up_text)
+            end
+
+            def translated_welcome_down_text
+              translated_attribute(model.settings.welcome_down_text)
+            end
+          end
         end
 
         initializer "saas.vivaio_delle_idee.static_files" do |app|
@@ -68,6 +78,13 @@ module Decidim
 
         initializer "saas.vivaio_delle_idee.cell_views" do
           Cell::ViewModel.view_paths.unshift File.expand_path("#{root}/app/cells")
+        end
+
+        initializer "saas.vivaio_delle_idee.hero_content_block_settings", after: "decidim.core.content_blocks" do
+          Decidim.content_blocks.for(:homepage).find { |cb| cb.name == :hero }&.settings do |settings|
+            settings.attribute :welcome_up_text, type: :string, translated: true
+            settings.attribute :welcome_down_text, type: :string, translated: true
+          end
         end
       end
     end
