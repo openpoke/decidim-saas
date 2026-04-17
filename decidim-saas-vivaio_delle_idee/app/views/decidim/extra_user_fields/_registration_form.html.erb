@@ -15,4 +15,10 @@
   </div>
 <% end %>
 
+<% if current_organization.activated_extra_field?(:country) %>
+  <%= f.label :country do %>
+    <%= f.custom_country_select :country %>
+  <% end %>
+<% end %>
+
 <% append_javascript_pack_tag "decidim_saas_vivaio_delle_idee.js" %>

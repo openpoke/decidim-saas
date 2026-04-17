@@ -16,7 +16,7 @@ const initMunicipalitySelect = () => {
           const provincia = (row["Provincia"] || "").trim();
           const regione = (row["Regione"] || "").trim();
           const label = [comune, provincia, regione].filter(Boolean).join(" - ");
-          const value = JSON.stringify({ comune, regione, provincia });
+          const value = JSON.stringify({ comune, provincia, regione });
           return { label, value };
         });
 

@@ -49,14 +49,6 @@ module Decidim
         end
 
         config.to_prepare do
-          Decidim::RegistrationForm.class_eval do
-            private
-
-            def required_collection_fields
-              # Fields are completed later when the user fills in their profile
-            end
-          end
-
           Decidim::ApplicationController.class_eval do
             include Decidim::Saas::VivaioDelleIdee::NeedsSurveyCompleted
           end
