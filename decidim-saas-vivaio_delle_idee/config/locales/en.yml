@@ -27,7 +27,7 @@ en:
         elected_avs: "Elected AVS"
       select_fields:
         municipality_region_province:
-          label: "Municipality / Province / Region"
+          label: "Municipality/Province/Region"
         relationship_with_avs:
           label: Relationship with AVS
         facilitator_or_editor:

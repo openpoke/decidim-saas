@@ -9,7 +9,12 @@ const initMunicipalitySelect = () => {
   fetch("/comuni_regioni_province.json")
     .then((r) => r.json())
     .then((data) => {
-      const options = data
+      const options = [
+        {
+          label: "Risiedo all'estero",
+          value: "Risiedo all'estero"
+        }
+      ].concat(data
         .filter((row) => row["Comune"]?.trim())
         .map((row) => {
           const comune = row["Comune"].trim();
@@ -18,7 +23,7 @@ const initMunicipalitySelect = () => {
           const label = [comune, provincia, regione].filter(Boolean).join(" - ");
           const value = JSON.stringify({ comune, provincia, regione });
           return { label, value };
-        });
+        }));
 
       const ts = new TomSelect(el, {
         valueField: "value",
