@@ -17,3 +17,13 @@
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Tipotype-Trasandina', sans-serif !important;
 }
+
+// Custom styles for the Vivaio delle Idee Officials proposals
+.card__list.proposal--official, .proposal--official{
+  border: 2px solid green !important;
+}
+
+.card__list.proposal--official {
+  padding-top: 12px;
+  padding-bottom: 14px;
+}

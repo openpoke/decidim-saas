@@ -70,6 +70,42 @@ module Decidim
               translated_attribute(model.settings.welcome_down_text)
             end
           end
+
+          Decidim::Surveys::SurveysController.class_eval do
+            def after_response_path
+              if onboarding_assembly_survey?
+                decidim_assemblies.assembly_path(Decidim::Assembly.find_by(slug: ENV.fetch("ASSEMBLY_SLUG", nil), organization: current_organization))
+              else
+                questionnaire_for
+              end
+            end
+
+            private
+
+            def onboarding_assembly_survey?
+              questionnaire_for.component.participatory_space_type == "Decidim::Assembly"
+            end
+          end
+
+          Decidim::Proposals::ProposalLCell.class_eval do
+            private
+
+            def extra_class
+              model.official? ? "proposal--official" : "proposal--participant"
+            end
+          end
+
+          Decidim::Proposals::ProposalGCell.class_eval do
+            private
+
+            def classes
+              extra = model.official? ? "proposal--official" : "proposal--participant"
+              super.merge(
+                metadata: "card__list-metadata",
+                default: "#{super[:default]} #{extra}"
+              )
+            end
+          end
         end
 
         initializer "saas.vivaio_delle_idee.static_files" do |app|

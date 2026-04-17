@@ -22,20 +22,22 @@ it:
         redirect_message: "Completa le informazioni del tuo profilo prima di continuare."
       relationship_with_avs:
         registered: "Iscritta/o"
-        administrator: "Amministratore AVS"
+        administrator: "Amministratore/trice AVS"
         citizen: "Cittadina/o"
         expert: "Esperta/o"
         sympathizer: "Simpatizzante"
-        elected_avs: "Eletto AVS"
+        elected_avs: "Eletto/a AVS"
       select_fields:
         municipality_region_province:
           label: "Comune / Regione / Provincia"
         relationship_with_avs:
           label: Relazione con AVS
         facilitator_or_editor:
-          label: Disponibilità (Facilitatore / Redattore)
+          label: Voglio contribuire attivamente
         territorial_availability:
-          label: Disponibilità territoriale
+          label: Voglio lavorare sul territorio
+        priority_themes:
+          label: Temi prioritari
       territorial_availability:
         affirmative_yes: "Si"
         negative_no: "No"

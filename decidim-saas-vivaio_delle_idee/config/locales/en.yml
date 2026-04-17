@@ -36,6 +36,8 @@ en:
             Facilitator / Editor
         territorial_availability:
           label: Territorial availability
+        priority_themes:
+          label: Priority themes
       territorial_availability:
         affirmative_yes: "Yes"
         negative_no: "No"
