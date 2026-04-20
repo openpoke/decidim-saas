@@ -1,5 +1,12 @@
 it:
   decidim:
+    navigation:
+      home: Home
+      assemblies: II Vivaio
+      contact: Contatti
+      events: Eventi
+      help: Cosa puoi fare tu
+      blog: News
     content_blocks:
       hero_settings_form:
         welcome_up_text: "Testo dell'hero"

@@ -1,0 +1,3 @@
+<!-- replace_contents ".main-bar__links-desktop" -->
+
+<%= render partial: "layouts/decidim/header/custom_main_links_desktop" %>

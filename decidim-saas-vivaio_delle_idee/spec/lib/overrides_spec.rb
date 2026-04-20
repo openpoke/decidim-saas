@@ -15,7 +15,8 @@ checksums = [
       "/app/views/decidim/devise/registrations/new.html.erb" => "861b8821bbdc05e7b337fcdb921415ba",
       "/app/cells/decidim/content_blocks/hero/show.erb" => "85d3a88758fb689681e3210d01f39ea1",
       "/app/cells/decidim/content_blocks/hero/cta_button.erb" => "60210020a582198f0048d9c3890f552c",
-      "/app/cells/decidim/content_blocks/hero_settings_form/show.erb" => "7eeb24f48f72cf2cb67a58ac9f621ad3"
+      "/app/cells/decidim/content_blocks/hero_settings_form/show.erb" => "7eeb24f48f72cf2cb67a58ac9f621ad3",
+      "/app/views/layouts/decidim/header/_main.html.erb" => "a090eeca739613446d2eab8f4de513b1"
     }
   },
   {
