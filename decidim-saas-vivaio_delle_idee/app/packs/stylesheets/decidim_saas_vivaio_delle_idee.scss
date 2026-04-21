@@ -20,10 +20,13 @@ h1, h2, h3, h4, h5, h6 {
 
 // Custom styles for the Vivaio delle Idee Officials proposals
 .card__list.proposal--official, .proposal--official{
-  border: 2px solid green !important;
+  border: 2px solid #93FF45 !important;
 }
 
 .card__list.proposal--official {
-  padding-top: 12px;
-  padding-bottom: 14px;
+  @apply pt-[12px] pb-[14px];
+}
+
+.scroll-snap > div {
+  @apply h-screen;
 }

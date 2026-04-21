@@ -7,7 +7,7 @@
 
   <div>
     <% if Decidim.module_installed?(:assemblies) %>
-      <%= link_to decidim_assemblies.assemblies_path, class: "main-bar__links-desktop__item", "aria-label": t("decidim.navigation.assemblies") do %>
+      <%= link_to "/assemblies/#{ENV["ASSEMBLY_SLUG"]}", class: "main-bar__links-desktop__item", "aria-label": t("decidim.navigation.assemblies") do %>
         <span class="size-max"><%= t("decidim.navigation.assemblies") %></span>
       <% end %>
     <% end %>
@@ -34,11 +34,8 @@
   </div>
 
   <div>
-    <% onboarding_survey = Decidim::Surveys::Survey.find_by(id: ENV.fetch("ONBOARDING_SURVEY_ID", nil)) %>
-    <% if onboarding_survey %>
-      <%= link_to Decidim::EngineRouter.main_proxy(onboarding_survey.component).survey_path(onboarding_survey), class: "main-bar__links-desktop__item", "aria-label": t("decidim.navigation.contact") do %>
-        <span class="size-max"><%= t("decidim.navigation.contact") %></span>
-      <% end %>
+    <%= link_to "/assemblies/#{ENV["ASSEMBLY_SLUG"]}/f/13/surveys/2", class: "main-bar__links-desktop__item", "aria-label": t("decidim.navigation.contact") do %>
+      <span class="size-max"><%= t("decidim.navigation.contact") %></span>
     <% end %>
   </div>
 </div>

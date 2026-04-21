@@ -1,0 +1,187 @@
+<% form.fields_for :settings, form.object.settings do |settings_fields| %>
+  <div class="row column">
+    <div class="card" data-controller="accordion" id="accordion-block1">
+      <div class="card-divider">
+        <button class="card-divider-button" data-open="true" data-controls="panel-block1" type="button">
+          <%= icon "arrow-right-s-line" %>
+          <h2 class="card-title" id="block1">
+            <%= t("decidim.content_blocks.vertical_scroll.block_1.title") %>
+          </h2>
+        </button>
+      </div>
+      <div id="panel-block1" class="card-section">
+        <div class="row column">
+          <%= settings_fields.text_field :title_block1, label: t("decidim.content_blocks.vertical_scroll_settings_form.block_1.title") %>
+        </div>
+
+        <div class="row column">
+          <%= settings_fields.translated :editor, :description_block1, label: t("decidim.content_blocks.vertical_scroll_settings_form.block_1.description") %>
+        </div>
+
+        <div class="row column">
+          <%= settings_fields.text_field :participate_button_block1_url, label: t("decidim.content_blocks.vertical_scroll_settings_form.block_1.participate_button_url") %>
+        </div>
+
+        <div class="row column">
+          <%= settings_fields.text_field :fqa_button_block1_url, label: t("decidim.content_blocks.vertical_scroll_settings_form.block_1.fqa_button_url") %>
+        </div>
+
+        <div class="row column">
+          <%= settings_fields.text_field :block1_extra_text, label: t("decidim.content_blocks.vertical_scroll_settings_form.block_1.extra_text") %>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-controller="accordion" id="accordion-block2">
+      <div class="card-divider">
+        <button class="card-divider-button" data-open="true" data-controls="panel-block2" type="button">
+          <%= icon "arrow-right-s-line" %>
+          <h2 class="card-title" id="block2">
+            <%= t("decidim.content_blocks.vertical_scroll.block_2.title") %>
+          </h2>
+        </button>
+      </div>
+      <div id="panel-block2" class="card-section">
+        <div class="row column">
+          <%= settings_fields.text_field :title_block2, label: t("decidim.content_blocks.vertical_scroll_settings_form.block_1.title") %>
+        </div>
+
+        <div class="row column">
+          <%= settings_fields.translated :editor, :description_block2, label: t("decidim.content_blocks.vertical_scroll_settings_form.block_1.description") %>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-controller="accordion" id="accordion-block3">
+      <div class="card-divider">
+        <button class="card-divider-button" data-open="true" data-controls="panel-block3" type="button">
+          <%= icon "arrow-right-s-line" %>
+          <h2 class="card-title" id="block3">
+            <%= t("decidim.content_blocks.vertical_scroll.block_3.title") %>
+          </h2>
+        </button>
+      </div>
+      <div id="panel-block3" class="card-section">
+        <div class="row column">
+          <%= settings_fields.text_field :title_block3, label: t("decidim.content_blocks.vertical_scroll_settings_form.block_1.title") %>
+        </div>
+
+        <div class="row column">
+          <%= settings_fields.translated :editor, :description_block3, label: t("decidim.content_blocks.vertical_scroll_settings_form.block_1.description") %>
+        </div>
+
+        <div class="row column">
+          <%= settings_fields.text_field :participate_button_block3_url, label: t("decidim.content_blocks.vertical_scroll_settings_form.block_1.participate_button_url") %>
+        </div>
+
+        <div class="row column">
+          <%= settings_fields.text_field :themes_button_block3_url, label: t("decidim.content_blocks.vertical_scroll_settings_form.block_3.themes_button_url") %>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-controller="accordion" id="accordion-block4">
+      <div class="card-divider">
+        <button class="card-divider-button" data-open="true" data-controls="panel-block4" type="button">
+          <%= icon "arrow-right-s-line" %>
+          <h2 class="card-title" id="block4">
+            <%= t("decidim.content_blocks.vertical_scroll.block_4.title") %>
+          </h2>
+        </button>
+      </div>
+      <div id="panel-block4" class="card-section">
+        <div class="row column">
+          <%= settings_fields.text_field :title_block4, label: t("decidim.content_blocks.vertical_scroll_settings_form.block_1.title") %>
+        </div>
+
+        <div class="row column">
+          <%= settings_fields.translated :editor, :description_block4, label: t("decidim.content_blocks.vertical_scroll_settings_form.block_1.description") %>
+        </div>
+
+        <div class="row column">
+          <%= settings_fields.text_field :participate_button_block4_url, label: t("decidim.content_blocks.vertical_scroll_settings_form.block_1.participate_button_url") %>
+        </div>
+
+        <div class="row column">
+          <%= settings_fields.text_field :fqa_button_block4_url, label: t("decidim.content_blocks.vertical_scroll_settings_form.block_1.fqa_button_url") %>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-controller="accordion" id="accordion-block5">
+        <div class="card-divider">
+          <button class="card-divider-button" data-open="true" data-controls="panel-block5" type="button">
+            <%= icon "arrow-right-s-line" %>
+            <h2 class="card-title" id="block5">
+              <%= t("decidim.content_blocks.vertical_scroll.block_5.title") %>
+            </h2>
+          </button>
+        </div>
+        <div id="panel-block5" class="card-section">
+          <div class="row column">
+            <%= settings_fields.text_field :title_block5, label: t("decidim.content_blocks.vertical_scroll_settings_form.block_1.title") %>
+          </div>
+
+          <div class="row column">
+            <%= settings_fields.translated :editor, :description_block5, label: t("decidim.content_blocks.vertical_scroll_settings_form.block_1.description") %>
+          </div>
+      </div>
+    </div>
+
+    <div class="card" data-controller="accordion" id="accordion-block6">
+      <div class="card-divider">
+        <button class="card-divider-button" data-open="true" data-controls="panel-block6" type="button">
+          <%= icon "arrow-right-s-line" %>
+          <h2 class="card-title" id="block6">
+            <%= t("decidim.content_blocks.vertical_scroll.block_6.title") %>
+          </h2>
+        </button>
+      </div>
+      <div id="panel-block6" class="card-section">
+        <div class="row column">
+          <%= settings_fields.text_field :title_block6, label: t("decidim.content_blocks.vertical_scroll_settings_form.block_1.title") %>
+        </div>
+
+        <div class="row column">
+          <%= settings_fields.translated :editor, :description_block6, label: t("decidim.content_blocks.vertical_scroll_settings_form.block_1.description") %>
+        </div>
+
+        <div class="row column">
+          <%= settings_fields.text_field :participate_button_block6_url, label: t("decidim.content_blocks.vertical_scroll_settings_form.block_1.participate_button_url") %>
+        </div>
+
+        <div class="row column">
+          <%= settings_fields.text_field :themes_button_block6_url, label: t("decidim.content_blocks.vertical_scroll_settings_form.block_3.themes_button_url") %>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-controller="accordion" id="accordion-block7">
+      <div class="card-divider">
+        <button class="card-divider-button" data-open="true" data-controls="panel-block7" type="button">
+          <%= icon "arrow-right-s-line" %>
+          <h2 class="card-title" id="block7">
+            <%= t("decidim.content_blocks.vertical_scroll.block_7.title") %>
+          </h2>
+        </button>
+      </div>
+      <div id="panel-block7" class="card-section">
+        <div class="row column">
+          <%= settings_fields.text_field :title_block7, label: t("decidim.content_blocks.vertical_scroll_settings_form.block_1.title") %>
+        </div>
+
+        <div class="row column">
+          <%= settings_fields.translated :editor, :description_block7, label: t("decidim.content_blocks.vertical_scroll_settings_form.block_1.description") %>
+        </div>
+
+        <div class="row column">
+          <%= settings_fields.text_field :participate_button_block7_url, label: t("decidim.content_blocks.vertical_scroll_settings_form.block_1.participate_button_url") %>
+        </div>
+
+        <div class="row column">
+          <%= settings_fields.text_field :themes_button_block7_url, label: t("decidim.content_blocks.vertical_scroll_settings_form.block_3.themes_button_url") %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

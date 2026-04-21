@@ -2,7 +2,7 @@ en:
   decidim:
     navigation:
       home: Home
-      assemblies: II Vivaio
+      assemblies: Il Vivaio
       contact: Contact
       events: Events
       help: Pages
@@ -11,6 +11,92 @@ en:
       hero_settings_form:
         welcome_up_text: "Hero text"
         welcome_down_text: "Name of the city"
+      vertical_scroll_settings_form:
+        block_1:
+          title: Title
+          description: Description
+          participate_button_url: Participate button URL
+          fqa_button_url: FQA button URL
+          extra_text: Extra text
+        block_3:
+          themes_button_url: Themes button URL
+      vertical_scroll:
+        name: "Vertical scroll"
+        block_1:
+          button_extra_text: "Buttons:"
+          title: What choices are really needed to improve Italy in the next five years?
+          description: With Decidiamo, citizens help AVS decide what the priorities are for our future, thanks to shared proposals, open discussion and public and traceable interaction.
+          participate_button_text: Participate 
+          fqa_button_text: How it works
+          extra_text: An open, transparent, and participatory platform to jointly build the program for the upcoming political elections.
+        block_2:
+          title: What is II Vivaio delle Idee?
+          description: |-
+            Too often, programs are read only at the end, once they've already been written.<br><br>
+            <strong>Decidiamo</strong> was born with a completely different spirit: opening the discussion first, listening to those who experience real problems firsthand every day, gathering proposals, improving them together, and transforming them into political choices.
+            For us, participating doesn't mean filling a bulletin board with opinions. It means <strong>developing a method</strong>, discussing the merits, and building a stronger, more useful, and fairer program. For us, participating doesn't mean filling a bulletin board with opinions; it means working collectively.<br><br>
+            <strong>It doesn't matter who writes the most. What matters is who helps us build better.</strong>
+        block_3:
+          title: How to participate?
+          description: |-
+            <strong>1. Choose your priorities</strong><br><br>
+            Deal with the issues you consider most urgent for the country's future: climate, jobs, rights, health, education, housing, mobility, welfare, peace, democracy, and many others.<br><br>
+            <strong>2. Make a proposal</strong><br><br>
+            Bring a concrete idea, a local need, a possible solution. Even a few lines can be the start of an important proposal.<br><br>
+            <strong>3. Comment and help us improve</strong><br><br>
+            Proposals are discussed, commented on, and can be amended and strengthened. Discussion helps bring out the best ideas, not create noise.<br><br>
+            <strong>4. Follow the process to synthesis</strong><br><br>
+            Every useful contribution enters a transparent process of reading, discussion, and synthesis. This way, you can see how the ideas collected don't end up in an empty container or without answers, but contribute to the construction of the final program.<br><br>
+            This means one simple thing:<br>
+            <strong>Those who participate can understand not only what they propose, but also how the proposals are used.</strong>
+          themes_button_text: See the themes
+        block_4:
+          title: Why participate?
+          description: |-
+            Because the future cannot be delegated in silence.<br>
+            Because those who experience the problems often also know the solutions.<br>
+            Because a more credible program is born from the intersection of political vision and concrete experience.<br>
+            Because we need a more just, ecological, free, and people-friendly Italy.<br>
+            Because deciding together is the best way to begin truly changing things.<br>
+        block_5:
+          title: This platform is open to everyone
+          description: |-
+            For those with a specific proposal.<br>
+            For those who want to highlight a priority.<br>
+            For those starting from a concrete problem in their local area.<br>
+            For those who believe that the environment and social justice must go hand in hand.<br>
+            For those who want to contribute, even without being an expert.<br><br>
+            Ideas are needed.<br>
+            Experiences, needs, solutions.<br>
+        block_6:
+          title: Where do we start from?
+          description: |-
+            Thanks to Decidiamo, you can help define the major issues that affect all of our lives and the future of the country, including:<br><br>
+            - Climate and energy<br>
+            - Territory, cities, housing and common goods, participation, democracy<br>
+            - Mobility<br>
+            - Circular economy and zero waste<br>
+            - Work<br>
+            - Business and industrial policy<br>
+            - Fair taxation and the fight against inequality<br>
+            - Rights, equality and freedom<br>
+            - Health, local healthcare and pollution<br>
+            - Schools, universities, culture and knowledge<br>
+            - Legality, transparency and eco-mafias<br>
+            - Migration, reception and a Europe of rights<br>
+            - Peace, foreign policy and Europe<br>
+            - Artificial intelligence & digitalization, innovation<br>
+            - Welfare, local authorities and internal areas<br>
+            - Agriculture, biodiversity and animal rights
+        block_7:
+          title: The program isn't just announced. It's built together.
+          description: |-
+            The next elections aren't prepared with empty formulas or ready-made slogans.<br>
+            They're prepared by sharing ideas, needs, skills, conflicts, and visions.<br><br>
+            Let's <strong>decide</strong> is the space where all this can become a political proposal.<br>
+            Methodically. Transparently. Responsibly.<br><br>
+            <strong>Join in, participate, propose.</strong><br>
+            Because the program we want must also come from you.
     pages:
       home:
         hero:
