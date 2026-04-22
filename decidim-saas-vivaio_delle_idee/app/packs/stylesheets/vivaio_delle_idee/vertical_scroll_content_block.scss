@@ -4,7 +4,7 @@
 
 .scroll-snap {
   &__blocks {
-  @apply flex flex-col md:pt-[8rem] relative;
+  @apply flex flex-col pt-[2rem] md:pt-[8rem] relative;
 
     &::before {
       content: '';
@@ -13,7 +13,7 @@
   }
 
   &__big-blocks {
-    @apply flex flex-col gap-2 md:pt-[2rem] relative font-semibold text-[20px]/[26px];
+    @apply flex flex-col gap-2 pt-[2rem] relative font-semibold text-[20px]/[26px];
 
     &::before {
       content: '';

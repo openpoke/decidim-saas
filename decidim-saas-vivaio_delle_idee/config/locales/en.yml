@@ -1,4 +1,12 @@
 en:
+  activemodel:
+    attributes:
+      content_block_attachment:
+        block1_image: Block image
+        block2_image: Block image
+        block4_image: Block image
+        block5_image: Block image
+        block7_image: Block image
   decidim:
     navigation:
       home: Home
@@ -17,6 +25,7 @@ en:
           participate_button_url: Participate button URL
           fqa_button_url: FQA button URL
           extra_text: Extra text
+          block1_image: Add image
         block_3:
           themes_button_url: Themes button URL
       vertical_scroll:

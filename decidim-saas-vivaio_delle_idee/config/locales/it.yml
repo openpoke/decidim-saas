@@ -1,4 +1,12 @@
 it:
+  activemodel:
+    attributes:
+      content_block_attachment:
+        block1_image: Block immagine
+        block2_image: Block immagine
+        block4_image: Block immagine
+        block5_image: Block immagine
+        block7_image: Block immagine
   decidim:
     navigation:
       home: Home
@@ -17,6 +25,7 @@ it:
           participate_button_url: URL del pulsante Partecipa
           fqa_button_url: URL del pulsante Come funziona
           extra_text: Testo extra
+          block1_image: Aggiungi immagine
         block_3:
           themes_button_url: URL del pulsante Temi
       vertical_scroll:
