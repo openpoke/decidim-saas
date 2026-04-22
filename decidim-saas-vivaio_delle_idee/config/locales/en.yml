@@ -10,7 +10,6 @@ en:
     content_blocks:
       hero_settings_form:
         welcome_up_text: "Hero text"
-        welcome_down_text: "Name of the city"
       vertical_scroll_settings_form:
         block_1:
           title: Title

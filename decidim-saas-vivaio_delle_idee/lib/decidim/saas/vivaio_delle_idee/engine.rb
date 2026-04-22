@@ -57,10 +57,6 @@ module Decidim
             def translated_welcome_up_text
               translated_attribute(model.settings.welcome_up_text)
             end
-
-            def translated_welcome_down_text
-              translated_attribute(model.settings.welcome_down_text)
-            end
           end
 
           Decidim::Surveys::SurveysController.class_eval do
