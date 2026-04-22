@@ -1,0 +1,8 @@
+// Custom styles for the Vivaio delle Idee Officials proposals
+.card__list.proposal--official, .proposal--official{
+  border: 2px solid #93FF45 !important;
+}
+
+.card__list.proposal--official {
+  @apply pt-[12px] pb-[14px];
+}

@@ -2,7 +2,7 @@ it:
   decidim:
     navigation:
       home: Home
-      assemblies: Il Vivaio
+      assemblies: Il vivaio
       contact: Contatti
       events: Eventi
       help: Cosa puoi fare tu
@@ -40,13 +40,13 @@ it:
         block_3:
           title: Come funziona
           description: |-
-            <strong>1. Scegli le priorità</strong><br><br>
+            <strong>1. Scegli le priorità</strong><br>
             Entra nei temi che ritieni più urgenti per il futuro del Paese: clima, lavoro, diritti, salute, scuola, casa, mobilità, welfare, pace, democrazia e molti altri.<br><br>
-            <strong>2. Fai una proposta</strong><br><br>
+            <strong>2. Fai una proposta</strong><br>
             Porta un'idea concreta, un bisogno del tuo territorio, una soluzione possibile. Anche poche righe possono essere l'inizio di una proposta importante.<br><br>
-            <strong>3. Commenta e aiutaci a migliorare</strong><br><br>
+            <strong>3. Commenta e aiutaci a migliorare</strong><br>
             Le proposte si discutono, si commentano, si possono emendare e rafforzare. Il confronto serve a far emergere le idee migliori,  non a fare rumore.<br><br>
-            <strong>4. Segui il percorso fino alla sintesi</strong><br><br>
+            <strong>4. Segui il percorso fino alla sintesi</strong><br>
             Ogni contributo utile entra in un percorso trasparente di lettura, confronto e sintesi. Così puoi vedere come le idee raccolte non finiscono in un contenitore vuoto o senza risposte, ma contribuiscono alla costruzione del programma finale.<br><br>
             Questo significa una cosa semplice:<br>
             <strong>chi partecipa può capire non solo cosa propone, ma anche che uso viene fatto delle proposte.</strong>
@@ -72,7 +72,7 @@ it:
         block_6:
           title: Da dove partiamo
           description: |-
-            "Grazie a Decidiamo puoi contribuire a definire i  grandi temi che riguardano le vite di tutte e tutti noi e il futuro del Paese, tra cui:<br><br>
+            Grazie a Decidiamo puoi contribuire a definire i  grandi temi che riguardano le vite di tutte e tutti noi e il futuro del Paese, tra cui:<br><br>
             - Clima ed energia <br>
             - Territorio, città, casa e beni comuni, partecipazione, democrazia <br>
             - Mobilità <br>
@@ -88,7 +88,7 @@ it:
             - Pace, politica estera ed Europa<br>
             - Intelligenza artificiale & digitalizzazione, innovazione<br>
             - Welfare, enti locali e aree interne<br>
-            - Agricoltura, biodiversità e diritti degli animali"
+            - Agricoltura, biodiversità e diritti degli animali
         block_7:
           title: Il programma non si annuncia soltanto. Si costruisce insieme.Contattaci
           description: |-

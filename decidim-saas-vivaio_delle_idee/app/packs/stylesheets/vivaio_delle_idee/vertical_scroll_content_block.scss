@@ -1,0 +1,47 @@
+.scroll-snap > div {
+  @apply h-screen;
+}
+
+.scroll-snap {
+  &__blocks {
+  @apply flex flex-col md:pt-[8rem] relative;
+
+    &::before {
+      content: '';
+      @apply absolute inset-y-0 left-[50%] -ml-[50vw]  w-screen bg-inherit -z-10;
+    }
+  }
+
+  &__big-blocks {
+    @apply flex flex-col gap-2 md:pt-[2rem] relative font-semibold text-[20px]/[26px];
+
+    &::before {
+      content: '';
+      @apply absolute inset-y-0 left-[50%] -ml-[50vw]  w-screen bg-inherit -z-10;
+    }
+  }
+
+  &__block {
+    @apply flex flex-col md:flex-row gap-1 md:gap-10 font-semibold text-[20px]/[26px] overflow-hidden;
+  }
+
+  &__block1-description, &__block4-description, &__block7-description {
+    @apply mt-[2rem] md:mt-[8rem];
+  }
+
+  &__block2-description {
+    @apply mt-[1.5rem] md:mt-[10rem];
+  }
+
+  &__block3-description, &__block6-description {
+    @apply mt-[1rem] md:mt-[8rem] overflow-y-auto md:overflow-hidden;
+  }
+
+  &__block5-description {
+    @apply mt-[2rem] md:mt-[16rem];
+  }
+
+  &__buttons {
+    @apply flex gap-4 my-[2rem] md:my-[4rem];
+  }
+}

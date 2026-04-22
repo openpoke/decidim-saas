@@ -1,32 +1,4 @@
 @use "tom-select/dist/scss/tom-select";
-
-@font-face {
-  font-family: 'Tipotype-Trasandina';
-  src: url('fonts/TipoType-TrasandinaBlack-Italic.otf') format('opentype');
-  font-weight: bold;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: 'Tipotype-Trasandina';
-  src: url('fonts/TipoType-TrasandinaUltra-Italic.otf') format('opentype');
-  font-weight: 900;
-  font-style: italic;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Tipotype-Trasandina', sans-serif !important;
-}
-
-// Custom styles for the Vivaio delle Idee Officials proposals
-.card__list.proposal--official, .proposal--official{
-  border: 2px solid #93FF45 !important;
-}
-
-.card__list.proposal--official {
-  @apply pt-[12px] pb-[14px];
-}
-
-.scroll-snap > div {
-  @apply h-screen;
-}
+@use "stylesheets/vivaio_delle_idee/body";
+@use "stylesheets/vivaio_delle_idee/proposals";
+@use "stylesheets/vivaio_delle_idee/vertical_scroll_content_block";
