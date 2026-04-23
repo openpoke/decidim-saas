@@ -39,6 +39,16 @@
 
   &__block3-description, &__block6-description {
     @apply mt-[1rem] md:mt-[8rem] overflow-y-auto md:overflow-hidden;
+
+    // Keep inner scrolling behavior but hide visual scrollbar tracks.
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+      display: none;
+    }
   }
 
   &__block5-description {
