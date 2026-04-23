@@ -6,6 +6,10 @@
   &__blocks {
   @apply flex flex-col pt-[2rem] md:pt-[8rem] relative;
 
+  img {
+    @apply w-full h-full object-cover;
+  }
+
     &::before {
       content: '';
       @apply absolute inset-y-0 left-[50%] -ml-[50vw]  w-screen bg-inherit -z-10;
