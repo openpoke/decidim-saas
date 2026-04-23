@@ -116,8 +116,6 @@ it:
       home:
         hero:
           welcome_up_text: "<u>CONFERENZA</u> PROGRAMMATICA <strong>NOVEMBRE '26</strong>"
-          welcome_down_text_help: "<strong>DOVE:</strong>"
-          welcome_down_text: Roma
     saas:
       vivaio_delle_idee:
         needs_survey_completed:

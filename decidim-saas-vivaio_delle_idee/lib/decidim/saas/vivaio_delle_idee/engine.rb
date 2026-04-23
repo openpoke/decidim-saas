@@ -109,7 +109,6 @@ module Decidim
         initializer "saas.vivaio_delle_idee.hero_content_block_settings", after: "decidim.core.content_blocks" do
           Decidim.content_blocks.for(:homepage).find { |cb| cb.name == :hero }&.settings do |settings|
             settings.attribute :welcome_up_text, type: :string, translated: true
-            settings.attribute :welcome_down_text, type: :string, translated: true
           end
         end
       end
