@@ -49,6 +49,8 @@ module Decidim
         end
 
         config.to_prepare do
+          Decidim.icons.register(name: "chat-1-fill", icon: "chat-1-fill", category: "system", description: "", engine: :core)
+
           Decidim::ApplicationController.class_eval do
             include Decidim::Saas::VivaioDelleIdee::NeedsSurveyCompleted
           end

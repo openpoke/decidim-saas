@@ -12,11 +12,17 @@ checksums = [
       # layouts
       "/app/views/layouts/decidim/_head.html.erb" => "0faa190f7a4b3db401ffcdfc3d063802",
       "/app/views/decidim/devise/omniauth_registrations/new.html.erb" => "b972ec211ff96702d449cf6c8846a613",
-      "/app/views/decidim/devise/registrations/new.html.erb" => "4a64a07b83678fa5360ded05e2bfd96c",
+      "/app/views/decidim/devise/registrations/new.html.erb" => "861b8821bbdc05e7b337fcdb921415ba",
       "/app/cells/decidim/content_blocks/hero/show.erb" => "85d3a88758fb689681e3210d01f39ea1",
       "/app/cells/decidim/content_blocks/hero/cta_button.erb" => "60210020a582198f0048d9c3890f552c",
       "/app/cells/decidim/content_blocks/hero_settings_form/show.erb" => "7eeb24f48f72cf2cb67a58ac9f621ad3",
       "/app/views/layouts/decidim/header/_main.html.erb" => "a090eeca739613446d2eab8f4de513b1"
+    }
+  },
+  {
+    package: "decidim-blogs",
+    files: {
+      "/app/views/decidim/blogs/posts/index.html.erb" => "2fc2036897ca9144d1bede33477470db"
     }
   },
   {

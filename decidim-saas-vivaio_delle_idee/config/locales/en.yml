@@ -8,6 +8,12 @@ en:
         block5_image: Block image
         block7_image: Block image
   decidim:
+    blogs:
+      posts:
+        index:
+          count:
+            one: The latest news from Vivaio
+            other: The latest news from Vivaio
     navigation:
       home: Home
       assemblies: Il Vivaio

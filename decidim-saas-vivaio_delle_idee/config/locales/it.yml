@@ -8,6 +8,12 @@ it:
         block5_image: Block immagine
         block7_image: Block immagine
   decidim:
+    blogs:
+      posts:
+        index:
+          count:
+            one: Le ultime notizie dal Vivaio
+            other: Le ultime notizie dal Vivaio
     navigation:
       home: Home
       assemblies: Il vivaio
