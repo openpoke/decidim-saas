@@ -9,6 +9,14 @@ it:
         block7_image: Block immagine
   decidim:
     blogs:
+      content_blocks:
+        highlighted_posts:
+          last_published: Ultimi pubblicati
+          see_all: Leggi tutti i post
+      models:
+        post:
+          fields:
+            official_blog_post: Post ufficiale
       posts:
         index:
           count:
@@ -49,7 +57,7 @@ it:
             Troppo spesso i programmi si leggono solo alla fine, quando sono già stati scritti.
             <strong>Decidiamo</strong> nasce con uno spirito totalmente differente: aprire prima il confronto, ascoltare chi vive ogni giorno in prima persona problemi reali, raccogliere proposte, migliorarle insieme e trasformarle in scelte politiche.<br><br>
             Per noi partecipare non significa riempire una bacheca di opinioni.
-            Significa <strong>darsi un metodo</strong>, discutere nel merito e costruire un programma più forte, più utile, più giusto. Per noi partecipare non significa riempire una bacheca di opinioni, significa lavorare collettivamente.<br><br>
+            Significa <strong>darsi un metodo</strong>, discutere nel merito e costruire un programma più forte, più utile, più giusto.<br><br> Per noi partecipare non significa riempire una bacheca di opinioni, significa lavorare collettivamente.<br><br>
             <strong>Non conta chi scrive di più. Conta chi aiuta a costruire meglio.</strong>
         block_3:
           title: Come funziona
@@ -104,7 +112,7 @@ it:
             - Welfare, enti locali e aree interne<br>
             - Agricoltura, biodiversità e diritti degli animali
         block_7:
-          title: Il programma non si annuncia soltanto. Si costruisce insieme.Contattaci
+          title: Il programma non si annuncia soltanto. Si costruisce insieme. Contattaci
           description: |-
             Le prossime elezioni non si preparano con formule vuote o slogan già pronti.<br>
             Si preparano mettendo in comune idee, bisogni, competenze, conflitti, visioni.<br><br>
@@ -157,3 +165,7 @@ it:
           label: "Cognome"
         organization_or_group:
           label: "Organizzazione / Gruppo"
+  layouts:
+    decidim:
+      announcements:
+        view_less: Mostra meno

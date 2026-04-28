@@ -14,13 +14,16 @@ en:
           count:
             one: The latest news from Vivaio
             other: The latest news from Vivaio
+    components:
+      blogs:
+        name: News
     navigation:
       home: Home
       assemblies: Il Vivaio
       contact: Contact
       events: Events
       help: Pages
-      blog: Blog
+      blog: News
     content_blocks:
       hero_settings_form:
         welcome_up_text: "Hero text"
@@ -48,7 +51,7 @@ en:
           description: |-
             Too often, programs are read only at the end, once they've already been written.<br><br>
             <strong>Decidiamo</strong> was born with a completely different spirit: opening the discussion first, listening to those who experience real problems firsthand every day, gathering proposals, improving them together, and transforming them into political choices.
-            For us, participating doesn't mean filling a bulletin board with opinions. It means <strong>developing a method</strong>, discussing the merits, and building a stronger, more useful, and fairer program. For us, participating doesn't mean filling a bulletin board with opinions; it means working collectively.<br><br>
+            For us, participating doesn't mean filling a bulletin board with opinions. It means <strong>developing a method</strong>, discussing the merits, and building a stronger, more useful, and fairer program.<br><br> For us, participating doesn't mean filling a bulletin board with opinions; it means working collectively.<br><br>
             <strong>It doesn't matter who writes the most. What matters is who helps us build better.</strong>
         block_3:
           title: How to participate?
