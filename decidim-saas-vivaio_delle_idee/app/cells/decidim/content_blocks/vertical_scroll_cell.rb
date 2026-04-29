@@ -72,23 +72,23 @@ module Decidim
       end
 
       def block1_image
-        model.images_container.attached_uploader(:block1_image).variant_url(:big)
+        model.images_container.attached_uploader(:block1_image).path
       end
 
       def block2_image
-        model.images_container.attached_uploader(:block2_image).variant_url(:big)
+        model.images_container.attached_uploader(:block2_image).path
       end
 
       def block4_image
-        model.images_container.attached_uploader(:block4_image).variant_url(:big)
+        model.images_container.attached_uploader(:block4_image).path
       end
 
       def block5_image
-        model.images_container.attached_uploader(:block5_image).variant_url(:big)
+        model.images_container.attached_uploader(:block5_image).path
       end
 
       def block7_image
-        model.images_container.attached_uploader(:block7_image).variant_url(:big)
+        model.images_container.attached_uploader(:block7_image).path
       end
     end
   end
