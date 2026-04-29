@@ -4,8 +4,10 @@ en:
       content_block_attachment:
         block1_image: Block image
         block2_image: Block image
+        block3_image: Block image
         block4_image: Block image
         block5_image: Block image
+        block6_image: Block image
         block7_image: Block image
   decidim:
     blogs:

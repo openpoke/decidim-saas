@@ -15,11 +15,19 @@ Decidim.content_blocks.register(:homepage, :vertical_scroll) do |content_block|
       uploader: "Decidim::HomepageImageUploader"
     },
     {
+      name: :block3_image,
+      uploader: "Decidim::HomepageImageUploader"
+    },
+    {
       name: :block4_image,
       uploader: "Decidim::HomepageImageUploader"
     },
     {
       name: :block5_image,
+      uploader: "Decidim::HomepageImageUploader"
+    },
+    {
+      name: :block6_image,
       uploader: "Decidim::HomepageImageUploader"
     },
     {

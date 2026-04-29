@@ -79,12 +79,20 @@ module Decidim
         model.images_container.attached_uploader(:block2_image).path
       end
 
+      def block3_image
+        model.images_container.attached_uploader(:block3_image).path
+      end
+
       def block4_image
         model.images_container.attached_uploader(:block4_image).path
       end
 
       def block5_image
         model.images_container.attached_uploader(:block5_image).path
+      end
+
+      def block6_image
+        model.images_container.attached_uploader(:block6_image).path
       end
 
       def block7_image
