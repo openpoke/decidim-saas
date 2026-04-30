@@ -7,7 +7,27 @@ it:
         block4_image: Block immagine
         block5_image: Block immagine
         block7_image: Block immagine
+  activerecord:
+    models:
+      decidim/assembly:
+        other: Assemblee
+      decidim/participatory_process:
+        other: Processi partecipativi
   decidim:
+    admin:
+      filters:
+        meetings:
+          with_any_origin:
+            label: Organizzatori
+            values:
+              official: Partito
+              participants: Utenti
+          with_any_type:
+            label: Tipologia
+            values:
+              hybrid: Ibridi
+              in_person: In presenza
+              online: Online
     blogs:
       content_blocks:
         highlighted_posts:
@@ -165,7 +185,38 @@ it:
           label: "Cognome"
         organization_or_group:
           label: "Organizzazione / Gruppo"
+    meetings:
+      application_helper:
+        filter_meeting_space_values:
+          all: Tutti
+      directory:
+        meetings:
+          index:
+            meetings: Eventi
+            space_type: Spazio partecipativo
+      meetings:
+        filters:
+          origin: Organizzatori
+          origin_values:
+            all: Tutti
+            official: Partito
+            participants: Utenti
+          type: Tipologia
+          type_values:
+            all: Tutti
+            hybrid: Ibridi
+            in_person: In presenza
+            online: Online
+          search: Ricerca
+        meetings:
+          no_meetings_warning: Nessun evento corrisponde ai criteri di ricerca oppure non è previsto alcun incontro in programma.
+    system:
+      devise:
+        shared:
+          links:
+            sign_up: Crea un account
   layouts:
     decidim:
       announcements:
         view_less: Mostra meno
+        view_more: Mostra di più
