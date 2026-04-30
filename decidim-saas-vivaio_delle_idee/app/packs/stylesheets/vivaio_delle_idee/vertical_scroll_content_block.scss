@@ -4,14 +4,14 @@
 
 .scroll-snap {
   &__blocks {
-  @apply flex flex-col pt-[2rem] md:pt-[4rem] relative;
+  @apply flex flex-col py-[2rem] md:pt-[4rem] relative;
 
   h2 {
     @apply text-xl md:!text-[3.75rem] md:leading-none;
   }
 
   img {
-    @apply w-full h-auto md:h-full max-h-[40vh] md:max-h-none object-cover;
+    @apply w-full h-auto md:h-full max-h-[60vh] md:max-h-none object-cover 2xl:object-contain;
   }
 
     &::before {
@@ -22,6 +22,10 @@
 
   &__block {
     @apply flex flex-col md:flex-row gap-4 md:gap-10 font-semibold text-[20px]/[26px] overflow-hidden;
+  
+    > div:last-child {
+      @apply 2xl:max-w-[650px] 2xl:mx-auto;
+    }
   }
 
   &__block1-description {
@@ -33,7 +37,7 @@
   }
 
   &__block3-description, &__block6-description {
-    @apply mt-[1rem] md:mt-[2rem] overflow-y-auto md:overflow-hidden text-sm md:text-2xl;
+    @apply mt-[1rem] overflow-y-auto md:overflow-hidden text-sm md:text-2xl;
 
     // Keep inner scrolling behavior but hide visual scrollbar tracks.
     scrollbar-width: none;
@@ -59,7 +63,7 @@
   }
 
   &__buttons {
-    @apply flex gap-4 my-[1rem] md:my-[2rem];
+    @apply flex md:flex-col gap-4 my-[1rem] md:my-[2rem];
 
     span {
       @apply text-sm md:text-2xl;
