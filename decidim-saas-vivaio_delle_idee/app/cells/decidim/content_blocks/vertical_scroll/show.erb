@@ -13,7 +13,7 @@
             <a href="<%= model.settings.participate_button_block1_url %>" class="button button__sm md:button__xl button__secondary w-fit"><%= t("decidim.content_blocks.vertical_scroll.block_1.participate_button_text") %></a>
             <a href="<%= model.settings.fqa_button_block1_url %>" class="button button__sm md:button__xl button__secondary w-fit"><%= t("decidim.content_blocks.vertical_scroll.block_1.fqa_button_text") %></a>
         </div>
-        <p class="text-gray-2 md:text-2xl"><%= decidim_sanitize_admin(block1_extra_text.presence)  || t("decidim.content_blocks.vertical_scroll.block_1.extra_text") %></p>
+        <p class="text-gray-2 text-sm md:text-2xl"><%= decidim_sanitize_admin(block1_extra_text.presence)  || t("decidim.content_blocks.vertical_scroll.block_1.extra_text") %></p>
       </div>
       <div class="md:w-1/2">
         <% if block1_image.present? %>

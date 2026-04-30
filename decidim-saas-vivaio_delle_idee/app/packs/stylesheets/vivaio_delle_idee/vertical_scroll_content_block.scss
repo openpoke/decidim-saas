@@ -1,5 +1,5 @@
 .scroll-snap > div {
-  @apply h-screen;
+  @apply min-h-screen md:h-screen;
 }
 
 .scroll-snap {
@@ -7,11 +7,11 @@
   @apply flex flex-col pt-[2rem] md:pt-[4rem] relative;
 
   h2 {
-    @apply md:!text-[3.75rem] md:leading-none;
+    @apply text-xl md:!text-[3.75rem] md:leading-none;
   }
 
   img {
-    @apply w-full h-full object-cover;
+    @apply w-full h-auto md:h-full max-h-[40vh] md:max-h-none object-cover;
   }
 
     &::before {
@@ -21,19 +21,19 @@
   }
 
   &__block {
-    @apply flex flex-col md:flex-row gap-1 md:gap-10 font-semibold text-[20px]/[26px] overflow-hidden;
+    @apply flex flex-col md:flex-row gap-4 md:gap-10 font-semibold text-[20px]/[26px] overflow-hidden;
   }
 
   &__block1-description {
-    @apply mt-[2rem] md:mt-[4rem] md:text-2xl;
+    @apply mt-[1rem] md:mt-[4rem] text-sm md:text-2xl;
   }
 
   &__block2-description {
-    @apply mt-[1.5rem] md:mt-[2rem] lg:mt-[10rem] md:text-2xl;
+    @apply mt-[1rem] md:mt-[2rem] lg:mt-[10rem] text-sm md:text-2xl;
   }
 
   &__block3-description, &__block6-description {
-    @apply mt-[1rem] md:mt-[2rem] overflow-y-auto md:overflow-hidden md:text-2xl;
+    @apply mt-[1rem] md:mt-[2rem] overflow-y-auto md:overflow-hidden text-sm md:text-2xl;
 
     // Keep inner scrolling behavior but hide visual scrollbar tracks.
     scrollbar-width: none;
@@ -47,22 +47,22 @@
   }
 
   &__block4-description {
-    @apply mt-[2rem] md:mt-[8rem] md:mb-[4rem] md:text-2xl text-white;
+    @apply mt-[1rem] md:mt-[8rem] md:mb-[4rem] text-sm md:text-2xl text-white;
   }
 
   &__block5-description {
-    @apply mt-[2rem] md:mt-[21rem] md:text-2xl;
+    @apply mt-[1rem] md:mt-[21rem] text-sm md:text-2xl;
   }
 
   &__block7-description {
-    @apply mt-[2rem] md:mt-[4rem] md:text-2xl text-white;
+    @apply mt-[1rem] md:mt-[4rem] text-sm md:text-2xl text-white;
   }
 
   &__buttons {
-    @apply flex gap-4 my-[2rem] md:my-[2rem];
+    @apply flex gap-4 my-[1rem] md:my-[2rem];
 
     span {
-      @apply md:text-2xl;
+      @apply text-sm md:text-2xl;
     }
   }
 }
