@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/decidim-ice/decidim-module-decidim_awesome.git
-  revision: 6202c42b66522ff1e9a226925616a68ceea5548a
+  revision: 24a4a62f258af32ac8f6b2d0ca490197d14bbece
   branch: moderations/phase_3
   specs:
     decidim-decidim_awesome (0.14.2)
