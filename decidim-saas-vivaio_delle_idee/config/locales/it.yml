@@ -140,6 +140,11 @@ it:
             Con metodo. Con trasparenza. Con responsabilità.<br><br>
             <strong>Entra, partecipa, proponi.</strong><br>
             Perché il programma che vogliamo deve nascere anche da te.
+    devise:
+      registrations:
+        new:
+          sign_up: Crea un account
+          subtitle: Crea un account per partecipare alla piattaforma.
     pages:
       home:
         hero:
@@ -209,12 +214,16 @@ it:
             online: Online
           search: Ricerca
         meetings:
-          no_meetings_warning: Nessun evento corrisponde ai criteri di ricerca oppure non è previsto alcun incontro in programma.
+          no_meetings_warning: Nessun evento corrisponde ai criteri di ricerca oppure non è previsto alcun evento in programma.
     system:
       devise:
         shared:
           links:
             sign_up: Crea un account
+      default_pages:
+        placeholders:
+          summary: Si prega di aggiungere un riepilogo significativo alla pagina statica %{page} nella dashboard di amministrazione.
+        terms_of_service: Termini di servizio
   layouts:
     decidim:
       announcements:
