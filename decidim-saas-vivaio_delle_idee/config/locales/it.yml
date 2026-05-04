@@ -65,7 +65,6 @@ it:
       vertical_scroll:
         name: "Scorrimento verticale"
         block_1:
-          button_extra_text: "Pulsanti:"
           title: "Quali scelte servono davvero per migliorare l'Italia nei prossimi cinque anni?"
           description: Con <strong>Decidiamo</strong>, cittadine e cittadini aiutano <strong>AVS</strong> a decidere quali sono le priorità per il nostro futuro, grazie a proposte condivise, confronto aperto e interazione pubblica e tracciabile.
           participate_button_text: Partecipa ora

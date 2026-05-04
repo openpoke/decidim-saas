@@ -63,7 +63,7 @@
   }
 
   &__buttons {
-    @apply flex md:flex-col gap-4 my-[1rem] md:my-[2rem];
+    @apply flex md:inline-flex md:flex-col gap-4 my-[1rem] md:my-[2rem];
 
     span {
       @apply text-sm md:text-2xl;
