@@ -9,9 +9,8 @@
             <%= decidim_sanitize_admin(description_block1.presence)  || t("decidim.content_blocks.vertical_scroll.block_1.description") %>
         </p>
         <div class="scroll-snap__buttons text-gray-2">
-            <span><%= t("decidim.content_blocks.vertical_scroll.block_1.button_extra_text") %></span>
-            <a href="<%= model.settings.participate_button_block1_url %>" class="button button__sm md:button__xl button__secondary w-fit"><%= t("decidim.content_blocks.vertical_scroll.block_1.participate_button_text") %></a>
-            <a href="<%= model.settings.fqa_button_block1_url %>" class="button button__sm md:button__xl button__secondary w-fit"><%= t("decidim.content_blocks.vertical_scroll.block_1.fqa_button_text") %></a>
+            <a href="<%= model.settings.participate_button_block1_url %>" class="button button__sm md:button__xl button__secondary"><%= t("decidim.content_blocks.vertical_scroll.block_1.participate_button_text") %></a>
+            <a href="<%= model.settings.fqa_button_block1_url %>" class="button button__sm md:button__xl button__secondary"><%= t("decidim.content_blocks.vertical_scroll.block_1.fqa_button_text") %></a>
         </div>
         <p class="text-gray-2 text-sm md:text-2xl"><%= decidim_sanitize_admin(block1_extra_text.presence)  || t("decidim.content_blocks.vertical_scroll.block_1.extra_text") %></p>
       </div>
@@ -25,13 +24,13 @@
     </div>
   </div>
 
-  <div class="bg-[#93FF45] scroll-snap__blocks">
+  <div class="bg-[#23482F] text-white scroll-snap__blocks">
     <div class="scroll-snap__block">
       <div class="md:w-1/2">
         <h2 class="h2 decorator">
           <%= decidim_sanitize_admin(title_block2.presence)  || t("decidim.content_blocks.vertical_scroll.block_2.title") %>
         </h2>
-        <div class="scroll-snap__block2-description text-gray-2">
+        <div class="scroll-snap__block2-description">
           <p><%= decidim_sanitize_admin(description_block2.presence)  || t("decidim.content_blocks.vertical_scroll.block_2.description") %></p>
         </div>
       </div>
@@ -45,7 +44,7 @@
     </div>
   </div>
 
-  <div class="bg-[#CE0037] text-white scroll-snap__blocks">
+  <div class="bg-[#A30D63] text-white scroll-snap__blocks">
     <div class="scroll-snap__block">
       <div class="md:w-1/2">
         <h2 class="h2 decorator">
@@ -53,9 +52,8 @@
         </h2>
         <div class="scroll-snap__block3-description md:!mt-[4rem]"><%= decidim_sanitize_admin(description_block3.presence)  || t("decidim.content_blocks.vertical_scroll.block_3.description") %></div>
         <div class="scroll-snap__buttons">
-          <span><%= t("decidim.content_blocks.vertical_scroll.block_1.button_extra_text") %></span>
-          <a href="<%= model.settings.participate_button_block3_url %>" class="button button__sm md:button__xl button__transparent-secondary w-fit"><%= t("decidim.content_blocks.vertical_scroll.block_1.participate_button_text") %></a>
-          <a href="<%= model.settings.themes_button_block3_url %>" class="button button__sm md:button__xl button__transparent-secondary w-fit"><%= t("decidim.content_blocks.vertical_scroll.block_3.themes_button_text") %></a>
+          <a href="<%= model.settings.participate_button_block3_url %>" class="button button__sm md:button__xl button__transparent-secondary"><%= t("decidim.content_blocks.vertical_scroll.block_1.participate_button_text") %></a>
+          <a href="<%= model.settings.themes_button_block3_url %>" class="button button__sm md:button__xl button__transparent-secondary"><%= t("decidim.content_blocks.vertical_scroll.block_3.themes_button_text") %></a>
         </div>
       </div>
       <div class="md:w-1/2">
@@ -68,16 +66,15 @@
     </div>
   </div>
 
-  <div class="bg-[#A30D63] text-white scroll-snap__blocks">
+  <div class="bg-[#23482F] text-white scroll-snap__blocks">
     <div class="scroll-snap__block">
       <div class="md:w-1/2">
         <h2 class="h2 decorator"><%= decidim_sanitize_admin(title_block4.presence)  || t("decidim.content_blocks.vertical_scroll.block_4.title") %>
         </h2>
-        <div class="scroll-snap__block4-description text-gray-2"><%= decidim_sanitize_admin(description_block4.presence)  || t("decidim.content_blocks.vertical_scroll.block_4.description") %></div>
-        <div class="scroll-snap__buttons text-gray-2">
-          <span class="text-white"><%= t("decidim.content_blocks.vertical_scroll.block_1.button_extra_text") %></span>
-          <a href="<%= model.settings.participate_button_block4_url %>" class="button button__sm md:button__xl button__transparent-secondary w-fit"><%= t("decidim.content_blocks.vertical_scroll.block_1.participate_button_text") %></a>
-          <a href="<%= model.settings.fqa_button_block4_url %>" class="button button__sm md:button__xl button__transparent-secondary w-fit"><%= t("decidim.content_blocks.vertical_scroll.block_1.fqa_button_text") %></a>
+        <div class="scroll-snap__block4-description"><%= decidim_sanitize_admin(description_block4.presence)  || t("decidim.content_blocks.vertical_scroll.block_4.description") %></div>
+        <div class="scroll-snap__buttons">
+          <a href="<%= model.settings.participate_button_block4_url %>" class="button button__sm md:button__xl button__transparent-secondary"><%= t("decidim.content_blocks.vertical_scroll.block_1.participate_button_text") %></a>
+          <a href="<%= model.settings.fqa_button_block4_url %>" class="button button__sm md:button__xl button__transparent-secondary"><%= t("decidim.content_blocks.vertical_scroll.block_1.fqa_button_text") %></a>
         </div>
       </div>
       <div class="md:w-1/2">
@@ -90,12 +87,12 @@
     </div>
   </div>
 
-  <div class="bg-[#93FF45] scroll-snap__blocks">
+  <div class="bg-[#A30D63] text-white scroll-snap__blocks">
     <div class="scroll-snap__block">
       <div class="md:w-1/2">
         <h2 class="h2 decorator"><%= decidim_sanitize_admin(title_block5.presence)  || t("decidim.content_blocks.vertical_scroll.block_5.title") %>
         </h2>
-        <div class="scroll-snap__block5-description text-gray-2"><%= decidim_sanitize_admin(description_block5.presence)  || t("decidim.content_blocks.vertical_scroll.block_5.description") %></div>
+        <div class="scroll-snap__block5-description"><%= decidim_sanitize_admin(description_block5.presence)  || t("decidim.content_blocks.vertical_scroll.block_5.description") %></div>
       </div>
       <div class="md:w-1/2">
         <% if block5_image.present? %>
@@ -107,16 +104,15 @@
     </div>
   </div>
 
-  <div class="bg-[#CE0037] text-white scroll-snap__blocks">
+  <div class="bg-[#23482F] text-white scroll-snap__blocks">
     <div  class="scroll-snap__block">
       <div class="md:w-1/2">
         <h2 class="h2 decorator"><%= decidim_sanitize_admin(title_block6.presence)  || t("decidim.content_blocks.vertical_scroll.block_6.title") %>
         </h2>
         <div class="scroll-snap__block6-description md:!mt-[2rem]"><%= decidim_sanitize_admin(description_block6.presence)  || t("decidim.content_blocks.vertical_scroll.block_6.description") %></div>
         <div class="scroll-snap__buttons md:!flex-row">
-          <span><%= t("decidim.content_blocks.vertical_scroll.block_1.button_extra_text") %></span>
-          <a href="<%= model.settings.participate_button_block6_url %>" class="button button__sm md:button__xl button__transparent-secondary w-fit"><%= t("decidim.content_blocks.vertical_scroll.block_1.participate_button_text") %></a>
-          <a href="<%= model.settings.themes_button_block6_url %>" class="button button__sm md:button__xl button__transparent-secondary w-fit"><%= t("decidim.content_blocks.vertical_scroll.block_3.themes_button_text") %></a>
+          <a href="<%= model.settings.participate_button_block6_url %>" class="button button__sm md:button__xl button__transparent-secondary"><%= t("decidim.content_blocks.vertical_scroll.block_1.participate_button_text") %></a>
+          <a href="<%= model.settings.themes_button_block6_url %>" class="button button__sm md:button__xl button__transparent-secondary"><%= t("decidim.content_blocks.vertical_scroll.block_3.themes_button_text") %></a>
         </div>
       </div>
       <div class="md:w-1/2">
@@ -136,9 +132,8 @@
         </h2>
         <div class="editor-content scroll-snap__block7-description text-gray-2"><%= decidim_sanitize_admin(description_block7.presence)  || t("decidim.content_blocks.vertical_scroll.block_7.description") %></div>
         <div class="scroll-snap__buttons text-gray-2">
-          <span class="text-white"><%= t("decidim.content_blocks.vertical_scroll.block_1.button_extra_text") %></span>
-          <a href="<%= model.settings.participate_button_block7_url %>" class="button button__sm md:button__xl button__transparent-secondary w-fit"><%= t("decidim.content_blocks.vertical_scroll.block_1.participate_button_text") %></a>
-          <a href="<%= model.settings.themes_button_block7_url %>" class="button button__sm md:button__xl button__transparent-secondary w-fit"><%= t("decidim.content_blocks.vertical_scroll.block_3.themes_button_text") %></a>
+          <a href="<%= model.settings.participate_button_block7_url %>" class="button button__sm md:button__xl button__transparent-secondary"><%= t("decidim.content_blocks.vertical_scroll.block_1.participate_button_text") %></a>
+          <a href="<%= model.settings.themes_button_block7_url %>" class="button button__sm md:button__xl button__transparent-secondary"><%= t("decidim.content_blocks.vertical_scroll.block_3.themes_button_text") %></a>
         </div>
       </div>
       <div class="md:w-1/2">
