@@ -12,7 +12,7 @@ GIT
 
 GIT
   remote: https://github.com/openpoke/decidim-module-chatbot.git
-  revision: 56b5e54c4f3e5352c82ad070809afaabad62d979
+  revision: 81ffc07944af64b7edeecb2ff0e73745cd3aff7b
   branch: main
   specs:
     decidim-chatbot (0.1.0)
