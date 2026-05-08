@@ -72,7 +72,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (direction > 0) {
       const currentTop = currentSection.getBoundingClientRect().top;
-      if (currentTop > 50) {
+      const threshold = window.innerHeight * 0.05;
+      if (currentTop > threshold) {
         e.preventDefault();
         snapTo(currentSection);
         return;
