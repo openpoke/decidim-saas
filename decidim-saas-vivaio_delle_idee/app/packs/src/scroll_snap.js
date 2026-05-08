@@ -70,6 +70,15 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+    if (direction > 0) {
+      const currentTop = currentSection.getBoundingClientRect().top;
+      if (currentTop > 50) {
+        e.preventDefault();
+        snapTo(currentSection);
+        return;
+      }
+    }
+
     const target = Math.max(0, Math.min(sections.length - 1, current + direction));
 
     if (target !== current) {
