@@ -26,7 +26,7 @@ COPY ./decidim-saas-som_mobilitat /app/decidim-saas-som_mobilitat
 COPY ./decidim-saas-clean_clothes /app/decidim-saas-clean_clothes
 COPY ./decidim-saas-ehu_agora /app/decidim-saas-ehu_agora
 COPY ./decidim-saas-ateneu_bcn /app/decidim-saas-ateneu_bcn
-COPY ./decidim-saas-vivaio_delle_idee /app/decidim-saas-vivaio_delle_idee
+COPY ./decidim-saas-decidiamo /app/decidim-saas-decidiamo
 
 RUN gem install bundler:$(grep -A 1 'BUNDLED WITH' Gemfile.lock | tail -n 1 | xargs) && \
     bundle config set --deployment true && \

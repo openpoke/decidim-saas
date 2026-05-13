@@ -103,7 +103,7 @@ jobs:
         env:
           WITH_ATENEU_BCN: 1
 
-      - name: Run Vivaio Delle Idee RSpec
-        run: bundle exec rspec decidim-saas-vivaio_delle_idee/spec/
+      - name: Run Decidiamo RSpec
+        run: bundle exec rspec decidim-saas-decidiamo/spec/
         env:
-          WITH_VIVAIO_DELLE_IDEE: 1
+          WITH_DECIDIAMO: 1

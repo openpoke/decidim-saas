@@ -1,0 +1,24 @@
+<% if current_organization.extra_user_fields_enabled? && current_organization.activated_extra_field?(:select_fields) %>
+  <div id="card__extra_user_fields" class="form__wrapper form__wrapper-block">
+    <% field = :municipality_region_province %>
+    <% required = f.object.custom_select_field_required?(field) %>
+    <% current_val = f.object.select_fields_municipality_region_province.to_s %>
+    <% seed_options = current_val.present? ? [[current_val, current_val]] : [] %>
+    <div class="fieldset">
+      <%= f.select :"select_fields_#{field}",
+                    seed_options,
+                    { label: t("decidim.extra_user_fields.select_fields.#{field}.label", default: field.to_s.humanize),
+                      required:,
+                      include_blank: "" },
+                    { name: "user[select_fields][#{field}]" } %>
+    </div>
+  </div>
+<% end %>
+
+<% if current_organization.activated_extra_field?(:country) %>
+  <%= f.label :country do %>
+    <%= f.custom_country_select :country %>
+  <% end %>
+<% end %>
+
+<% append_javascript_pack_tag "decidim_saas_decidiamo.js" %>
