@@ -277,6 +277,11 @@ PATH
       decidim-extra_user_fields
 
 PATH
+  remote: decidim-saas-decidiamo
+  specs:
+    decidim-saas-decidiamo (1.0)
+
+PATH
   remote: decidim-saas-ehu_agora
   specs:
     decidim-saas-ehu_agora (1.0)
@@ -286,11 +291,6 @@ PATH
   remote: decidim-saas-som_mobilitat
   specs:
     decidim-saas-som_mobilitat (1.0)
-
-PATH
-  remote: decidim-saas-decidiamo
-  specs:
-    decidim-saas-decidiamo (1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -1170,9 +1170,9 @@ DEPENDENCIES
   decidim-pokecode!
   decidim-saas-ateneu_bcn!
   decidim-saas-clean_clothes!
+  decidim-saas-decidiamo!
   decidim-saas-ehu_agora!
   decidim-saas-som_mobilitat!
-  decidim-saas-decidiamo!
   decidim-templates!
   decidim-term_customizer!
   faraday
@@ -1266,9 +1266,9 @@ CHECKSUMS
   decidim-proposals (0.31.5)
   decidim-saas-ateneu_bcn (1.0)
   decidim-saas-clean_clothes (1.0)
+  decidim-saas-decidiamo (1.0)
   decidim-saas-ehu_agora (1.0)
   decidim-saas-som_mobilitat (1.0)
-  decidim-saas-decidiamo (1.0)
   decidim-sortitions (0.31.5)
   decidim-surveys (0.31.5)
   decidim-system (0.31.5)
