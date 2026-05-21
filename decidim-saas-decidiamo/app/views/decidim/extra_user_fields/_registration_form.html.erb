@@ -1,3 +1,5 @@
+<%= render "decidim/extra_user_fields/date_of_birth_field", f: f, current_organization: current_organization %>
+
 <% if current_organization.extra_user_fields_enabled? && current_organization.activated_extra_field?(:select_fields) %>
   <div id="card__extra_user_fields" class="form__wrapper form__wrapper-block">
     <% field = :municipality_region_province %>
