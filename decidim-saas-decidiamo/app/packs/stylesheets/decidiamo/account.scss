@@ -6,6 +6,12 @@ label:has(> input#registration_user_date_of_birth) {
   @apply font-semibold text-lg;
 }
 
+#registration_user_date_of_birth_datepicker_row {
+  .datepicker__pick-calendar {
+    @apply mr-[1.5rem];
+  }
+}
+
 #card__extra_user_fields {
   div.ts-wrapper {
     @apply mt-[1rem];
