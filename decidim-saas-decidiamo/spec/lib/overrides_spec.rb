@@ -11,7 +11,7 @@ checksums = [
     files: {
       # layouts
       "/app/views/layouts/decidim/_head.html.erb" => "0faa190f7a4b3db401ffcdfc3d063802",
-      "/app/views/decidim/devise/omniauth_registrations/new.html.erb" => "b972ec211ff96702d449cf6c8846a613",
+      "/app/views/decidim/devise/omniauth_registrations/new.html.erb" => "dc4017744f7aac56f0b7db9ded26677d",
       "/app/views/decidim/devise/registrations/new.html.erb" => "4a64a07b83678fa5360ded05e2bfd96c",
       "/app/cells/decidim/content_blocks/hero/show.erb" => "85d3a88758fb689681e3210d01f39ea1",
       "/app/cells/decidim/content_blocks/hero/cta_button.erb" => "60210020a582198f0048d9c3890f552c",
