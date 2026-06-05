@@ -29,7 +29,3 @@
     })();
   </script>
 <% end %>
-
-<% if tag_id = ENV.fetch("UMAMI_ANALYTICS", nil) %>
-  <script async defer data-website-id="<%= tag_id %>" src="<%= ENV.fetch("UMAMI_URL", nil) %>"></script>
-<% end %>
