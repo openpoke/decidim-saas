@@ -61,8 +61,8 @@ GIT
 
 GIT
   remote: https://github.com/openpoke/decidim-module-term_customizer.git
-  revision: 208193525c55159e50a341b5c7d010c283345abd
-  branch: fix_notifications_maily_digest_bug
+  revision: a392f64e84249588c92234c50f3686c1f618bba0
+  branch: improve-ui
   specs:
     decidim-term_customizer (0.31)
       decidim-admin (~> 0.31.0)
