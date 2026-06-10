@@ -1,0 +1,17 @@
+<!-- replace "erb[loud]:contains('f.text_field :name')" -->
+
+<%= f.hidden_field :name, id: "user_name_hidden" %>
+
+<%= f.text_field :text_fields_first_name,
+  name: "user[text_fields][first_name]",
+  required: true,
+  autocomplete: "given-name",
+  label: t("decidim.extra_user_fields.text_fields.first_name.label"),
+  placeholder: "John" %>
+
+<%= f.text_field :text_fields_last_name,
+  name: "user[text_fields][last_name]",
+  required: true,
+  autocomplete: "family-name",
+  label: t("decidim.extra_user_fields.text_fields.last_name.label"),
+  placeholder: "Doe" %>

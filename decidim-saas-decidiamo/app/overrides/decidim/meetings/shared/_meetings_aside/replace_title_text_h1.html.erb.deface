@@ -1,0 +1,3 @@
+<!-- replace "h1.title-decorator" -->
+
+<h1 class="title-decorator"><%= t("decidim.navigation.events") %></h1>

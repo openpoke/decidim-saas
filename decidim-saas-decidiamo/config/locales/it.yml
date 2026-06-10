@@ -1,0 +1,230 @@
+it:
+  activemodel:
+    attributes:
+      content_block_attachment:
+        block1_image: Block immagine
+        block2_image: Block immagine
+        block4_image: Block immagine
+        block5_image: Block immagine
+        block7_image: Block immagine
+  activerecord:
+    models:
+      decidim/assembly:
+        other: Assemblee
+      decidim/participatory_process:
+        other: Processi partecipativi
+  decidim:
+    admin:
+      filters:
+        meetings:
+          with_any_origin:
+            label: Organizzatori
+            values:
+              official: Partito
+              participants: Utenti
+          with_any_type:
+            label: Tipologia
+            values:
+              hybrid: Ibridi
+              in_person: In presenza
+              online: Online
+    blogs:
+      content_blocks:
+        highlighted_posts:
+          last_published: Ultimi pubblicati
+          see_all: Leggi tutti i post
+      models:
+        post:
+          fields:
+            official_blog_post: Post ufficiale
+      posts:
+        index:
+          count:
+            one: Le ultime notizie dal Vivaio
+            other: Le ultime notizie dal Vivaio
+    navigation:
+      home: Home
+      assemblies: Il vivaio
+      contact: Contatti
+      events: Eventi
+      help: Cosa puoi fare tu
+      blog: News
+    content_blocks:
+      hero_settings_form:
+        welcome_up_text: "Testo dell'hero"
+      vertical_scroll_settings_form:
+        block_1:
+          title: Titolo
+          description: Descrizione
+          participate_button_url: URL del pulsante Partecipa
+          fqa_button_url: URL del pulsante Come funziona
+          extra_text: Testo extra
+          block1_image: Aggiungi immagine
+        block_3:
+          themes_button_url: URL del pulsante Temi
+      vertical_scroll:
+        name: "Scorrimento verticale"
+        block_1:
+          title: "Quali scelte servono davvero per migliorare l'Italia nei prossimi cinque anni?"
+          description: Con <strong>Decidiamo</strong>, cittadine e cittadini aiutano <strong>AVS</strong> a decidere quali sono le priorità per il nostro futuro, grazie a proposte condivise, confronto aperto e interazione pubblica e tracciabile.
+          participate_button_text: Partecipa ora
+          fqa_button_text: Come funziona
+          extra_text: Una piattaforma aperta, trasparente e partecipata per costruire insieme il programma delle prossime elezioni politiche.
+        block_2:
+          title: Qui non vieni a guardare. Vieni a costruire.
+          description: |-
+            Troppo spesso i programmi si leggono solo alla fine, quando sono già stati scritti.
+            <strong>Decidiamo</strong> nasce con uno spirito totalmente differente: aprire prima il confronto, ascoltare chi vive ogni giorno in prima persona problemi reali, raccogliere proposte, migliorarle insieme e trasformarle in scelte politiche.<br><br>
+            Per noi partecipare non significa riempire una bacheca di opinioni.
+            Significa <strong>darsi un metodo</strong>, discutere nel merito e costruire un programma più forte, più utile, più giusto.<br><br> Per noi partecipare non significa riempire una bacheca di opinioni, significa lavorare collettivamente.<br><br>
+            <strong>Non conta chi scrive di più. Conta chi aiuta a costruire meglio.</strong>
+        block_3:
+          title: Come funziona
+          description: |-
+            <strong>1. Scegli le priorità</strong><br>
+            Entra nei temi che ritieni più urgenti per il futuro del Paese: clima, lavoro, diritti, salute, scuola, casa, mobilità, welfare, pace, democrazia e molti altri.<br><br>
+            <strong>2. Fai una proposta</strong><br>
+            Porta un'idea concreta, un bisogno del tuo territorio, una soluzione possibile. Anche poche righe possono essere l'inizio di una proposta importante.<br><br>
+            <strong>3. Commenta e aiutaci a migliorare</strong><br>
+            Le proposte si discutono, si commentano, si possono emendare e rafforzare. Il confronto serve a far emergere le idee migliori,  non a fare rumore.<br><br>
+            <strong>4. Segui il percorso fino alla sintesi</strong><br>
+            Ogni contributo utile entra in un percorso trasparente di lettura, confronto e sintesi. Così puoi vedere come le idee raccolte non finiscono in un contenitore vuoto o senza risposte, ma contribuiscono alla costruzione del programma finale.<br><br>
+            Questo significa una cosa semplice:<br>
+            <strong>chi partecipa può capire non solo cosa propone, ma anche che uso viene fatto delle proposte.</strong>
+          themes_button_text: Entra nei temi
+        block_4:
+          title: Perché partecipare
+          description: |-
+            Perché il futuro non si delega in silenzio.<br>
+            Perché chi vive i problemi spesso conosce anche le soluzioni.<br>
+            Perché un programma più credibile nasce dall'incontro tra visione politica ed esperienza concreta.<br>
+            Perché serve un'Italia più giusta, ecologica, libera e vicina alle persone.<br>
+            Perché decidere insieme è il modo migliore per cominciare a cambiare davvero le cose.<br>
+        block_5:
+          title: Questa piattaforma è aperta a tutte e tutti
+          description: |-
+            A chi ha una proposta precisa.<br>
+            A chi vuole segnalare una priorità.
+            A chi parte da un problema concreto del proprio territorio.<br>
+            A chi crede che ambiente e giustizia sociale debbano stare insieme.<br>
+            A chi vuole contribuire, anche senza essere un esperto.<br><br>
+            Serve portare idee.<br>
+            Esperienze, bisogni, soluzioni.<br>
+        block_6:
+          title: Da dove partiamo
+          description: |-
+            Grazie a Decidiamo puoi contribuire a definire i  grandi temi che riguardano le vite di tutte e tutti noi e il futuro del Paese, tra cui:<br><br>
+            - Clima ed energia <br>
+            - Territorio, città, casa e beni comuni, partecipazione, democrazia <br>
+            - Mobilità <br>
+            - Economia circolare e rifiuti zero<br>
+            - Lavoro<br>
+            - Impresa e politica industriale<br>
+            - Fiscalità giusta e lotta alle disuguaglianze<br>
+            - Diritti, parità e libertà<br>
+            - Salute, sanità territoriale e inquinamento<br>
+            - Scuola, università, cultura e conoscenza <br>
+            - Legalità, trasparenza ed ecomafie<br>
+            - Migrazioni, accoglienza ed Europa dei diritti<br>
+            - Pace, politica estera ed Europa<br>
+            - Intelligenza artificiale & digitalizzazione, innovazione<br>
+            - Welfare, enti locali e aree interne<br>
+            - Agricoltura, biodiversità e diritti degli animali
+        block_7:
+          title: Il programma non si annuncia soltanto. Si costruisce insieme. Contattaci
+          description: |-
+            Le prossime elezioni non si preparano con formule vuote o slogan già pronti.<br>
+            Si preparano mettendo in comune idee, bisogni, competenze, conflitti, visioni.<br><br>
+            <strong>Decidiamo</strong> è lo spazio in cui tutto questo può diventare proposta politica.<br>
+            Con metodo. Con trasparenza. Con responsabilità.<br><br>
+            <strong>Entra, partecipa, proponi.</strong><br>
+            Perché il programma che vogliamo deve nascere anche da te.
+    devise:
+      registrations:
+        new:
+          sign_up: Crea un account
+          subtitle: Crea un account per partecipare alla piattaforma.
+    pages:
+      home:
+        hero:
+          welcome_up_text: "<u>CONFERENZA</u> PROGRAMMATICA <strong>NOVEMBRE '26</strong>"
+    saas:
+      decidiamo:
+        needs_survey_completed:
+          redirect_message: "Completa il sondaggio di benvenuto prima di continuare."
+    extra_user_fields:
+      facilitator_or_editor:
+        editor: Redattore
+        facilitator: Facilitatore
+      force_extra_user_fields:
+        redirect_message: "Completa le informazioni del tuo profilo prima di continuare."
+      relationship_with_avs:
+        registered: "Iscritta/o"
+        administrator: "Amministratore/trice AVS"
+        citizen: "Cittadina/o"
+        expert: "Esperta/o"
+        sympathizer: "Simpatizzante"
+        elected_avs: "Eletto/a AVS"
+      select_fields:
+        municipality_region_province:
+          label: "Comune/Provincia/Regione"
+        relationship_with_avs:
+          label: Relazione con AVS
+        facilitator_or_editor:
+          label: Voglio contribuire attivamente
+        territorial_availability:
+          label: Voglio lavorare sul territorio
+        priority_themes:
+          label: Temi prioritari
+      territorial_availability:
+        affirmative_yes: "Si"
+        negative_no: "No"
+        not_specified: "Dipende"
+      text_fields:
+        available_skills:
+          label: "Competenze da mettere a disposizione"
+        first_name:
+          label: "Nome"
+        last_name:
+          label: "Cognome"
+        organization_or_group:
+          label: "Organizzazione / Gruppo"
+    meetings:
+      application_helper:
+        filter_meeting_space_values:
+          all: Tutti
+      directory:
+        meetings:
+          index:
+            meetings: Eventi
+            space_type: Spazio partecipativo
+      meetings:
+        filters:
+          origin: Organizzatori
+          origin_values:
+            all: Tutti
+            official: Partito
+            participants: Utenti
+          type: Tipologia
+          type_values:
+            all: Tutti
+            hybrid: Ibridi
+            in_person: In presenza
+            online: Online
+          search: Ricerca
+        meetings:
+          no_meetings_warning: Nessun evento corrisponde ai criteri di ricerca oppure non è previsto alcun evento in programma.
+    system:
+      devise:
+        shared:
+          links:
+            sign_up: Crea un account
+      default_pages:
+        placeholders:
+          summary: Si prega di aggiungere un riepilogo significativo alla pagina statica %{page} nella dashboard di amministrazione.
+        terms_of_service: Termini di servizio
+  layouts:
+    decidim:
+      announcements:
+        view_less: Mostra meno
+        view_more: Mostra di più

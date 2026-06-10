@@ -21,6 +21,7 @@ require "decidim/saas/clean_clothes" if ENV["WITH_CLEAN_CLOTHES"].present?
 require "decidim/saas/som_mobilitat" if ENV["WITH_SOM_MOBILITAT"].present?
 require "decidim/saas/ehu_agora" if ENV["WITH_EHU_AGORA"].present?
 require "decidim/saas/ateneu_bcn" if ENV["WITH_ATENEU_BCN"].present?
+require "decidim/saas/decidiamo" if ENV["WITH_DECIDIAMO"].present?
 
 module DecidimSaas
   class Application < Rails::Application
