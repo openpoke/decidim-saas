@@ -11,3 +11,6 @@ Rails/FilePath:
 
 RSpec/IndexedLet:
   Enabled: false
+
+RSpec/DescribeClass:
+  Enabled: false

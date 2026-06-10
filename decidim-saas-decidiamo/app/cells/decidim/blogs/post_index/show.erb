@@ -1,0 +1,45 @@
+<div class="flex gap-1.5 md:gap-6 items-start">
+    <div class="flex flex-col gap-4 items-end">
+      <% if resource.published_at.present? %>
+        <div class="text-sm text-[#ecaa47] shrink-0 pt-2 text-right">
+          <div class="text-2xl md:text-4xl font-bold leading-none">
+            <%= resource.published_at.day %>
+          </div>
+          <div class="md:text-lg">
+            <%= l(resource.published_at, format: "%b, %Y") %>
+          </div>
+          <span class="text-xl"><strong>|</strong></span>
+        </div>
+      <% end %>
+
+      <% if resource.commentable? %>
+        <div class="relative w-8 h-8 md:w-10 md:h-10">
+          <%= icon "chat-1-fill", class: "w-8 h-8 md:w-10 md:h-10" %>
+          <span class="absolute inset-0 flex items-center justify-center text-xs font-bold text-white pointer-events-none">
+            <%= resource.comments_count %>
+          </span>
+        </div>
+      <% end %>
+    </div>
+
+  <div class="card__proposals-item flex-1">
+    <%= link_to resource_path, class: classes[:default], id: resource_id do %>
+      <div class="card__grid-img w-full overflow-hidden" style="aspect-ratio: 420/240;">
+        <% if has_image? %>
+          <%= image_tag resource_image_url, alt: "", class: "w-full h-full object-cover" %>
+        <% else %>
+          <%= external_icon "media/images/placeholder-card-g.svg", class: "card__placeholder-g" %>
+        <% end %>
+      </div>
+      <div class="<%= classes[:text] %>">
+        <div class="card__grid-text-title">
+          <%= content_tag title_tag, title, class: title_class %>
+        </div>
+
+        <div class="line-clamp-3">
+          <%= description if show_description? %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

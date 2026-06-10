@@ -1,0 +1,68 @@
+.scroll-snap > div {
+  @apply min-h-screen md:h-screen;
+}
+
+.scroll-snap {
+  &__blocks {
+  @apply flex flex-col py-[2rem] md:pt-[4rem] md:justify-center relative;
+
+  h2 {
+    @apply text-xl md:!text-[2.25rem] lg:!text-[3.75rem] md:leading-none;
+  }
+
+  img {
+    @apply w-full h-auto md:h-full max-h-[60vh] md:max-h-none object-cover 2xl:object-contain;
+  }
+
+    &::before {
+      content: '';
+      @apply absolute inset-y-0 left-[50%] -ml-[50vw]  w-screen bg-inherit -z-10;
+    }
+  }
+
+  &__block {
+    @apply flex flex-col md:flex-row gap-4 md:gap-10 font-semibold text-[20px]/[26px] overflow-hidden;
+  
+    > div:last-child {
+      @apply 2xl:max-w-[650px] 2xl:mx-auto;
+    }
+  }
+
+  &__block1-description {
+    @apply mt-[1rem] md:mt-[4rem] text-sm sm:text-lg md:text-lg xl:text-2xl;
+  }
+
+  &__block2-description {
+    @apply mt-[1rem] md:mt-[2rem] lg:mt-[6rem] text-sm sm:text-lg md:text-lg xl:text-2xl;
+  }
+
+  &__block3-description, &__block6-description {
+    @apply mt-[1rem] overflow-y-auto md:overflow-hidden text-sm sm:text-lg md:text-lg xl:text-2xl;
+
+    // Keep inner scrolling behavior but hide visual scrollbar tracks.
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+      display: none;
+    }
+  }
+
+  &__block4-description {
+    @apply mt-[1rem] md:mt-[8rem] md:mb-[4rem] text-sm sm:text-lg md:text-lg xl:text-2xl text-white;
+  }
+
+  &__block5-description {
+    @apply mt-[1rem] md:mt-[14rem] text-sm sm:text-lg md:text-lg xl:text-2xl;
+  }
+
+  &__block7-description {
+    @apply mt-[1rem] md:mt-[4rem] text-sm sm:text-lg md:text-lg xl:text-2xl text-white;
+  }
+
+  &__buttons {
+    @apply flex md:inline-flex md:flex-col gap-4 my-[1rem] md:my-[2rem];
+  }
+}

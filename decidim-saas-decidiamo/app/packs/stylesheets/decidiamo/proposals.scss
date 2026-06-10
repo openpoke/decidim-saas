@@ -1,0 +1,8 @@
+// Custom styles for the Decidiamo Officials proposals
+.card__list.proposal--official, .proposal--official{
+  border: 2px solid #A30D63 !important;
+}
+
+.card__list.proposal--official {
+  @apply pt-[12px] pb-[14px];
+}

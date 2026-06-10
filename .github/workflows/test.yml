@@ -8,7 +8,7 @@ on:
       - "**"
 
 env:
-  RUBY_VERSION: 3.3.101
+  RUBY_VERSION: 3.3.10
   NODE_VERSION: 22.14.0
   RAILS_ENV: test
   DATABASE_USERNAME: postgres
@@ -102,3 +102,8 @@ jobs:
         run: bundle exec rspec decidim-saas-ateneu_bcn/spec/
         env:
           WITH_ATENEU_BCN: 1
+
+      - name: Run Decidiamo RSpec
+        run: bundle exec rspec decidim-saas-decidiamo/spec/
+        env:
+          WITH_DECIDIAMO: 1

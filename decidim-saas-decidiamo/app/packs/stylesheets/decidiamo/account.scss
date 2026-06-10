@@ -1,0 +1,23 @@
+#registration_user_date_of_birth_date {
+  @apply w-full mt-[1rem];
+}
+
+label:has(> input#registration_user_date_of_birth) {
+  @apply font-semibold text-lg;
+}
+
+#registration_user_date_of_birth_datepicker_row {
+  .datepicker__pick-calendar {
+    @apply mr-[1.5rem];
+  }
+}
+
+#card__extra_user_fields {
+  div.ts-wrapper {
+    @apply mt-[1rem];
+  }
+}
+
+label[for="registration_user_country"] {
+  @apply font-semibold text-lg flex flex-col gap-[1rem];
+}
