@@ -1,0 +1,4 @@
+<p>Please enter the code of your favorite movie to proceed (you can edit your vote if you repeat it!):</p>
+<%= form.text_field :code, label: "Your favorite movie", placeholder: "The Big Lebowski", autofocus: true, required: true %>
+
+<%= render "decidim/elections/censuses/submit_button", form: form %>

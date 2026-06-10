@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/decidim-ice/decidim-module-decidim_awesome.git
-  revision: 956f365a90302cb20b0bd3c2657df9e149ff6458
-  branch: moderations/phase_3
+  revision: 59daca63d716d6472f83287b430d4f75f8b0e0f3
+  branch: main
   specs:
     decidim-decidim_awesome (0.14.2)
       active_hashcash (~> 0.4.0)
@@ -287,6 +287,11 @@ PATH
   specs:
     decidim-saas-ehu_agora (1.0)
       omniauth-saml
+
+PATH
+  remote: decidim-saas-silly_census
+  specs:
+    decidim-saas-silly_census (1.0)
 
 PATH
   remote: decidim-saas-som_mobilitat
@@ -1180,6 +1185,7 @@ DEPENDENCIES
   decidim-saas-clean_clothes!
   decidim-saas-decidiamo!
   decidim-saas-ehu_agora!
+  decidim-saas-silly_census!
   decidim-saas-som_mobilitat!
   decidim-templates!
   decidim-term_customizer!
@@ -1278,6 +1284,7 @@ CHECKSUMS
   decidim-saas-clean_clothes (1.0)
   decidim-saas-decidiamo (1.0)
   decidim-saas-ehu_agora (1.0)
+  decidim-saas-silly_census (1.0)
   decidim-saas-som_mobilitat (1.0)
   decidim-sortitions (0.31.5)
   decidim-surveys (0.31.5)
