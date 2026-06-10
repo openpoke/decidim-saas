@@ -24,7 +24,7 @@ module Decidim
         private
 
         def code_unique
-          if code&.strip&.present?
+          if code&.strip.present?
             voter = Decidim::Elections::Voter.find_or_create_by(
               election: election,
               data: { code: code.strip.downcase }
