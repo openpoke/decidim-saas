@@ -43,7 +43,7 @@ GIT
 
 GIT
   remote: https://github.com/openpoke/decidim-module-pokecode.git
-  revision: c693a58f36d67807070f217af22fb47c9b39f444
+  revision: 21ec907d351446f084994d2a640b40d8bc6ecdfa
   branch: main
   specs:
     decidim-pokecode (0.3.1)
