@@ -30,5 +30,29 @@ describe Decidim::Blogs::Post do
       expect(url).to include("le-migliori-280-idee-di-sant-jordi-per-la-citta")
       expect(url).to match(%r{/posts/\d+-})
     end
+
+    context "when the title produces a slug longer than 100 characters" do
+      let(:title) { "Le migliori trecento idee innovative per trasformare la città di Milano in una metropoli sostenibile e moderna" }
+
+      it "truncates the slug to 100 characters" do
+        slug = post.to_param.sub(/\A\d+-/, "")
+        expect(slug.length).to be <= 100
+      end
+
+      it "truncates without cutting mid-word abruptly (no trailing dash)" do
+        slug = post.to_param.sub(/\A\d+-/, "")
+        expect(slug).to eq("le-migliori-trecento-idee-innovative-per-trasformare-la-citta-di-milano-in-una-metropoli-sostenibile")
+      end
+    end
+
+    context "when the title produces a slug of exactly 99 characters" do
+      let(:title) { "Caporalato in agricoltura: perché serve una filiera agroalimentare trasparente dal campo alla tavola" }
+
+      it "does not truncate the slug" do
+        slug = post.to_param.sub(/\A\d+-/, "")
+        expect(slug).to eq("caporalato-in-agricoltura-perche-serve-una-filiera-agroalimentare-trasparente-dal-campo-alla-tavola")
+        expect(slug.length).to eq(99)
+      end
+    end
   end
 end
