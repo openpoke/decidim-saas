@@ -61,6 +61,13 @@ module Decidim
             end
           end
 
+          Decidim::Blogs::Post.class_eval do
+            def to_param
+              title_slug = translated_attribute(title).parameterize.truncate(100, omission: "")
+              "#{id}-#{title_slug}"
+            end
+          end
+
           Decidim::Surveys::SurveysController.class_eval do
             def after_response_path
               if onboarding_assembly_survey?
