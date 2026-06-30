@@ -29,11 +29,11 @@ bin/rails saas:translate_all[ca,es]
 ### Current extra modules:
 
 1. `WITH_EXTRA_USER_FIELDS=1` Loads the [decidim-extra_user_fields](https://github.com/openpoke/decidim-module-extra_user_fields) module-
-2. `WITH_SOM_MOBILITAT=1` Loads the internal [decidim-som_mobilitat](decidim-som_mobilitat/) module.
-3. `WITH_CLEAN_CLOTHES=1` Loads the internal [decidim-clean_clothes](decidim-clean_clothes/) module (note that this module is not compatible with decidim-extra_user_fields, load one or the other, not both).
-4. `WITH_EHU_AGORA=1` Loads the internal [decidim-ehu-agora](decidim-ehu-agora/) module.
-5. `WITH_ATENEU_BCN=1` Loads the internal [decidim-ateneu-bcn](decidim-ateneu-bcn/) module.
-6. `WITH_DECIDIAMO=1` Loads the internal [decidim-decidiamo](decidim-decidiamo/) module.
+2. `WITH_SOM_MOBILITAT=1` Loads the internal [decidim-som_mobilitat](decidim-saas-som_mobilitat/) module.
+3. `WITH_CLEAN_CLOTHES=1` Loads the internal [decidim-clean_clothes](decidim-saas-clean_clothes/) module (note that this module is not compatible with decidim-extra_user_fields, load one or the other, not both).
+4. `WITH_EHU_AGORA=1` Loads the internal [decidim-ehu-agora](decidim-saas-ehu_agora/) module.
+5. `WITH_ATENEU_BCN=1` Loads the internal [decidim-ateneu-bcn](decidim-saas-ateneu_bcn/) module.
+6. `WITH_DECIDIAMO=1` Loads the internal [decidim-decidiamo](decidim-saas-decidiamo/) module.
 
 ### Implementation
 
