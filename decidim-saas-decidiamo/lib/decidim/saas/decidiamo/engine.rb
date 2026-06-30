@@ -63,7 +63,7 @@ module Decidim
 
           Decidim::Blogs::Post.class_eval do
             def to_param
-              title_slug = translated_attribute(title).parameterize.truncate(100, omission: "")
+              title_slug = translated_attribute(title).to_s.parameterize.truncate(100, omission: "").chomp("-")
               "#{id}-#{title_slug}"
             end
           end
