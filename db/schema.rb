@@ -423,10 +423,12 @@ ActiveRecord::Schema[7.2].define(version: 2026_07_09_105546) do
     t.integer "follows_count", default: 0, null: false
     t.datetime "published_at", precision: nil
     t.datetime "deleted_at"
+    t.string "slug"
     t.index ["decidim_author_id", "decidim_author_type"], name: "index_decidim_blogs_posts_on_decidim_author"
     t.index ["decidim_component_id"], name: "index_decidim_blogs_posts_on_decidim_component_id"
     t.index ["decidim_user_group_id"], name: "index_decidim_blogs_posts_on_decidim_user_group_id"
     t.index ["deleted_at"], name: "index_decidim_blogs_posts_on_deleted_at"
+    t.index ["slug", "decidim_component_id"], name: "index_decidim_blogs_posts_on_slug_and_decidim_component_id", unique: true
   end
 
   create_table "decidim_budgets_budgets", id: :serial, force: :cascade do |t|
