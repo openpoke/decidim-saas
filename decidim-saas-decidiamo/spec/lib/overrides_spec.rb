@@ -22,8 +22,8 @@ checksums = [
   {
     package: "decidim-blogs",
     files: {
-      "/app/views/decidim/blogs/posts/index.html.erb" => "056324878a92b7e6c228bba0a01ddd9e"
-      # "/app/views/decidim/blogs/posts/_posts.html.erb" => "056324878a92b7e6c228bba0a01ddd9e"
+      "/app/views/decidim/blogs/posts/index.html.erb" => "056324878a92b7e6c228bba0a01ddd9e",
+      "/app/views/decidim/blogs/posts/_posts.html.erb" => "7c386145dfe66eaf4fa8a81255ce3da1"
     }
   },
   {
