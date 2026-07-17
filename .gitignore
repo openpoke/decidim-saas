@@ -60,4 +60,4 @@ tailwind.config.js
 .rspec-failures
 coverage/*
 .byebug*
-.sql
+*.sql
