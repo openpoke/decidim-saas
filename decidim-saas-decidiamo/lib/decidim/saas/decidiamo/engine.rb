@@ -49,14 +49,6 @@ module Decidim
         end
 
         config.to_prepare do
-          Decidim::Blogs::PostMetadataGCell.class_eval do
-            private
-
-            def post_items
-              [author_item] + taxonomy_items + [comments_count_item]
-            end
-          end
-
           Decidim.icons.register(name: "chat-1-fill", icon: "chat-1-fill", category: "system", description: "", engine: :core)
 
           Decidim::ApplicationController.class_eval do
