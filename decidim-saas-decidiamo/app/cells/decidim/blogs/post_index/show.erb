@@ -36,10 +36,12 @@
           <%= content_tag title_tag, title, class: title_class %>
         </div>
 
-        <div class="line-clamp-3">
+        <div class="line-clamp-3 mb-8">
           <%= description if show_description? %>
         </div>
       </div>
     <% end %>
+
+    <%= cell("decidim/tags", resource, context: { extra_classes: ["tags--blogs -mt-[30px] pl-4"] }) %>
   </div>
 </div>
