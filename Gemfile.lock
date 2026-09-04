@@ -43,8 +43,8 @@ GIT
 
 GIT
   remote: https://github.com/openpoke/decidim-module-pokecode.git
-  revision: 21ec907d351446f084994d2a640b40d8bc6ecdfa
-  branch: main
+  revision: 8917a9fdefc94f7341fbe1581b195770d2d7f2b3
+  branch: feat/force_default_locale
   specs:
     decidim-pokecode (0.3.1)
       aws-sdk-s3
