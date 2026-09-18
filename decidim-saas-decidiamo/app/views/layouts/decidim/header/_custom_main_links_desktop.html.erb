@@ -1,6 +1,6 @@
 <% assembly_slug = ENV.fetch("ASSEMBLY_SLUG", nil) %>
 <% blog_component = Decidim::Component.find_by(id: ENV.fetch("BLOG_COMPONENT_ID", nil)) %>
-<% contact_component = Decidim::Component.find_by(id: 13) %>
+<% contact_component = Decidim::Component.find_by(id: 13, manifest_name: "surveys") %>
 <div class="main-bar__links-desktop__item-wrapper text-lg font-semibold">
   <div>
     <%= link_to decidim.root_path, class: "main-bar__links-desktop__item", "aria-label": t("decidim.navigation.home") do %>
@@ -32,7 +32,7 @@
 
   <div>
     <% if blog_component %>
-      <%= link_to main_component_path(blog_component), class: "main-bar__links-desktop__item", "aria-label": t("decidim.navigation.blog") do %>
+      <%= link_to Decidim::EngineRouter.main_proxy(blog_component).root_path, class: "main-bar__links-desktop__item", "aria-label": t("decidim.navigation.blog") do %>
         <span class="size-max"><%= t("decidim.navigation.blog") %></span>
       <% end %>
     <% end %>
