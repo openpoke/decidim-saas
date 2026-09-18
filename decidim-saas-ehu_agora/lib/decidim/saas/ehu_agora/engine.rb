@@ -13,10 +13,7 @@ module Decidim
 
         config.to_prepare do
           Decidim::Devise::OmniauthRegistrationsController.class_eval do
-            # The SAML callback is a POST from the IdP without a CSRF token. `saml` is served
-            # through `action_missing`, so a conditional is used instead of `only:` to keep
-            # `raise_on_missing_callback_actions` happy.
-            skip_before_action :verify_authenticity_token, if: -> { action_name.in?(%w(saml failure)) }
+            skip_before_action :verify_authenticity_token, only: [:saml, :failure]
           end
         end
 

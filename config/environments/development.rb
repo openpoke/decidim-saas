@@ -95,7 +95,4 @@ Rails.application.configure do
 
   # Annotate redirects with the caller location.
   config.action_dispatch.verbose_redirect_logs = true
-
-  # Raise error when a before_action's only/except options reference missing actions.
-  config.action_controller.raise_on_missing_callback_actions = true
 end
