@@ -15,7 +15,7 @@ env:
   DATABASE_PASSWORD: postgres
   DATABASE_HOST: localhost
   RUBYOPT: '-W:no-deprecated'
-  CHROME_VERSION: 151.0.7922.108
+  CHROME_VERSION: 152.0.7977.82
 
 jobs:
   tests:
@@ -43,17 +43,20 @@ jobs:
 
       - run: |
           sudo apt-get update; sudo apt-get -f install libvips libvips-tools
-
-      - name: Install Chrome version ${{ env.CHROME_VERSION }}
-        run: |
-          sudo apt install libu2f-udev
-          wget --no-verbose -O /tmp/chrome.deb https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${{ env.CHROME_VERSION }}-1_amd64.deb
-          sudo dpkg -i /tmp/chrome.deb
-          rm /tmp/chrome.deb
-
+          
       - uses: nanasess/setup-chromedriver@v2
         with:
           chromedriver-version: ${{ env.CHROME_VERSION }}
+
+      - name: List Chrome
+        run: apt list --installed | grep chrome
+    
+      - name: Remove Chrome
+        run: sudo apt remove google-chrome-stable
+    
+      - uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: ${{ env.CHROME_VERSION }}
 
       - uses: ruby/setup-ruby@v1
         with:
