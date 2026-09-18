@@ -1,3 +1,6 @@
+<% assembly_slug = ENV.fetch("ASSEMBLY_SLUG", nil) %>
+<% blog_component = Decidim::Component.find_by(id: ENV.fetch("BLOG_COMPONENT_ID", nil)) %>
+<% contact_component = Decidim::Component.find_by(id: 13, manifest_name: "surveys") %>
 <div class="main-bar__links-desktop__item-wrapper text-lg font-semibold">
   <div>
     <%= link_to decidim.root_path, class: "main-bar__links-desktop__item", "aria-label": t("decidim.navigation.home") do %>
@@ -7,14 +10,14 @@
 
   <div>
     <% if Decidim.module_installed?(:assemblies) %>
-      <%= link_to "/assemblies/#{ENV["ASSEMBLY_SLUG"]}", class: "main-bar__links-desktop__item", "aria-label": t("decidim.navigation.assemblies") do %>
+      <%= link_to (assembly_slug.present? ? decidim_assemblies.assembly_path(assembly_slug) : decidim_assemblies.assemblies_path), class: "main-bar__links-desktop__item", "aria-label": t("decidim.navigation.assemblies") do %>
         <span class="size-max"><%= t("decidim.navigation.assemblies") %></span>
       <% end %>
     <% end %>
   </div>
 
   <div>
-    <%= link_to "/pages/cosa-puoi-fare-tu", class: "main-bar__links-desktop__item", "aria-label": t("decidim.navigation.help") do %>
+    <%= link_to decidim.page_path("cosa-puoi-fare-tu"), class: "main-bar__links-desktop__item", "aria-label": t("decidim.navigation.help") do %>
       <span class="size-max"><%= t("decidim.navigation.help") %></span>
     <% end %>
   </div>
@@ -28,14 +31,18 @@
   </div>
 
   <div>
-    <%= link_to "/assemblies/#{ENV["ASSEMBLY_SLUG"]}/f/#{ENV["BLOG_COMPONENT_ID"]}/posts", class: "main-bar__links-desktop__item", "aria-label": t("decidim.navigation.blog") do %>
-      <span class="size-max"><%= t("decidim.navigation.blog") %></span>
+    <% if blog_component %>
+      <%= link_to Decidim::EngineRouter.main_proxy(blog_component).root_path, class: "main-bar__links-desktop__item", "aria-label": t("decidim.navigation.blog") do %>
+        <span class="size-max"><%= t("decidim.navigation.blog") %></span>
+      <% end %>
     <% end %>
   </div>
 
   <div>
-    <%= link_to "/assemblies/#{ENV["ASSEMBLY_SLUG"]}/f/13/surveys/2", class: "main-bar__links-desktop__item", "aria-label": t("decidim.navigation.contact") do %>
-      <span class="size-max"><%= t("decidim.navigation.contact") %></span>
+    <% if contact_component %>
+      <%= link_to Decidim::EngineRouter.main_proxy(contact_component).survey_path(2), class: "main-bar__links-desktop__item", "aria-label": t("decidim.navigation.contact") do %>
+        <span class="size-max"><%= t("decidim.navigation.contact") %></span>
+      <% end %>
     <% end %>
   </div>
 </div>
