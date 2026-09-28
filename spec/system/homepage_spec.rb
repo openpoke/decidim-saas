@@ -31,9 +31,9 @@ describe "Homepage" do
   end
 
   context "when header" do
-    it "includes additional language chooser" do
-      within ".main-bar__links-desktop" do
-        expect(page).to have_css(".main-header__language-container")
+    it "includes the language chooser" do
+      within "#main-bar" do
+        expect(page).to have_css(".main-bar__language-chooser-desktop")
       end
     end
   end

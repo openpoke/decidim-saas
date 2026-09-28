@@ -16,7 +16,7 @@ Bundler.require(*Rails.groups)
 
 # Require the gems listed in Gemfile with require=false if env var present
 require "decidim/extra_user_fields" if ENV["WITH_EXTRA_USER_FIELDS"].present? && ENV["WITH_CLEAN_CLOTHES"].blank?
-require "decidim/chatbot" if ENV["WITH_CHATBOT"].present?
+# require "decidim/chatbot" if ENV["WITH_CHATBOT"].present?
 require "decidim/saas/clean_clothes" if ENV["WITH_CLEAN_CLOTHES"].present?
 require "decidim/saas/som_mobilitat" if ENV["WITH_SOM_MOBILITAT"].present?
 require "decidim/saas/ehu_agora" if ENV["WITH_EHU_AGORA"].present?
@@ -27,7 +27,11 @@ require "decidim/saas/silly_census" if ENV["WITH_SILLY_CENSUS"].present?
 module DecidimSaas
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 7.2
+    config.load_defaults 8.1
+
+    # Please, add to the `ignore` list any other `lib` subdirectories that do
+    # not contain `.rb` files, or that should not be reloaded or eager loaded.
+    config.autoload_lib(ignore: %w(assets tasks))
 
     # Configuration for the application, engines, and railties goes here.
     #
