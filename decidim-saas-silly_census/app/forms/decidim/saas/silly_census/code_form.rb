@@ -26,7 +26,7 @@ module Decidim
         def code_unique
           if code&.strip.present?
             voter = Decidim::Elections::Voter.find_or_create_by(
-              election: election,
+              election:,
               data: { code: code.strip.downcase }
             )
             errors.add(:code, "Something went wrong") if voter.blank?
