@@ -58,6 +58,7 @@ Rails.application.configure do
   # config.ssl_options = { redirect: { exclude: ->(request) { request.path == "/up" } } }
 
   if ENV["RAILS_LOG_TO_STDOUT"].present?
+    config.rails_semantic_logger.add_file_appender = false if defined?(RailsSemanticLogger)
     logger = ActiveSupport::Logger.new($stdout)
     logger.formatter = config.log_formatter
     config.logger = ActiveSupport::TaggedLogging.new(logger)
