@@ -5,8 +5,8 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y ca-certificates c
     curl -fsSL https://deb.nodesource.com/setup_22.x | bash - && \
     apt-get update && apt-get install -y nodejs \
     build-essential \
-    libvips libvips-tools \
     postgresql-client \
+    libvips libvips-tools \
     p7zip \
     libpq-dev && \
     apt-get clean
@@ -95,8 +95,7 @@ RUN apt-get update && \
     apt-get install -y postgresql-client \
     libvips libvips-tools \
     curl \
-    p7zip \
-    supervisor && \
+    p7zip && \
     apt-get clean
 
 EXPOSE 3000
@@ -117,7 +116,6 @@ RUN addgroup --system --gid 1000 app && \
 
 WORKDIR /app
 COPY ./entrypoint.sh /app/entrypoint.sh
-COPY ./supervisord.conf /etc/supervisord.conf
 COPY --from=builder --chown=app:app /usr/local/bundle/ /usr/local/bundle/
 COPY --from=builder --chown=app:app /app /app
 
@@ -126,4 +124,5 @@ HEALTHCHECK --interval=1m --timeout=5s --start-period=30s \
     CMD (curl -sS http://localhost:3000/health_check | grep success) || exit 1
 
 ENTRYPOINT ["/app/entrypoint.sh"]
-CMD ["/usr/bin/supervisord"]
+CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
+
