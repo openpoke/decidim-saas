@@ -9,7 +9,7 @@ Rails.application.config.after_initialize do
     manifest.voter_form_partial = "decidim/elections/censuses/token_csv_flexible_form"
     manifest.after_update_command = "Decidim::Elections::Admin::Censuses::TokenCsvFlexible"
     manifest.user_query do |election|
-      Decidim::Elections::Voter.where(election: election)
+      Decidim::Elections::Voter.where(election:)
     end
   end
 end

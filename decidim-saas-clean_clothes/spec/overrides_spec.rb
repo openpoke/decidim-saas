@@ -9,18 +9,17 @@ checksums = [
   {
     package: "decidim-core",
     files: {
-      "/app/views/layouts/decidim/footer/_main.html.erb" => "2d3ecb9824c197951ef8fd7a77bed7d0"
+      "/app/views/layouts/decidim/footer/_main.html.erb" => "31e54040476b6b748f1f61b21451149a"
     }
   }
 ]
 
 describe "Overriden files", type: :view do
   checksums.each do |item|
-    spec = Gem::Specification.find_by_name(item[:package])
-
     item[:files].each do |file, signature|
-      it "#{spec.gem_dir}#{file} matches checksum" do
-        expect(md5("#{spec.gem_dir}#{file}")).to eq(signature)
+      it "#{item[:package]}#{file} matches checksum" do
+        gem_dir = Gem::Specification.find_by_name(item[:package]).gem_dir
+        expect(md5("#{gem_dir}#{file}")).to eq(signature)
       end
     end
   end

@@ -8,7 +8,7 @@ Rails.application.configure do
   # In the development environment your application's code is reloaded any time
   # it changes. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
-  config.cache_classes = false
+  config.enable_reloading = true
 
   # Do not eager load code on boot.
   config.eager_load = false
@@ -77,7 +77,7 @@ Rails.application.configure do
     config.boost_performance = true
     # Enable caching and eager load
     config.eager_load = true
-    config.cache_classes = true
+    config.enable_reloading = false
     # Logging
     config.log_level = :info
     config.action_view.logger = nil
@@ -86,4 +86,13 @@ Rails.application.configure do
   end
 
   config.hosts << "lvh.me"
+
+  # Append comments with runtime information tags to SQL queries in logs.
+  config.active_record.query_log_tags_enabled = true
+
+  # Highlight code that enqueued background job in logs.
+  config.active_job.verbose_enqueue_logs = true
+
+  # Annotate redirects with the caller location.
+  config.action_dispatch.verbose_redirect_logs = true
 end
