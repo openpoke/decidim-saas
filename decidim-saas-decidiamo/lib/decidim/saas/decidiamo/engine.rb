@@ -116,6 +116,9 @@ module Decidim
         initializer "saas.decidiamo.hero_content_block_settings", after: "decidim.core.content_blocks" do
           Decidim.content_blocks.for(:homepage).find { |cb| cb.name == :hero }&.settings do |settings|
             settings.attribute :welcome_up_text, type: :string, translated: true
+            settings.attribute :badge_text, type: :string, translated: true
+            settings.attribute :secondary_cta_text, type: :string, translated: true
+            settings.attribute :secondary_cta_path, type: :string, translated: true
           end
         end
       end
