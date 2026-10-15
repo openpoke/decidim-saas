@@ -59,6 +59,10 @@ module Decidim
             def translated_welcome_up_text
               translated_attribute(model.settings.welcome_up_text)
             end
+
+            def background_image
+              model.images_container.attached_uploader(:background_image).url
+            end
           end
 
           Decidim::Blogs::Post.class_eval do
