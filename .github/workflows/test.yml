@@ -15,7 +15,6 @@ env:
   DATABASE_PASSWORD: postgres
   DATABASE_HOST: localhost
   RUBYOPT: '-W:no-deprecated'
-  CHROME_VERSION: 139.0.7258.66
 
 jobs:
   tests:
@@ -44,19 +43,10 @@ jobs:
       - run: |
           sudo apt-get update; sudo apt-get -f install imagemagick
           
-      - uses: nanasess/setup-chromedriver@v2
+      - uses: browser-actions/setup-chrome@v2
         with:
-          chromedriver-version: ${{ env.CHROME_VERSION }}
-
-      - name: List Chrome
-        run: apt list --installed | grep chrome
-    
-      - name: Remove Chrome
-        run: sudo apt remove google-chrome-stable
-    
-      - uses: browser-actions/setup-chrome@v1
-        with:
-          chrome-version: ${{ env.CHROME_VERSION }}
+          chrome-version: 155
+          install-chromedriver: true
 
       - uses: ruby/setup-ruby@v1
         with:
