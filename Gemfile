@@ -30,6 +30,9 @@ gem "bootsnap", "~> 1.3"
 gem "faraday"
 gem "puma", ">= 6.3.1"
 
+# Adding this because of bug on Pagination #18065
+gem "kaminari", "~> 1.2.2"
+
 group :development, :test do
   gem "byebug", "~> 11.0", platform: :mri
 
