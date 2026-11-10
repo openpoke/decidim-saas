@@ -15,4 +15,6 @@ Gem::Specification.new do |s|
   s.description = "Ateneu Barcelonès Decidim instance with some extra features."
 
   s.files = Dir["{app,config,lib}/**/*", "LICENSE-AGPLv3.txt", "Rakefile", "README.md"]
+
+  s.add_dependency "omniauth-oauth2", "~> 1.8"
 end
