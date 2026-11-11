@@ -13,16 +13,14 @@ then set these environment variables for the Decidim application:
 | `SINERGIA_CRM_SITE` | Base URL of the SinergiaCRM instance |
 | `SINERGIA_CRM_CLIENT_ID` | OAuth client ID |
 | `SINERGIA_CRM_CLIENT_SECRET` | OAuth client secret, when using a confidential client |
-| `SINERGIA_CRM_AUTHORIZE_URL` | Authorization endpoint path (default: `/oauth/authorize`) |
-| `SINERGIA_CRM_TOKEN_URL` | Token endpoint path (default: `/oauth/token`) |
-| `SINERGIA_CRM_USER_INFO_URL` | Authenticated endpoint returning the portal user's JSON profile (default: `/oauth/userinfo`) |
-| `SINERGIA_CRM_UID_FIELD` | Profile field used as the stable user ID (default: `id`) |
-| `SINERGIA_CRM_NAME_FIELD` | Profile field for the user's name (default: `name`) |
-| `SINERGIA_CRM_EMAIL_FIELD` | Profile field for the user's email (default: `email`) |
+| `SINERGIA_CRM_AUTHORIZE_URL` | Authorization path (default: `/index.php?entryPoint=sticPortalLogin`) |
+| `SINERGIA_CRM_TOKEN_URL` | Token path (default: `/index.php?entryPoint=sticPortalOAuthToken`) |
 
-The endpoint paths and profile field names can vary by SinergiaCRM installation.
-Register the callback URL shown by OmniAuth for the `sinergia_crm` provider in
-the OAuth client configuration.
+The token response includes the portal user ID, email, and portal type. The
+strategy uses the portal type and ID together as the stable OmniAuth UID. Register
+the callback URL shown by OmniAuth for the `sinergia_crm` provider in the OAuth
+client configuration. The endpoint paths can be overridden for customized
+installations.
 
 Run with:
 

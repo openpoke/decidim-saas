@@ -21,16 +21,15 @@ module Decidim
                      ENV.fetch("SINERGIA_CRM_CLIENT_SECRET", ""),
                      client_options: {
                        site: ENV.fetch("SINERGIA_CRM_SITE"),
-                       authorize_url: ENV.fetch("SINERGIA_CRM_AUTHORIZE_URL", "/oauth/authorize"),
-                       token_url: ENV.fetch("SINERGIA_CRM_TOKEN_URL", "/oauth/token")
-                     },
-                     user_info_url: ENV.fetch("SINERGIA_CRM_USER_INFO_URL", "/oauth/userinfo"),
-                     uid_field: ENV.fetch("SINERGIA_CRM_UID_FIELD", "id"),
-                     name_field: ENV.fetch("SINERGIA_CRM_NAME_FIELD", "name"),
-                     email_field: ENV.fetch("SINERGIA_CRM_EMAIL_FIELD", "email")
+                       authorize_url: ENV.fetch("SINERGIA_CRM_AUTHORIZE_URL", "/index.php?entryPoint=sticPortalLogin"),
+                       token_url: ENV.fetch("SINERGIA_CRM_TOKEN_URL", "/index.php?entryPoint=sticPortalOAuthToken")
+                     }
           end
 
-          Decidim.omniauth_providers[:sinergia_crm] = { enabled: true }
+          Decidim.omniauth_providers[:sinergia_crm] = {
+            enabled: true,
+            icon_path: "media/images/sinergia_crm_icon.png"
+          }
         end
       end
     end

@@ -271,6 +271,7 @@ PATH
   remote: decidim-saas-ateneu_bcn
   specs:
     decidim-saas-ateneu_bcn (1.0)
+      omniauth-oauth2 (~> 1.8)
 
 PATH
   remote: decidim-saas-clean_clothes
