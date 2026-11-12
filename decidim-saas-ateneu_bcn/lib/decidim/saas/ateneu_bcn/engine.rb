@@ -18,11 +18,12 @@ module Decidim
           Rails.application.config.middleware.use OmniAuth::Builder do
             provider :sinergia_crm,
                      ENV.fetch("SINERGIA_CRM_CLIENT_ID"),
-                     ENV.fetch("SINERGIA_CRM_CLIENT_SECRET", ""),
+                     ENV["SINERGIA_CRM_CLIENT_SECRET"].presence,
                      client_options: {
                        site: ENV.fetch("SINERGIA_CRM_SITE"),
                        authorize_url: ENV.fetch("SINERGIA_CRM_AUTHORIZE_URL", "/index.php?entryPoint=sticPortalLogin"),
-                       token_url: ENV.fetch("SINERGIA_CRM_TOKEN_URL", "/index.php?entryPoint=sticPortalOAuthToken")
+                       token_url: ENV.fetch("SINERGIA_CRM_TOKEN_URL", "/index.php?entryPoint=sticPortalOAuthToken"),
+                       auth_scheme: :request_body
                      }
           end
 

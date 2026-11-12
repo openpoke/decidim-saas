@@ -9,6 +9,13 @@ module OmniAuth
       option :client_options, {}
       option :authorize_options, [:scope]
 
+      # OmniAuth normally appends the current request's query string to the
+      # callback URL. SinergiaCRM requires the registered redirect URI exactly,
+      # without query parameters, for both authorization and token exchange.
+      def callback_url
+        super.split("?", 2).first
+      end
+
       # Contact and account UUIDs can overlap, so include the portal type.
       uid { "#{raw_info["portal_type"]}:#{raw_info["portal_id"]}" }
 
