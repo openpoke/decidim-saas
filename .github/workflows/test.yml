@@ -45,7 +45,7 @@ jobs:
           
       - uses: browser-actions/setup-chrome@v2
         with:
-          chrome-version: stable
+          chrome-version: 157.0.8103.50
           install-chromedriver: true
 
       - uses: ruby/setup-ruby@v1
