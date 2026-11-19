@@ -1060,8 +1060,13 @@ GEM
       logger (~> 1.4)
       rubyzip (>= 1.2.2, < 4.0)
       websocket (~> 1.0)
-    selma (0.5.3)
+    selma (0.5.2)
       rb_sys (~> 0.9)
+    selma (0.5.2-aarch64-linux)
+    selma (0.5.2-arm-linux-gnu)
+    selma (0.5.2-arm64-darwin)
+    selma (0.5.2-x86_64-darwin)
+    selma (0.5.2-x86_64-linux)
     semantic_logger (5.1.0)
       concurrent-ruby (~> 1.0)
     semantic_range (3.1.1)
@@ -1527,7 +1532,12 @@ CHECKSUMS
   sassc (2.4.0) sha256=4c60a2b0a3b36685c83b80d5789401c2f678c1652e3288315a1551d811d9f83e
   securerandom (0.4.1) sha256=cc5193d414a4341b6e225f0cb4446aceca8e50d5e1888743fac16987638ea0b1
   selenium-webdriver (4.51.0) sha256=09edf1b7fc360e0570bac609676f804ed527fe0b2f285e03233561e29b0ec105
-  selma (0.5.3) sha256=a9d69b4324ad6fb47fca360c0469a425efc276a4af50cbbe0507de717f2b0e7e
+  selma (0.5.2) sha256=eee0ca3c07c9e2880bf64f951c2727c16b6edb120dd76699fa7a2c65b6185e8e
+  selma (0.5.2-aarch64-linux) sha256=55106298be0568dbae994d74f96f74036074b03eb1438b651b74480d6109fccb
+  selma (0.5.2-arm-linux-gnu) sha256=73f2dce561fd8ce39aaabc2a8a6992ecb5b8e6e7144fc41932945cf255896648
+  selma (0.5.2-arm64-darwin) sha256=99501c326c40818af21ea6167a20a5dda6e33863780c08ad3d7ef1057d81fb0d
+  selma (0.5.2-x86_64-darwin) sha256=721d9b365962734a0570e3e3fdf3dca8d013fa1e48ad475e009b9da6751fb303
+  selma (0.5.2-x86_64-linux) sha256=68055b92343cb0d849351a9e584f16a6e742675cb2648f9c314fd8d46504d98b
   semantic_logger (5.1.0) sha256=9a8170fc0212ad47ef29e0760219cf416cb5b9973061981733234f7148b6d6ea
   semantic_range (3.1.1) sha256=508333196ef0c7ba33e79579d4df7eb0a41080595e6a655c2515b03d634ec4a9
   sentry-rails (7.1.0) sha256=21e2092f8ab013ec384a4a3e406622a1c2a04d6638c697b8f922d9d46da634fa
@@ -1579,7 +1589,7 @@ CHECKSUMS
   zeitwerk (2.8.3) sha256=2c85125a8467ce069e20123d1e709a08955c9d29c118c25b46b7b7fafdbb92e5
 
 RUBY VERSION
-   ruby 3.4.7p58
+   ruby 3.4.13p195
 
 BUNDLED WITH
    2.6.9
