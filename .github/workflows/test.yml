@@ -8,7 +8,7 @@ on:
       - "**"
 
 env:
-  RUBY_VERSION: 3.3.11
+  RUBY_VERSION: 3.3.14
   NODE_VERSION: 22.14.0
   RAILS_ENV: test
   DATABASE_USERNAME: postgres
@@ -42,11 +42,6 @@ jobs:
 
       - run: |
           sudo apt-get update; sudo apt-get -f install imagemagick
-          
-      - uses: browser-actions/setup-chrome@v2
-        with:
-          chrome-version: 155
-          install-chromedriver: true
 
       - uses: ruby/setup-ruby@v1
         with:
