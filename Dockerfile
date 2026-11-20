@@ -29,6 +29,7 @@ COPY ./decidim-saas-ateneu_bcn /app/decidim-saas-ateneu_bcn
 COPY ./decidim-saas-decidiamo /app/decidim-saas-decidiamo
 COPY ./decidim-saas-silly_census /app/decidim-saas-silly_census
 
+
 RUN gem install bundler:$(grep -A 1 'BUNDLED WITH' Gemfile.lock | tail -n 1 | xargs) && \
     bundle config set --deployment true && \
     bundle config set --local without 'development test' && \
@@ -92,6 +93,7 @@ FROM ruby:3.3.14-slim AS final
 
 RUN apt-get update && \
     apt-get install -y postgresql-client \
+    libicu76 \
     imagemagick \
     curl \
     p7zip \
@@ -99,9 +101,6 @@ RUN apt-get update && \
     apt-get clean
 
 EXPOSE 3000
-
-ARG CAPROVER_GIT_COMMIT_SHA=${CAPROVER_GIT_COMMIT_SHA}
-ENV APP_REVISION=${CAPROVER_GIT_COMMIT_SHA}
 
 ENV RAILS_LOG_TO_STDOUT=true
 ENV RAILS_SERVE_STATIC_FILES=true
