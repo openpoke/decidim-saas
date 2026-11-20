@@ -40,6 +40,10 @@ jobs:
         with:
           fetch-depth: 1
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
       - run: |
           sudo apt-get update; sudo apt-get -f install libvips libvips-tools
 
