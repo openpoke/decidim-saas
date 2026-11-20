@@ -15,12 +15,11 @@ env:
   DATABASE_PASSWORD: postgres
   DATABASE_HOST: localhost
   RUBYOPT: '-W:no-deprecated'
-  CHROME_VERSION: 152.0.7977.82
 
 jobs:
   tests:
     name: Tests SaaS
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
     services:
       postgres:
         image: postgres:17-alpine
@@ -44,20 +43,6 @@ jobs:
       - run: |
           sudo apt-get update; sudo apt-get -f install libvips libvips-tools
           
-      - uses: nanasess/setup-chromedriver@v2
-        with:
-          chromedriver-version: ${{ env.CHROME_VERSION }}
-
-      - name: List Chrome
-        run: apt list --installed | grep chrome
-    
-      - name: Remove Chrome
-        run: sudo apt remove google-chrome-stable
-    
-      - uses: browser-actions/setup-chrome@v1
-        with:
-          chrome-version: ${{ env.CHROME_VERSION }}
-
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
