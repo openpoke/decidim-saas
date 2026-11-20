@@ -31,6 +31,7 @@ COPY ./decidim-saas-ateneu_bcn /app/decidim-saas-ateneu_bcn
 COPY ./decidim-saas-decidiamo /app/decidim-saas-decidiamo
 COPY ./decidim-saas-silly_census /app/decidim-saas-silly_census
 
+
 RUN gem install bundler:$(grep -A 1 'BUNDLED WITH' Gemfile.lock | tail -n 1 | xargs) && \
     bundle config set --deployment true && \
     bundle config set --local without 'development test' && \
@@ -81,6 +82,7 @@ FROM ruby:3.4.13-slim AS final
 
 RUN apt-get update && \
     apt-get install -y postgresql-client \
+    libicu76 \
     libvips libvips-tools \
     curl \
     p7zip && \
@@ -88,15 +90,9 @@ RUN apt-get update && \
 
 EXPOSE 3000
 
-ARG CAPROVER_GIT_COMMIT_SHA=${CAPROVER_GIT_COMMIT_SHA}
-ENV APP_REVISION=${CAPROVER_GIT_COMMIT_SHA}
-
 ENV RAILS_LOG_TO_STDOUT=true
 ENV RAILS_SERVE_STATIC_FILES=true
 ENV RAILS_ENV=production
-
-ARG RUN_RAILS
-ARG RUN_SIDEKIQ
 
 # Add user
 RUN addgroup --system --gid 1000 app && \
@@ -106,6 +102,7 @@ WORKDIR /app
 COPY ./entrypoint.sh /app/entrypoint.sh
 COPY --from=builder --chown=app:app /usr/local/bundle/ /usr/local/bundle/
 COPY --from=builder --chown=app:app /app /app
+RUN mkdir -p /app/tmp/pids && chown app:app /app/tmp /app/tmp/pids
 
 USER app
 HEALTHCHECK --interval=1m --timeout=5s --start-period=30s \

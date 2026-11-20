@@ -1,0 +1,47 @@
+.hero-vota {
+  @apply w-full max-w-screen-xl mx-auto px-4 md:px-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6 py-8 md:py-10 bg-white;
+
+  &__content {
+    @apply flex flex-col items-start gap-3 md:w-3/5;
+  }
+
+  &__badge {
+    @apply inline-block rounded-full px-5 py-1 text-xs font-bold uppercase tracking-wide bg-[#E3F4EF] text-[#00735F];
+  }
+
+  &__title {
+    @apply text-2xl md:text-4xl font-bold leading-tight text-[#1E2B29];
+
+    // Override the global italic display font applied to headings
+    font-family: inherit !important;
+  }
+
+  &__subtitle {
+    @apply text-xs md:text-lg text-gray-2;
+
+    // Highlighted first part of the subtitle (wrapped in <strong> from the admin)
+    strong {
+      @apply text-sm md:text-2xl font-bold;
+    }
+  }
+
+  &__actions {
+    @apply flex flex-wrap items-center gap-6 mt-3;
+  }
+
+  &__cta {
+    @apply inline-block rounded-md px-12 py-3 font-bold text-white bg-[#8E2157] hover:bg-[#741A47] transition;
+  }
+
+  &__secondary-cta {
+    @apply font-bold text-[#8E2157] hover:underline;
+  }
+
+  &__image {
+    @apply flex justify-center md:w-2/5;
+
+    img {
+      @apply w-full max-w-[280px] md:max-w-[340px] h-auto object-contain;
+    }
+  }
+}

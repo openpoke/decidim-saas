@@ -29,6 +29,9 @@ en:
     content_blocks:
       hero_settings_form:
         welcome_up_text: "Hero text"
+        badge_text: Badge text
+        secondary_cta_text: Secondary link text
+        secondary_cta_path: Secondary link URL
       vertical_scroll_settings_form:
         block_1:
           title: Title
@@ -119,6 +122,8 @@ en:
       home:
         hero:
           welcome_up_text: "PROGRAMMATIC <u>CONFERENCE</u> <strong>NOVEMBER '26</strong>"
+          badge_text: Voting open
+          secondary_cta_text: How to vote
     saas:
       decidiamo:
         needs_survey_completed:

@@ -17,6 +17,25 @@ module Decidim
           end
         end
 
+        initializer "saas.ehu_agora.privacy_configurations", before: :load_config_initializers do
+          # Disable open-data for users & moderations
+          def Decidim.open_data_manifests
+            [
+              CoreDataManifest.new(
+                name: :taxonomies,
+                collection: ->(organization) { Decidim::Taxonomy.where(organization:) },
+                serializer: Decidim::Exporters::OpenDataTaxonomySerializer,
+                include_in_open_data: true
+              )
+            ]
+          end
+          # Disable Intergram for admins and public users as it uses external chat services that may conflict with privacy policies
+          Decidim::DecidimAwesome.configure do |config|
+            config.intergram_for_admins = :disabled
+            config.intergram_for_public = :disabled
+          end
+        end
+
         initializer "saas.ehu_agora.authorizations" do
           Decidim::Verifications.register_workflow(:agora_member) do |auth|
             auth.form = "Decidim::Saas::EhuAgora::AgoraAuthorizationHandler"

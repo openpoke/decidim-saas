@@ -15,7 +15,7 @@ gem "decidim-templates", DECIDIM_VERSION
 gem "decidim-decidim_awesome", github: "decidim-ice/decidim-module-decidim_awesome", branch: "main"
 gem "decidim-extra_censuses", github: "openpoke/decidim-module-extra_censuses", branch: "main"
 gem "decidim-extra_user_fields", github: "openpoke/decidim-module-extra_user_fields", branch: "main", require: false
-gem "decidim-pokecode", github: "openpoke/decidim-module-pokecode", branch: "feature/solid_queue"
+gem "decidim-pokecode", github: "openpoke/decidim-module-pokecode", branch: "main"
 gem "decidim-term_customizer", github: "openpoke/decidim-module-term_customizer", branch: "main"
 
 # Customizations for clients
@@ -29,6 +29,9 @@ gem "decidim-saas-som_mobilitat", path: "decidim-saas-som_mobilitat", require: f
 gem "bootsnap", "~> 1.3"
 gem "faraday"
 gem "puma", ">= 6.3.1"
+
+# Adding this because of bug on Pagination #18065
+gem "kaminari", "~> 1.2.2"
 
 group :development, :test do
   gem "byebug", "~> 11.0", platform: :mri

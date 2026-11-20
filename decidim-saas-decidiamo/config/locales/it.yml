@@ -52,6 +52,9 @@ it:
     content_blocks:
       hero_settings_form:
         welcome_up_text: "Testo dell'hero"
+        badge_text: Testo dell'etichetta
+        secondary_cta_text: Testo del link secondario
+        secondary_cta_path: URL del link secondario
       vertical_scroll_settings_form:
         block_1:
           title: Titolo
@@ -148,6 +151,8 @@ it:
       home:
         hero:
           welcome_up_text: "<u>CONFERENZA</u> PROGRAMMATICA <strong>NOVEMBRE '26</strong>"
+          badge_text: Votazione aperta
+          secondary_cta_text: Come votare
     saas:
       decidiamo:
         needs_survey_completed:
