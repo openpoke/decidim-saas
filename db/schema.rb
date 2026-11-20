@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_27_122643) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_06_135807) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
   enable_extension "pg_catalog.plpgsql"
@@ -59,6 +59,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_27_122643) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "data_migrations", primary_key: "version", id: :string, force: :cascade do |t|
   end
 
   create_table "decidim_accountability_milestones", id: :serial, force: :cascade do |t|
@@ -114,7 +117,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_27_122643) do
 
   create_table "decidim_action_logs", force: :cascade do |t|
     t.bigint "decidim_organization_id", null: false
-    t.bigint "user_id", null: false
+    t.bigint "user_id"
     t.bigint "decidim_component_id"
     t.string "resource_type", null: false
     t.bigint "resource_id", null: false
@@ -128,7 +131,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_27_122643) do
     t.string "visibility", default: "admin-only"
     t.integer "decidim_scope_id"
     t.integer "decidim_area_id"
-    t.string "user_type", default: "Decidim::User", null: false
+    t.string "user_type", default: "Decidim::User"
     t.index ["created_at"], name: "index_decidim_action_logs_on_created_at"
     t.index ["decidim_area_id"], name: "index_decidim_action_logs_on_decidim_area_id"
     t.index ["decidim_component_id"], name: "index_action_logs_on_component_id"
@@ -714,7 +717,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_27_122643) do
     t.datetime "published_at"
     t.index ["decidim_conference_id"], name: "index_decidim_conference_speakers_on_decidim_conference_id"
     t.index ["decidim_user_id"], name: "index_decidim_conference_speaker_on_decidim_user_id"
-    t.index ["published_at"], name: "index_decidim_conference_speakers_on_published_at"
   end
 
   create_table "decidim_conference_user_roles", force: :cascade do |t|
@@ -1675,7 +1677,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_27_122643) do
     t.index "md5((title)::text)", name: "decidim_proposals_proposal_title_search"
     t.index ["created_at"], name: "index_decidim_proposals_proposals_on_created_at"
     t.index ["decidim_component_id"], name: "index_decidim_proposals_proposals_on_decidim_component_id"
-    t.index ["decidim_proposals_proposal_state_id"], name: "index_decidim_proposals_on_decidim_proposal_state_id"
     t.index ["decidim_scope_id"], name: "index_decidim_proposals_proposals_on_decidim_scope_id"
     t.index ["deleted_at"], name: "index_decidim_proposals_proposals_on_deleted_at"
     t.index ["proposal_votes_count"], name: "index_decidim_proposals_proposals_on_proposal_votes_count"
@@ -1842,7 +1843,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_27_122643) do
     t.datetime "deleted_at"
     t.index ["cancelled_by_user_id"], name: "index_decidim_sortitions_sortitions_on_cancelled_by_user_id"
     t.index ["decidim_author_id", "decidim_author_type"], name: "index_decidim_sortitions_sortitions_on_decidim_author"
-    t.index ["decidim_author_id"], name: "index_decidim_sortitions_sortitions_on_decidim_author_id"
+    t.index ["decidim_author_id"], name: "idx_on_decidim_author_id_c14fe8c981"
     t.index ["decidim_component_id"], name: "index_sortitions__on_feature"
     t.index ["decidim_proposals_component_id"], name: "index_sortitions__on_proposals_feature"
     t.index ["deleted_at"], name: "index_decidim_sortitions_sortitions_on_deleted_at"
