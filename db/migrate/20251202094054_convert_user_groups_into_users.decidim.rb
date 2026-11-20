@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # This migration comes from decidim (originally 20250217192438)
-# This file has been modified by `decidim upgrade:migrations` task on 2026-10-16 19:07:40 UTC
+# This file has been modified by `decidim upgrade:migrations` task on 2026-09-18 09:08:19 UTC
 class ConvertUserGroupsIntoUsers < ActiveRecord::Migration[7.0]
   class User < ApplicationRecord
     belongs_to :organization, foreign_key: "decidim_organization_id", class_name: "Decidim::Organization"

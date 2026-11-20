@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # This migration comes from decidim (originally 20261007090000)
-class MakeUserOptionalInActionLogs < ActiveRecord::Migration[7.2]
+class MakeUserOptionalInActionLogs < ActiveRecord::Migration[8.1]
   def up
     change_column_null :decidim_action_logs, :user_id, true
     change_column_null :decidim_action_logs, :user_type, true

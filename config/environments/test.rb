@@ -9,9 +9,7 @@ require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-
-  # Turn false under Spring and add config.action_view.cache_template_loading = true.
-  config.cache_classes = false
+  config.enable_reloading = true
   config.action_view.cache_template_loading = true
 
   # Eager loading loads your whole application. When running a single test locally,
@@ -31,7 +29,7 @@ Rails.application.configure do
   config.cache_store = :null_store
 
   # Raise exceptions instead of rendering exception templates.
-  config.action_dispatch.show_exceptions = false
+  config.action_dispatch.show_exceptions = :rescuable
 
   # Disable request forgery protection in test environment.
   config.action_controller.allow_forgery_protection = false

@@ -78,8 +78,8 @@ describe "Admin manages flexible census" do
     context "when removing all participants from census" do
       before do
         election.update!(census_manifest: :token_csv_flexible)
-        create(:election_voter, election: election, data: { id: "user123", token: "token1" })
-        create(:election_voter, election: election, data: { id: "user456", token: "token2" })
+        create(:election_voter, election:, data: { id: "user123", token: "token1" })
+        create(:election_voter, election:, data: { id: "user456", token: "token2" })
         visit election_census_path
       end
 

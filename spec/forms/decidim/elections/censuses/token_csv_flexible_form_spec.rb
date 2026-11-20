@@ -8,7 +8,7 @@ module Decidim
     module Censuses
       describe TokenCsvFlexibleForm do
         let(:election) { create(:election, :ongoing, census_manifest: :token_csv_flexible) }
-        let!(:voter) { create(:election_voter, data: data, election: election) }
+        let!(:voter) { create(:election_voter, data:, election:) }
         let(:organization) { election.organization }
 
         let(:params) do
@@ -24,7 +24,7 @@ module Decidim
           }
         end
 
-        subject { described_class.from_params(params).with_context(election: election) }
+        subject { described_class.from_params(params).with_context(election:) }
 
         it { is_expected.to be_valid }
 
@@ -56,7 +56,7 @@ module Decidim
 
         context "when voter in another election" do
           let(:other_election) { create(:election, :ongoing, census_manifest: :token_csv_flexible) }
-          let!(:voter) { create(:election_voter, data: data, election: other_election) }
+          let!(:voter) { create(:election_voter, data:, election: other_election) }
 
           it { is_expected.not_to be_valid }
 

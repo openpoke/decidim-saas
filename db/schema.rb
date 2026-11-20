@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_11_06_135807) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_06_135807) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
+  enable_extension "pg_catalog.plpgsql"
   enable_extension "pg_trgm"
-  enable_extension "plpgsql"
 
   create_table "active_hashcash_stamps", force: :cascade do |t|
     t.string "version", null: false
@@ -189,8 +189,6 @@ ActiveRecord::Schema[7.2].define(version: 2026_11_06_135807) do
     t.jsonb "subtitle", null: false
     t.jsonb "short_description", null: false
     t.jsonb "description", null: false
-    t.string "hero_image"
-    t.string "banner_image"
     t.boolean "promoted", default: false
     t.datetime "published_at", precision: nil
     t.jsonb "developer_group"
@@ -224,13 +222,13 @@ ActiveRecord::Schema[7.2].define(version: 2026_11_06_135807) do
     t.string "facebook_handler"
     t.string "youtube_handler"
     t.string "github_handler"
-    t.bigint "decidim_assemblies_type_id"
     t.integer "weight", default: 1, null: false
     t.integer "follows_count", default: 0, null: false
     t.jsonb "announcement"
     t.datetime "deleted_at"
+    t.boolean "has_members", default: false
+    t.integer "access_mode", default: 0, null: false
     t.index ["decidim_area_id"], name: "index_decidim_assemblies_on_decidim_area_id"
-    t.index ["decidim_assemblies_type_id"], name: "index_decidim_assemblies_on_decidim_assemblies_type_id"
     t.index ["decidim_organization_id", "slug"], name: "index_unique_assembly_slug_and_organization", unique: true
     t.index ["decidim_organization_id"], name: "index_decidim_assemblies_on_decidim_organization_id"
     t.index ["decidim_scope_id"], name: "index_decidim_assemblies_on_decidim_scope_id"
@@ -242,14 +240,6 @@ ActiveRecord::Schema[7.2].define(version: 2026_11_06_135807) do
     t.boolean "enable_organization_chart", default: true
     t.bigint "decidim_organization_id"
     t.index ["decidim_organization_id"], name: "index_decidim_assemblies_settings_on_decidim_organization_id"
-  end
-
-  create_table "decidim_assemblies_types", force: :cascade do |t|
-    t.jsonb "title", null: false
-    t.integer "decidim_organization_id"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.index ["decidim_organization_id"], name: "index_decidim_assemblies_types_on_decidim_organization_id"
   end
 
   create_table "decidim_assembly_members", force: :cascade do |t|
@@ -293,7 +283,6 @@ ActiveRecord::Schema[7.2].define(version: 2026_11_06_135807) do
   create_table "decidim_attachments", id: :serial, force: :cascade do |t|
     t.jsonb "title", null: false
     t.jsonb "description"
-    t.string "file"
     t.string "content_type", null: false
     t.string "file_size", null: false
     t.integer "attached_to_id", null: false
@@ -335,7 +324,6 @@ ActiveRecord::Schema[7.2].define(version: 2026_11_06_135807) do
     t.string "unique_id"
     t.datetime "granted_at", precision: nil
     t.jsonb "verification_metadata", default: {}
-    t.string "verification_attachment"
     t.integer "failed_attempts", default: 0, null: false
     t.datetime "locked_at"
     t.index ["decidim_user_id", "name"], name: "index_decidim_authorizations_on_decidim_user_id_and_name", unique: true
@@ -446,7 +434,9 @@ ActiveRecord::Schema[7.2].define(version: 2026_11_06_135807) do
     t.string "private_body"
     t.string "decidim_proposal_type", null: false
     t.datetime "private_body_updated_at", precision: nil
+    t.datetime "deleted_at"
     t.index ["decidim_proposal_id", "decidim_proposal_type"], name: "index_decidim_awesome_proposal_extra_fields_on_decidim_proposal"
+    t.index ["deleted_at"], name: "index_decidim_awesome_proposal_extra_fields_on_deleted_at"
   end
 
   create_table "decidim_awesome_vote_weights", force: :cascade do |t|
@@ -465,7 +455,6 @@ ActiveRecord::Schema[7.2].define(version: 2026_11_06_135807) do
     t.datetime "updated_at", precision: nil, null: false
     t.integer "decidim_author_id", null: false
     t.string "decidim_author_type", null: false
-    t.integer "decidim_user_group_id"
     t.integer "likes_count", default: 0, null: false
     t.integer "comments_count", default: 0, null: false
     t.integer "follows_count", default: 0, null: false
@@ -473,7 +462,6 @@ ActiveRecord::Schema[7.2].define(version: 2026_11_06_135807) do
     t.datetime "deleted_at"
     t.index ["decidim_author_id", "decidim_author_type"], name: "index_decidim_blogs_posts_on_decidim_author"
     t.index ["decidim_component_id"], name: "index_decidim_blogs_posts_on_decidim_component_id"
-    t.index ["decidim_user_group_id"], name: "index_decidim_blogs_posts_on_decidim_user_group_id"
     t.index ["deleted_at"], name: "index_decidim_blogs_posts_on_deleted_at"
   end
 
@@ -596,7 +584,6 @@ ActiveRecord::Schema[7.2].define(version: 2026_11_06_135807) do
 
   create_table "decidim_coauthorships", force: :cascade do |t|
     t.bigint "decidim_author_id", null: false
-    t.bigint "decidim_user_group_id"
     t.string "coauthorable_type"
     t.bigint "coauthorable_id"
     t.datetime "created_at", precision: nil, null: false
@@ -604,7 +591,6 @@ ActiveRecord::Schema[7.2].define(version: 2026_11_06_135807) do
     t.string "decidim_author_type", null: false
     t.index ["coauthorable_type", "coauthorable_id"], name: "index_coauthorable_on_coauthorship"
     t.index ["decidim_author_id", "decidim_author_type"], name: "index_decidim_coauthorships_on_decidim_author"
-    t.index ["decidim_user_group_id"], name: "index_user_group_on_coauthorsihp"
   end
 
   create_table "decidim_collaborative_texts_documents", force: :cascade do |t|
@@ -672,7 +658,6 @@ ActiveRecord::Schema[7.2].define(version: 2026_11_06_135807) do
     t.datetime "updated_at", precision: nil, null: false
     t.integer "depth", default: 0, null: false
     t.integer "alignment", default: 0, null: false
-    t.integer "decidim_user_group_id"
     t.string "decidim_root_commentable_type", null: false
     t.integer "decidim_root_commentable_id", null: false
     t.string "decidim_author_type", null: false
@@ -689,7 +674,6 @@ ActiveRecord::Schema[7.2].define(version: 2026_11_06_135807) do
     t.index ["decidim_commentable_type", "decidim_commentable_id"], name: "decidim_comments_comment_commentable"
     t.index ["decidim_participatory_space_id", "decidim_participatory_space_type"], name: "index_decidim_comments_on_decidim_participatory_space"
     t.index ["decidim_root_commentable_type", "decidim_root_commentable_id"], name: "decidim_comments_comment_root_commentable"
-    t.index ["decidim_user_group_id"], name: "index_decidim_comments_comments_on_decidim_user_group_id"
   end
 
   create_table "decidim_components", id: :serial, force: :cascade do |t|
@@ -724,7 +708,6 @@ ActiveRecord::Schema[7.2].define(version: 2026_11_06_135807) do
     t.string "twitter_handle"
     t.jsonb "short_bio"
     t.string "personal_url"
-    t.string "avatar"
     t.bigint "decidim_user_id"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
@@ -752,8 +735,6 @@ ActiveRecord::Schema[7.2].define(version: 2026_11_06_135807) do
     t.integer "decidim_organization_id"
     t.jsonb "short_description", null: false
     t.jsonb "description", null: false
-    t.string "hero_image"
-    t.string "banner_image"
     t.boolean "promoted", default: false
     t.datetime "published_at", precision: nil
     t.jsonb "objectives", null: false
@@ -768,8 +749,6 @@ ActiveRecord::Schema[7.2].define(version: 2026_11_06_135807) do
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.string "signature_name"
-    t.string "signature"
-    t.string "main_logo"
     t.date "sign_date"
     t.datetime "diploma_sent_at", precision: nil
     t.integer "follows_count", default: 0, null: false
@@ -832,7 +811,6 @@ ActiveRecord::Schema[7.2].define(version: 2026_11_06_135807) do
     t.string "partner_type", null: false
     t.integer "weight", default: 0, null: false
     t.string "link"
-    t.string "logo"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.index ["decidim_conference_id"], name: "index_decidim_conferences_partners_on_decidim_conference_id"
@@ -890,14 +868,12 @@ ActiveRecord::Schema[7.2].define(version: 2026_11_06_135807) do
     t.jsonb "instructions"
     t.datetime "start_time", precision: nil
     t.datetime "end_time", precision: nil
-    t.string "image"
     t.integer "decidim_component_id"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.jsonb "information_updates"
     t.integer "decidim_author_id", null: false
     t.string "reference"
-    t.integer "decidim_user_group_id"
     t.string "decidim_author_type", null: false
     t.datetime "closed_at", precision: nil
     t.jsonb "conclusions"
@@ -915,7 +891,6 @@ ActiveRecord::Schema[7.2].define(version: 2026_11_06_135807) do
     t.index ["decidim_author_id", "decidim_author_type"], name: "index_decidim_debates_debates_on_decidim_author"
     t.index ["decidim_component_id"], name: "index_decidim_debates_debates_on_decidim_component_id"
     t.index ["decidim_scope_id"], name: "index_decidim_debates_debates_on_decidim_scope_id"
-    t.index ["decidim_user_group_id"], name: "index_decidim_debates_debates_on_decidim_user_group_id"
     t.index ["deleted_at"], name: "index_decidim_debates_debates_on_deleted_at"
     t.index ["likes_count"], name: "index_decidim_debates_debates_on_likes_count"
   end
@@ -1141,12 +1116,9 @@ ActiveRecord::Schema[7.2].define(version: 2026_11_06_135807) do
     t.bigint "resource_id"
     t.string "decidim_author_type"
     t.bigint "decidim_author_id"
-    t.integer "decidim_user_group_id", default: 0
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.index ["decidim_author_type", "decidim_author_id"], name: "idx_likes_authors"
-    t.index ["decidim_user_group_id"], name: "index_decidim_likes_on_decidim_user_group_id"
-    t.index ["resource_type", "resource_id", "decidim_author_type", "decidim_author_id", "decidim_user_group_id"], name: "idx_likes_rsrcs_and_authors", unique: true
     t.index ["resource_type", "resource_id"], name: "index_decidim_likes_on_resource_type_and_resource_id"
   end
 
@@ -1222,7 +1194,6 @@ ActiveRecord::Schema[7.2].define(version: 2026_11_06_135807) do
     t.boolean "transparent", default: true
     t.boolean "registration_form_enabled", default: false
     t.string "decidim_author_type"
-    t.integer "decidim_user_group_id"
     t.integer "comments_count", default: 0, null: false
     t.string "online_meeting_url"
     t.string "registration_url"
@@ -1289,11 +1260,9 @@ ActiveRecord::Schema[7.2].define(version: 2026_11_06_135807) do
     t.datetime "updated_at", precision: nil, null: false
     t.string "code"
     t.datetime "validated_at", precision: nil
-    t.bigint "decidim_user_group_id"
     t.boolean "public_participation", default: false
     t.string "status", default: "registered"
     t.index ["decidim_meeting_id"], name: "index_decidim_meetings_registrations_on_decidim_meeting_id"
-    t.index ["decidim_user_group_id"], name: "index_decidim_meetings_registrations_on_decidim_user_group_id"
     t.index ["decidim_user_id", "decidim_meeting_id"], name: "decidim_meetings_registrations_user_meeting_unique", unique: true
     t.index ["decidim_user_id"], name: "index_decidim_meetings_registrations_on_decidim_user_id"
     t.index ["status"], name: "index_decidim_meetings_registrations_on_status"
@@ -1333,6 +1302,19 @@ ActiveRecord::Schema[7.2].define(version: 2026_11_06_135807) do
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.index ["decidim_meeting_id"], name: "index_decidim_meetings_services_on_decidim_meeting_id"
+  end
+
+  create_table "decidim_members", force: :cascade do |t|
+    t.bigint "decidim_user_id"
+    t.integer "participatory_space_id"
+    t.string "participatory_space_type"
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.jsonb "role"
+    t.boolean "published", default: false
+    t.index ["decidim_user_id", "participatory_space_type", "participatory_space_id"], name: "unique_space_members", unique: true
+    t.index ["decidim_user_id"], name: "index_decidim_members_on_user_id"
+    t.index ["participatory_space_type", "participatory_space_id"], name: "index_decidim_members_on_participatory_space"
   end
 
   create_table "decidim_messaging_conversations", force: :cascade do |t|
@@ -1441,14 +1423,11 @@ ActiveRecord::Schema[7.2].define(version: 2026_11_06_135807) do
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.jsonb "description"
-    t.string "logo"
     t.string "twitter_handler"
-    t.string "favicon"
     t.string "instagram_handler"
     t.string "facebook_handler"
     t.string "youtube_handler"
     t.string "github_handler"
-    t.string "official_img_footer"
     t.string "official_url"
     t.string "reference_prefix", null: false
     t.string "secondary_hosts", default: [], array: true
@@ -1466,7 +1445,6 @@ ActiveRecord::Schema[7.2].define(version: 2026_11_06_135807) do
     t.integer "users_registration_mode", default: 0, null: false
     t.string "id_documents_methods", default: ["online"], array: true
     t.jsonb "id_documents_explanation_text", default: {}
-    t.boolean "user_groups_enabled", default: false, null: false
     t.jsonb "smtp_settings"
     t.jsonb "colors", default: {}
     t.boolean "force_users_to_authenticate_before_access_organization", default: false
@@ -1479,10 +1457,9 @@ ActiveRecord::Schema[7.2].define(version: 2026_11_06_135807) do
     t.jsonb "file_upload_settings"
     t.string "machine_translation_display_priority", default: "original", null: false
     t.string "external_domain_allowlist", default: [], array: true
-    t.boolean "enable_participatory_space_filters", default: true
     t.jsonb "content_security_policy", default: {}
     t.jsonb "name", default: {}, null: false
-    t.jsonb "extra_user_fields", default: {"enabled"=>false}
+    t.jsonb "extra_user_fields", default: {"enabled" => false}
     t.jsonb "short_name", default: {}, null: false
     t.index ["host"], name: "index_decidim_organizations_on_host", unique: true
   end
@@ -1500,7 +1477,6 @@ ActiveRecord::Schema[7.2].define(version: 2026_11_06_135807) do
   create_table "decidim_participatory_process_groups", id: :serial, force: :cascade do |t|
     t.jsonb "title", null: false
     t.jsonb "description", null: false
-    t.string "hero_image"
     t.integer "decidim_organization_id"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
@@ -1525,20 +1501,10 @@ ActiveRecord::Schema[7.2].define(version: 2026_11_06_135807) do
     t.datetime "updated_at", precision: nil, null: false
     t.boolean "active", default: false
     t.integer "position"
-    t.jsonb "cta_text", default: {}
-    t.string "cta_path"
     t.index ["decidim_participatory_process_id", "active"], name: "unique_index_to_avoid_duplicate_active_steps", unique: true, where: "(active = true)"
     t.index ["decidim_participatory_process_id", "position"], name: "index_unique_position_for_process", unique: true
     t.index ["decidim_participatory_process_id"], name: "index_decidim_processes_steps__on_decidim_process_id"
     t.index ["position"], name: "index_order_by_position_for_steps"
-  end
-
-  create_table "decidim_participatory_process_types", force: :cascade do |t|
-    t.jsonb "title", null: false
-    t.bigint "decidim_organization_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["decidim_organization_id"], name: "index_decidim_process_types_on_decidim_organization_id"
   end
 
   create_table "decidim_participatory_process_user_roles", id: :serial, force: :cascade do |t|
@@ -1560,7 +1526,6 @@ ActiveRecord::Schema[7.2].define(version: 2026_11_06_135807) do
     t.jsonb "subtitle", null: false
     t.jsonb "short_description", null: false
     t.jsonb "description", null: false
-    t.string "hero_image"
     t.boolean "promoted", default: false
     t.datetime "published_at", precision: nil
     t.jsonb "developer_group"
@@ -1581,13 +1546,13 @@ ActiveRecord::Schema[7.2].define(version: 2026_11_06_135807) do
     t.bigint "decidim_scope_type_id"
     t.integer "weight", default: 1, null: false
     t.integer "follows_count", default: 0, null: false
-    t.bigint "decidim_participatory_process_type_id"
     t.datetime "deleted_at"
+    t.boolean "has_members", default: false
+    t.integer "access_mode", default: 0, null: false
     t.index ["decidim_area_id"], name: "index_decidim_participatory_processes_on_decidim_area_id"
     t.index ["decidim_organization_id", "slug"], name: "index_unique_process_slug_and_organization", unique: true
     t.index ["decidim_organization_id"], name: "index_decidim_processes_on_decidim_organization_id"
     t.index ["decidim_participatory_process_group_id"], name: "idx_process_on_process_group_id"
-    t.index ["decidim_participatory_process_type_id"], name: "index_decidim_processes_on_decidim_process_type_id"
     t.index ["decidim_scope_id"], name: "idx_process_on_scope_id"
     t.index ["decidim_scope_type_id"], name: "index_decidim_participatory_processes_on_decidim_scope_type_id"
     t.index ["deleted_at"], name: "index_decidim_participatory_processes_on_deleted_at"
@@ -1605,24 +1570,11 @@ ActiveRecord::Schema[7.2].define(version: 2026_11_06_135807) do
     t.index ["to_type", "to_id"], name: "index_participatory_space_links_on_to"
   end
 
-  create_table "decidim_participatory_space_private_users", force: :cascade do |t|
-    t.bigint "decidim_user_id"
-    t.integer "privatable_to_id"
-    t.string "privatable_to_type"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.jsonb "role"
-    t.boolean "published", default: false
-    t.index ["decidim_user_id"], name: "index_decidim_spaces_users_on_private_user_id"
-    t.index ["privatable_to_type", "privatable_to_id"], name: "space_privatable_to_privatable_id"
-  end
-
   create_table "decidim_private_exports", force: :cascade do |t|
     t.uuid "uuid", null: false
     t.string "export_type", null: false
     t.string "attached_to_type"
     t.integer "attached_to_id"
-    t.string "file"
     t.string "content_type", null: false
     t.string "file_size", null: false
     t.datetime "expires_at"
@@ -1630,41 +1582,6 @@ ActiveRecord::Schema[7.2].define(version: 2026_11_06_135807) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["uuid"], name: "index_decidim_private_exports_on_uuid", unique: true
-  end
-
-  create_table "decidim_proposals_collaborative_draft_collaborator_requests", force: :cascade do |t|
-    t.bigint "decidim_proposals_collaborative_draft_id", null: false
-    t.bigint "decidim_user_id", null: false
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.index ["decidim_proposals_collaborative_draft_id"], name: "index_collab_requests_on_decidim_proposals_collab_draft_id"
-    t.index ["decidim_user_id"], name: "index_collab_requests_on_decidim_user_id"
-  end
-
-  create_table "decidim_proposals_collaborative_drafts", force: :cascade do |t|
-    t.text "title", null: false
-    t.text "body", null: false
-    t.integer "decidim_component_id", null: false
-    t.integer "decidim_scope_id"
-    t.string "reference"
-    t.text "address"
-    t.float "latitude"
-    t.float "longitude"
-    t.datetime "published_at", precision: nil
-    t.integer "authors_count", default: 0, null: false
-    t.integer "versions_count", default: 0, null: false
-    t.integer "contributions_count", default: 0, null: false
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.integer "coauthorships_count", default: 0, null: false
-    t.integer "comments_count", default: 0, null: false
-    t.integer "follows_count", default: 0, null: false
-    t.integer "state", default: 0, null: false
-    t.index ["body"], name: "decidim_proposals_collaborative_draft_body_search"
-    t.index ["decidim_component_id"], name: "decidim_proposals_collaborative_drafts_on_decidim_component_id"
-    t.index ["decidim_scope_id"], name: "decidim_proposals_collaborative_drafts_on_decidim_scope_id"
-    t.index ["title"], name: "decidim_proposals_collaborative_drafts_title_search"
-    t.index ["updated_at"], name: "decidim_proposals_collaborative_drafts_on_updated_at"
   end
 
   create_table "decidim_proposals_evaluation_assignments", force: :cascade do |t|
@@ -2080,19 +1997,6 @@ ActiveRecord::Schema[7.2].define(version: 2026_11_06_135807) do
     t.index ["decidim_user_id"], name: "index_decidim_user_blocks_on_decidim_user_id"
   end
 
-  create_table "decidim_user_group_memberships", id: :serial, force: :cascade do |t|
-    t.integer "decidim_user_id", null: false
-    t.integer "decidim_user_group_id", null: false
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.string "role", default: "requested", null: false
-    t.index ["decidim_user_group_id", "decidim_user_id"], name: "index_user_group_memberships_group_id_user_id"
-    t.index ["decidim_user_group_id"], name: "index_decidim_user_group_memberships_on_decidim_user_group_id"
-    t.index ["decidim_user_id", "decidim_user_group_id"], name: "decidim_user_group_memberships_unique_user_and_group_ids", unique: true
-    t.index ["decidim_user_id"], name: "index_decidim_user_group_memberships_on_decidim_user_id"
-    t.index ["role", "decidim_user_group_id"], name: "decidim_group_membership_one_creator_per_group", unique: true, where: "((role)::text = 'creator'::text)"
-  end
-
   create_table "decidim_user_moderations", force: :cascade do |t|
     t.bigint "decidim_user_id"
     t.integer "report_count", default: 0, null: false
@@ -2138,7 +2042,6 @@ ActiveRecord::Schema[7.2].define(version: 2026_11_06_135807) do
     t.string "unconfirmed_email"
     t.string "name", null: false
     t.string "locale"
-    t.string "avatar"
     t.text "delete_reason"
     t.datetime "deleted_at", precision: nil
     t.boolean "admin", default: false, null: false
@@ -2246,7 +2149,6 @@ ActiveRecord::Schema[7.2].define(version: 2026_11_06_135807) do
     t.string "name", null: false
     t.string "organization_name", null: false
     t.string "organization_url", null: false
-    t.string "organization_logo"
     t.string "uid", null: false
     t.string "secret", null: false
     t.text "redirect_uri", null: false
@@ -2259,6 +2161,156 @@ ActiveRecord::Schema[7.2].define(version: 2026_11_06_135807) do
     t.boolean "refresh_tokens_enabled", default: false
     t.index ["decidim_organization_id"], name: "index_oauth_applications_on_decidim_organization_id"
     t.index ["uid"], name: "index_oauth_applications_on_uid", unique: true
+  end
+
+  create_table "solid_queue_batch_executions", force: :cascade do |t|
+    t.bigint "job_id", null: false
+    t.bigint "batch_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["batch_id"], name: "index_solid_queue_batch_executions_on_batch_id"
+    t.index ["job_id"], name: "index_solid_queue_batch_executions_on_job_id", unique: true
+  end
+
+  create_table "solid_queue_batches", force: :cascade do |t|
+    t.string "active_job_batch_id"
+    t.string "description"
+    t.text "on_finish"
+    t.text "on_success"
+    t.text "on_failure"
+    t.text "metadata"
+    t.integer "total_jobs", default: 0, null: false
+    t.integer "completed_jobs", default: 0, null: false
+    t.integer "failed_jobs", default: 0, null: false
+    t.datetime "enqueued_at"
+    t.datetime "finished_at"
+    t.datetime "failed_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["active_job_batch_id"], name: "index_solid_queue_batches_on_active_job_batch_id", unique: true
+    t.index ["finished_at"], name: "index_solid_queue_batches_on_finished_at"
+  end
+
+  create_table "solid_queue_blocked_executions", force: :cascade do |t|
+    t.bigint "job_id", null: false
+    t.string "queue_name", null: false
+    t.integer "priority", default: 0, null: false
+    t.string "concurrency_key", null: false
+    t.datetime "expires_at", null: false
+    t.datetime "created_at", null: false
+    t.index ["concurrency_key", "priority", "job_id"], name: "index_solid_queue_blocked_executions_for_release"
+    t.index ["expires_at", "concurrency_key"], name: "index_solid_queue_blocked_executions_for_maintenance"
+    t.index ["job_id"], name: "index_solid_queue_blocked_executions_on_job_id", unique: true
+  end
+
+  create_table "solid_queue_claimed_executions", force: :cascade do |t|
+    t.bigint "job_id", null: false
+    t.bigint "process_id"
+    t.datetime "created_at", null: false
+    t.index ["job_id"], name: "index_solid_queue_claimed_executions_on_job_id", unique: true
+    t.index ["process_id", "job_id"], name: "index_solid_queue_claimed_executions_on_process_id_and_job_id"
+  end
+
+  create_table "solid_queue_failed_executions", force: :cascade do |t|
+    t.bigint "job_id", null: false
+    t.text "error"
+    t.datetime "created_at", null: false
+    t.index ["job_id"], name: "index_solid_queue_failed_executions_on_job_id", unique: true
+  end
+
+  create_table "solid_queue_jobs", force: :cascade do |t|
+    t.string "queue_name", null: false
+    t.string "class_name", null: false
+    t.text "arguments"
+    t.integer "priority", default: 0, null: false
+    t.string "active_job_id"
+    t.datetime "scheduled_at"
+    t.datetime "finished_at"
+    t.string "concurrency_key"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "batch_id"
+    t.index ["active_job_id"], name: "index_solid_queue_jobs_on_active_job_id"
+    t.index ["batch_id"], name: "index_solid_queue_jobs_on_batch_id"
+    t.index ["class_name"], name: "index_solid_queue_jobs_on_class_name"
+    t.index ["finished_at"], name: "index_solid_queue_jobs_on_finished_at"
+    t.index ["queue_name", "finished_at"], name: "index_solid_queue_jobs_for_filtering"
+    t.index ["scheduled_at", "finished_at"], name: "index_solid_queue_jobs_for_alerting"
+  end
+
+  create_table "solid_queue_pauses", force: :cascade do |t|
+    t.string "queue_name", null: false
+    t.datetime "created_at", null: false
+    t.index ["queue_name"], name: "index_solid_queue_pauses_on_queue_name", unique: true
+  end
+
+  create_table "solid_queue_processes", force: :cascade do |t|
+    t.string "kind", null: false
+    t.datetime "last_heartbeat_at", null: false
+    t.bigint "supervisor_id"
+    t.integer "pid", null: false
+    t.string "hostname"
+    t.text "metadata"
+    t.datetime "created_at", null: false
+    t.string "name", null: false
+    t.index ["last_heartbeat_at"], name: "index_solid_queue_processes_on_last_heartbeat_at"
+    t.index ["name", "supervisor_id"], name: "index_solid_queue_processes_on_name_and_supervisor_id", unique: true
+    t.index ["supervisor_id"], name: "index_solid_queue_processes_on_supervisor_id"
+  end
+
+  create_table "solid_queue_ready_executions", force: :cascade do |t|
+    t.bigint "job_id", null: false
+    t.string "queue_name", null: false
+    t.integer "priority", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.index ["job_id"], name: "index_solid_queue_ready_executions_on_job_id", unique: true
+    t.index ["priority", "job_id"], name: "index_solid_queue_poll_all"
+    t.index ["queue_name", "priority", "job_id"], name: "index_solid_queue_poll_by_queue"
+  end
+
+  create_table "solid_queue_recurring_executions", force: :cascade do |t|
+    t.bigint "job_id", null: false
+    t.string "task_key", null: false
+    t.datetime "run_at", null: false
+    t.datetime "created_at", null: false
+    t.index ["job_id"], name: "index_solid_queue_recurring_executions_on_job_id", unique: true
+    t.index ["task_key", "run_at"], name: "index_solid_queue_recurring_executions_on_task_key_and_run_at", unique: true
+  end
+
+  create_table "solid_queue_recurring_tasks", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "schedule", null: false
+    t.string "command", limit: 2048
+    t.string "class_name"
+    t.text "arguments"
+    t.string "queue_name"
+    t.integer "priority", default: 0
+    t.boolean "static", default: true, null: false
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["key"], name: "index_solid_queue_recurring_tasks_on_key", unique: true
+    t.index ["static"], name: "index_solid_queue_recurring_tasks_on_static"
+  end
+
+  create_table "solid_queue_scheduled_executions", force: :cascade do |t|
+    t.bigint "job_id", null: false
+    t.string "queue_name", null: false
+    t.integer "priority", default: 0, null: false
+    t.datetime "scheduled_at", null: false
+    t.datetime "created_at", null: false
+    t.index ["job_id"], name: "index_solid_queue_scheduled_executions_on_job_id", unique: true
+    t.index ["scheduled_at", "priority", "job_id"], name: "index_solid_queue_dispatch_all"
+  end
+
+  create_table "solid_queue_semaphores", force: :cascade do |t|
+    t.string "key", null: false
+    t.integer "value", default: 1, null: false
+    t.datetime "expires_at", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["expires_at"], name: "index_solid_queue_semaphores_on_expires_at"
+    t.index ["key", "value"], name: "index_solid_queue_semaphores_on_key_and_value"
+    t.index ["key"], name: "index_solid_queue_semaphores_on_key", unique: true
   end
 
   create_table "versions", force: :cascade do |t|
@@ -2279,7 +2331,6 @@ ActiveRecord::Schema[7.2].define(version: 2026_11_06_135807) do
   add_foreign_key "decidim_area_types", "decidim_organizations"
   add_foreign_key "decidim_areas", "decidim_area_types", column: "area_type_id"
   add_foreign_key "decidim_areas", "decidim_organizations"
-  add_foreign_key "decidim_assemblies", "decidim_assemblies_types"
   add_foreign_key "decidim_assemblies_settings", "decidim_organizations"
   add_foreign_key "decidim_attachments", "decidim_attachment_collections", column: "attachment_collection_id", name: "fk_decidim_attachments_attachment_collection_id", on_delete: :nullify
   add_foreign_key "decidim_authorization_transfer_records", "decidim_authorization_transfers", column: "transfer_id"
@@ -2317,9 +2368,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_11_06_135807) do
   add_foreign_key "decidim_identities", "decidim_organizations"
   add_foreign_key "decidim_newsletters", "decidim_users", column: "author_id"
   add_foreign_key "decidim_participatory_process_steps", "decidim_participatory_processes"
-  add_foreign_key "decidim_participatory_process_types", "decidim_organizations"
   add_foreign_key "decidim_participatory_processes", "decidim_organizations"
-  add_foreign_key "decidim_participatory_processes", "decidim_participatory_process_types"
   add_foreign_key "decidim_participatory_processes", "decidim_scope_types"
   add_foreign_key "decidim_proposals_proposals", "decidim_proposals_proposal_states"
   add_foreign_key "decidim_reminder_deliveries", "decidim_reminders"
@@ -2350,4 +2399,12 @@ ActiveRecord::Schema[7.2].define(version: 2026_11_06_135807) do
   add_foreign_key "oauth_access_tokens", "decidim_users", column: "resource_owner_id"
   add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
   add_foreign_key "oauth_applications", "decidim_organizations"
+  add_foreign_key "solid_queue_batch_executions", "solid_queue_batches", column: "batch_id", on_delete: :cascade
+  add_foreign_key "solid_queue_batch_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
+  add_foreign_key "solid_queue_blocked_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
+  add_foreign_key "solid_queue_claimed_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
+  add_foreign_key "solid_queue_failed_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
+  add_foreign_key "solid_queue_ready_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
+  add_foreign_key "solid_queue_recurring_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
+  add_foreign_key "solid_queue_scheduled_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
 end
