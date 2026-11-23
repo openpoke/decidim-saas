@@ -4,19 +4,19 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-DECIDIM_VERSION = { github: "openpoke/decidim", branch: "0.31-backports" }.freeze
+DECIDIM_VERSION = { github: "openpoke/decidim", branch: "0.32-backports" }.freeze
 gem "decidim", DECIDIM_VERSION
 gem "decidim-collaborative_texts", DECIDIM_VERSION
 gem "decidim-conferences", DECIDIM_VERSION
 gem "decidim-elections", DECIDIM_VERSION
 gem "decidim-templates", DECIDIM_VERSION
 
-gem "decidim-chatbot", github: "openpoke/decidim-module-chatbot", branch: "main", require: false
-gem "decidim-decidim_awesome", github: "decidim-ice/decidim-module-decidim_awesome", branch: "release/0.31-stable"
-gem "decidim-extra_censuses", github: "openpoke/decidim-module-extra_censuses", branch: "release/0.31-stable"
-gem "decidim-extra_user_fields", github: "openpoke/decidim-module-extra_user_fields", branch: "release/0.31-stable", require: false
-gem "decidim-pokecode", github: "openpoke/decidim-module-pokecode", branch: "release/0.31-stable"
-gem "decidim-term_customizer", github: "openpoke/decidim-module-term_customizer", branch: "release/0.31-stable"
+# gem "decidim-chatbot", github: "openpoke/decidim-module-chatbot", branch: "main", require: false # no 0.32 support yet
+gem "decidim-decidim_awesome", github: "decidim-ice/decidim-module-decidim_awesome", branch: "main"
+gem "decidim-extra_censuses", github: "openpoke/decidim-module-extra_censuses", branch: "main"
+gem "decidim-extra_user_fields", github: "openpoke/decidim-module-extra_user_fields", branch: "main", require: false
+gem "decidim-pokecode", github: "openpoke/decidim-module-pokecode", branch: "main"
+gem "decidim-term_customizer", github: "openpoke/decidim-module-term_customizer", branch: "main"
 
 # Customizations for clients
 gem "decidim-saas-ateneu_bcn", path: "decidim-saas-ateneu_bcn", require: false

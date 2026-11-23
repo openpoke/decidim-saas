@@ -17,7 +17,7 @@ module Decidim
             manifest.admin_form_partial = "decidim/saas/silly_census/admin_code_form"
 
             manifest.user_query do |election|
-              Decidim::Elections::Voter.where(election: election)
+              Decidim::Elections::Voter.where(election:)
             end
             manifest.census_ready_validator do |_election|
               true

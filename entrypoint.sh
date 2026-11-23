@@ -1,38 +1,28 @@
 #!/bin/bash
 
-# Run rails by default unless disabled
-if [ -z "$RUN_RAILS" ]; then
-	RUN_RAILS=true
+if [ -z "$QUEUE_ADAPTER" ]; then
+	echo "⚠️ QUEUE_ADAPTER is not set defaulting to solid_queue"
+fi
+export QUEUE_ADAPTER="${QUEUE_ADAPTER:-solid_queue}"
+
+if [ "$QUEUE_ADAPTER" != "solid_queue" ]; then
+	echo "⚠️ Solid Queue is disabled because QUEUE_ADAPTER is not solid_queue"
 fi
 
-# ensure booleans
-if [ "$RUN_RAILS" == "true" ] || [ "$RUN_RAILS" == "1" ]; then
-	RUN_RAILS=true
-	echo "✅ Running Rails"
-else
-	RUN_RAILS=false
-	echo "⚠️ Not running Rails"
-fi
+SOLID_QUEUE_IN_PUMA="${SOLID_QUEUE_IN_PUMA:-true}"
+case "${SOLID_QUEUE_IN_PUMA,,}" in
+	1|true|yes)
+		if [ "$QUEUE_ADAPTER" = "solid_queue" ]; then
+			echo "✅ Solid Queue is configured in Puma"
+		else
+			echo "⚠️ Solid Queue is not configured in Puma"
+		fi
+		;;
+	*) echo "⚠️ Solid Queue is not configured in Puma" ;;
+esac
 
-# Run sidekiq by default unless disabled
-if [ -z "$RUN_SIDEKIQ" ]; then
-	RUN_SIDEKIQ=true
-fi
-if [ "$DISABLE_SIDEKIQ" == "true" ] || [ "$DISABLE_SIDEKIQ" == "1" ]; then
-	echo "⚠️ Sidekiq is disabled because DISABLE_SIDEKIQ is set"
-	RUN_SIDEKIQ=false
-fi
-
-if [ "$RUN_SIDEKIQ" == "true" ] || [ "$RUN_SIDEKIQ" == "1" ]; then
-	RUN_SIDEKIQ=true
-	echo "✅ Running Sidekiq"
-else
-	RUN_SIDEKIQ=false
-	echo "⚠️ Not running Sidekiq"
-fi
-
-export RUN_RAILS
-export RUN_SIDEKIQ
+# Puma's configured PID file is under tmp/pids, which is removed during image cleanup.
+mkdir -p tmp/pids
 
 # Check all the gems are installed or fails.
 bundle check
@@ -45,8 +35,10 @@ fi
 
 # Check no migrations are pending migrations
 if [ -z "$SKIP_MIGRATIONS" ]; then
-	bundle exec rails db:migrate
+	bundle exec rails db:migrate || exit 1
 	echo "✅ Migrations are all up"
+	bundle exec rails data:migrate || exit 1
+	echo "✅ Data migrations are all up"
 else
 	echo "⚠️ Skipping migrations"
 fi

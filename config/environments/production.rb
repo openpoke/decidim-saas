@@ -58,6 +58,7 @@ Rails.application.configure do
   # config.ssl_options = { redirect: { exclude: ->(request) { request.path == "/up" } } }
 
   if ENV["RAILS_LOG_TO_STDOUT"].present?
+    config.rails_semantic_logger.add_file_appender = false if defined?(RailsSemanticLogger)
     logger = ActiveSupport::Logger.new($stdout)
     logger.formatter = config.log_formatter
     config.logger = ActiveSupport::TaggedLogging.new(logger)
@@ -72,7 +73,7 @@ Rails.application.configure do
     :user_name => Decidim::Env.new("SMTP_USERNAME").to_s,
     :password => Decidim::Env.new("SMTP_PASSWORD").to_s,
     :domain => Decidim::Env.new("SMTP_DOMAIN").to_s,
-    :enable_starttls_auto => Decidim::Env.new("SMTP_STARTTLS_AUTO").to_boolean_string,
+    :enable_starttls_auto => Decidim::Env.new("SMTP_STARTTLS_AUTO", true).present?,
     :openssl_verify_mode => "none"
   }
 
@@ -85,7 +86,7 @@ Rails.application.configure do
   # config.cache_store = :mem_cache_store
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
-  config.active_job.queue_adapter = ENV["QUEUE_ADAPTER"] if ENV["QUEUE_ADAPTER"].present?
+  config.active_job.queue_adapter = ENV.fetch("QUEUE_ADAPTER", "solid_queue")
   # config.active_job.queue_name_prefix = "decidim_saas_production"
 
   # Disable caching for Action Mailer templates even if Action Controller

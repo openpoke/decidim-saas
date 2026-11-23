@@ -30,7 +30,7 @@ module Decidim
         end
 
         def onboarding_survey
-          @onboarding_survey ||= Decidim::Surveys::Survey.find_by(id: ENV.fetch("ONBOARDING_SURVEY_ID", nil))
+          @onboarding_survey ||= Decidim::Surveys::Survey.find_by(id: ENV.fetch("ONBOARDING_SURVEY_ID", nil)) # rubocop:disable Decidim/OrganizationScopedFinder
         end
 
         def onboarding_survey_path
