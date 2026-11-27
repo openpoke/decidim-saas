@@ -34,7 +34,7 @@ gem "puma", ">= 6.3.1"
 gem "kaminari", "~> 1.2.2"
 
 group :development, :test do
-  gem "byebug", "~> 11.0", platform: :mri
+  gem "byebug", "~> 13.0", platform: :mri
 
   gem "brakeman"
   gem "decidim-dev", DECIDIM_VERSION
